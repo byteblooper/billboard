@@ -148,10 +148,10 @@ const Navbar = () => {
             </button>
 
             {/* Notifications */}
-            <button className="relative hidden sm:flex p-2.5 hover:bg-slate-50 rounded-lg transition-colors group">
+            {/* <button className="relative hidden sm:flex p-2.5 hover:bg-slate-50 rounded-lg transition-colors group">
               <Bell className="w-5 h-5 text-slate-700 group-hover:text-orange-600 group-hover:animate-pulse" />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white animate-pulse"></span>
-            </button>
+            </button> */}
 
             {/* Wishlist */}
             <Link href="/wilshlist" className="relative p-2.5 hover:bg-slate-50 rounded-lg transition-all duration-200 group">
