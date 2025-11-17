@@ -13,13 +13,17 @@ import {
   Award
 } from 'lucide-react'
 import { Edit2 } from 'lucide-react'
-import ProfileHeader from './ProfileHeader'
-import StatsCards from './StatsCards'
-import SidebarMenu from './SidebarMenu'
-import PersonalInfoTab from './PersonalInfoTab'
-import OrderHistoryTab from './OrderHistoryTab'
+import ProfileHeader from './components/ProfileHeader'
+import StatsCards from './components/StatsCards'
+import SidebarMenu from './components/SidebarMenu'
+import PersonalInfoTab from './components/PersonalInfoTab'
+import OrderHistoryTab from './components/OrderHistoryTab'
 
-// Demo Data
+
+
+const ProfilePage = () => {
+
+  // Demo Data
 const userInfo = {
   name: 'Rian Hasan Siam',
   email: 'rianhasan1971@gmail.com',
@@ -78,8 +82,13 @@ const menuItems = [
   
 ]
 
-const ProfilePage = () => {
-  const [activeTab, setActiveTab] = useState('Personal Information')
+const [activeTab, setActiveTab] = useState('Personal Information')
+
+
+
+
+
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">

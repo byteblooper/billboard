@@ -53,31 +53,36 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
+
             <Link 
-              href="/" 
+              href="/shop" 
               className={`relative flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 font-medium ${
-                pathname === '/' 
+                pathname === '/shop' 
                   ? 'text-orange-600 bg-orange-50' 
                   : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50'
               }`}
             >
               <Store className="w-4 h-4" />
+
               Shop
-              {pathname === '/' && (
+              {pathname === '/shop' && (
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></span>
               )}
             </Link>
+
+
+
             <Link 
-              href="/nearMe" 
+              href="/map" 
               className={`relative flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 font-medium ${
-                pathname === '/nearMe' 
+                pathname === '/map' 
                   ? 'text-orange-600 bg-orange-50' 
                   : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50'
               }`}
             >
               <Map className="w-4 h-4" />
               Map
-              {pathname === '/nearMe' && (
+              {pathname === '/map' && (
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></span>
               )}
             </Link>
