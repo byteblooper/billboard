@@ -13,7 +13,9 @@ const FlashSell = () => {
   // Countdown timer
   useEffect(() => {
     const timer = setInterval(() => {
+      
       setTimeLeft(prev => {
+
         let { hours, minutes, seconds } = prev
 
         if (seconds > 0) seconds--
@@ -34,7 +36,7 @@ const FlashSell = () => {
   }, [])
 
   return (
-    <div className="bg-gradient-to-br from-orange-100 via-orange-50 to-amber-100 py-12 mx-auto w-[35%] border-2 border-orange-200 rounded-xl shadow-lg my-10">
+    <div className="bg-gradient-to-br from-orange-100 via-orange-50 to-amber-100 py-5 mx-auto w-[35%] border-2 border-orange-200 rounded-xl shadow-lg ">
       
 
       <div className='flex items-center justify-center gap-5  '>
