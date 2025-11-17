@@ -10,8 +10,7 @@ import WhyNearBy from "./components/home/whyNearby/WhyNearBy";
 export default function Home() {
   return (
    <>
-    <TopBanner />
-    <Navbar />
+  
   
     <Hero />
 
