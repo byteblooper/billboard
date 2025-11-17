@@ -2,6 +2,33 @@ import React from 'react'
 import { MapPin, Mail, Phone, Facebook, Twitter, Instagram, Linkedin, Youtube, Send, Award, Shield, Clock } from 'lucide-react'
 import Link from 'next/link'
 
+// Demo Data
+const trustBadges = [
+  { icon: Shield, text: 'Verified', color: 'text-emerald-500' },
+  { icon: Award, text: 'Premium', color: 'text-amber-500' },
+  { icon: Clock, text: '24/7', color: 'text-blue-500' }
+]
+
+const quickLinks = ['About Us', 'How It Works', 'Shop Categories', 'Flash Sales', 'Trending Deals', 'Become a Partner']
+
+const supportLinks = ['Help Center', 'Terms & Conditions', 'Privacy Policy', 'Return Policy', 'FAQs', 'Contact Us']
+
+const contactInfo = [
+  { icon: MapPin, text: '123 Market Street, Downtown, NY 10001', isAddress: true },
+  { icon: Phone, text: '+880 19326 00504', isAddress: false },
+  { icon: Mail, text: 'rianhasan1971@gmail.com', isAddress: false }
+]
+
+const socialLinks = [
+  { icon: Facebook, href: '#', label: 'Facebook' },
+  { icon: Twitter, href: '#', label: 'Twitter' },
+  { icon: Instagram, href: '#', label: 'Instagram' },
+  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Youtube, href: '#', label: 'YouTube' }
+]
+
+const paymentMethods = ['VISA', 'MC', 'AMEX', 'PayPal']
+
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
@@ -25,18 +52,15 @@ const Footer = () => {
 
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-2 rounded-lg border border-slate-700">
-                <Shield className="w-4 h-4 text-emerald-500" />
-                <span className="text-xs font-semibold">Verified</span>
-              </div>
-              <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-2 rounded-lg border border-slate-700">
-                <Award className="w-4 h-4 text-amber-500" />
-                <span className="text-xs font-semibold">Premium</span>
-              </div>
-              <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-2 rounded-lg border border-slate-700">
-                <Clock className="w-4 h-4 text-blue-500" />
-                <span className="text-xs font-semibold">24/7</span>
-              </div>
+              {trustBadges.map((badge, index) => {
+                const Icon = badge.icon
+                return (
+                  <div key={index} className="flex items-center gap-2 bg-slate-800/50 px-3 py-2 rounded-lg border border-slate-700">
+                    <Icon className={`w-4 h-4 ${badge.color}`} />
+                    <span className="text-xs font-semibold">{badge.text}</span>
+                  </div>
+                )
+              })}
             </div>
           </div>
 
@@ -44,13 +68,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6 text-white">Quick Links</h4>
             <ul className="space-y-3">
-              {['About Us', 'How It Works', 'Shop Categories', 'Flash Sales', 'Trending Deals', 'Become a Partner'].map((link, index) => (
-
+              {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link href="#" className="text-slate-400 hover:text-orange-500 transition-colors duration-200 flex items-center gap-2 group">
                     <span className="w-0 group-hover:w-2 h-0.5 bg-orange-500 transition-all duration-200"></span>
                     {link}
-
                   </Link>
                 </li>
               ))}
@@ -61,8 +83,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6 text-white">Support</h4>
             <ul className="space-y-3">
-              {['Help Center', 'Terms & Conditions', 'Privacy Policy', 'Return Policy', 'FAQs', 'Contact Us'].map((link, index) => (
-
+              {supportLinks.map((link, index) => (
                 <li key={index}>
                   <Link href="#" className="text-slate-400 hover:text-orange-500 transition-colors duration-200 flex items-center gap-2 group">
                     <span className="w-0 group-hover:w-2 h-0.5 bg-orange-500 transition-all duration-200"></span>
@@ -78,18 +99,15 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-bold mb-6 text-white">Contact Us</h4>
               <ul className="space-y-4">
-                <li className="flex items-start gap-3 text-slate-400">
-                  <MapPin className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm">123 Market Street, Downtown, NY 10001</span>
-                </li>
-                <li className="flex items-center gap-3 text-slate-400">
-                  <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm">+880 19326 00504</span>
-                </li>
-                <li className="flex items-center gap-3 text-slate-400">
-                  <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm">rianhasan1971@gmail.com</span>
-                </li>
+                {contactInfo.map((contact, index) => {
+                  const Icon = contact.icon
+                  return (
+                    <li key={index} className={`flex ${contact.isAddress ? 'items-start' : 'items-center'} gap-3 text-slate-400`}>
+                      <Icon className={`w-5 h-5 text-orange-500 ${contact.isAddress ? 'mt-0.5' : ''} flex-shrink-0`} />
+                      <span className="text-sm">{contact.text}</span>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
 
@@ -123,13 +141,7 @@ const Footer = () => {
 
           {/* Social Links */}
           <div className="flex items-center gap-3">
-            {[
-              { icon: Facebook, href: '#', label: 'Facebook' },
-              { icon: Twitter, href: '#', label: 'Twitter' },
-              { icon: Instagram, href: '#', label: 'Instagram' },
-              { icon: Linkedin, href: '#', label: 'LinkedIn' },
-              { icon: Youtube, href: '#', label: 'YouTube' }
-            ].map((social, index) => {
+            {socialLinks.map((social, index) => {
               const Icon = social.icon
               return (
                 <Link
@@ -148,7 +160,7 @@ const Footer = () => {
           <div className="flex items-center gap-2">
             <span className="text-slate-500 text-xs mr-2">We Accept:</span>
             <div className="flex gap-2">
-              {['VISA', 'MC', 'AMEX', 'PayPal'].map((payment, index) => (
+              {paymentMethods.map((payment, index) => (
                 <div key={index} className="px-3 py-1.5 bg-slate-800 border border-slate-700 rounded text-xs font-bold text-slate-400">
                   {payment}
                 </div>
