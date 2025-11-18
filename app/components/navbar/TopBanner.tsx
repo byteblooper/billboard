@@ -76,7 +76,7 @@ const TopBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="relative bg-gradient-to-r from-indigo-700 via-violet-600 to-indigo-500 overflow-hidden">
+    <div className="relative bg-linear-to-r from-indigo-700 via-violet-600 to-indigo-500 overflow-hidden">
       {/* Background Glows (UI Polish) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-4 -left-4 w-24 h-24 bg-white/10 rounded-full blur-xl animate-pulse opacity-70"></div>
@@ -92,7 +92,7 @@ const TopBanner = () => {
             <Sparkles className="w-5 h-5 text-white animate-pulse" />
           </div>
 
-          <div className="flex-grow flex items-center justify-center min-w-0">
+          <div className="grow flex items-center justify-center min-w-0">
             <div
               className={`flex flex-wrap items-center justify-center gap-x-0.5 sm:gap-x-3 md:gap-x-4 gap-y-0.5 text-white 
               transition-all duration-300 ease-in-out text-center 
