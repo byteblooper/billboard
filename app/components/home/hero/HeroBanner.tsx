@@ -155,7 +155,7 @@ const HeroBanner = () => {
                 <span className="text-slate-400 text-2xl line-through">
                   ${currentProduct.originalPrice}
                 </span>
-                <div className="flex items-center gap-1 bg-amber-500 px-3 py-1 rounded-full">
+                <div className="flex items-center gap-1 bg-indigo-500 px-3 py-1 rounded-full">
                   <Star className="w-4 h-4 text-white fill-white" />
                   <span className="text-white font-semibold text-sm">
                     {currentProduct.rating} ({currentProduct.reviews.toLocaleString()})
@@ -204,7 +204,7 @@ const HeroBanner = () => {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide ? 'w-12 bg-orange-600' : 'w-2 bg-white/50'
+                index === currentSlide ? 'w-12 bg-indigo-600' : 'w-2 bg-white/50'
               }`}
             />
           ))}
