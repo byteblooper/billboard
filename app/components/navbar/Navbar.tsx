@@ -13,7 +13,8 @@ import {
   GitCompare,
   Info,
   Award,
-  X
+  X,
+  Shield
 } from 'lucide-react'
 import React, { useState } from 'react'
 import Link from 'next/link'
@@ -102,6 +103,22 @@ const Navbar = () => {
               <Info className="w-4 h-4" />
               About
               {pathname === '/about' && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></span>
+              )}
+            </Link>
+
+             <Link 
+              href="/admin" 
+              className={`relative flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 font-medium ${
+                pathname === '/admin' 
+                  ? 'text-orange-600 bg-orange-50' 
+                  : 'text-slate-700 hover:text-orange-600 hover:bg-orange-50'
+              }`}
+            >
+              <Shield className="w-4 h-4"  />
+             
+              Admin
+              {pathname === '/admin' && (
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></span>
               )}
             </Link>
