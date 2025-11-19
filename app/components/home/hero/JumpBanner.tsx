@@ -59,8 +59,8 @@ const JumpBanner = () => {
       setTimeout(() => {
         setCurrentBanner((prev) => (prev + 1) % banners.length)
         setIsJumping(false)
-      }, 400) // Jump duration
-    }, 5000) // Change every 5 seconds
+      }, 400) 
+    }, 5000) 
 
     return () => clearInterval(interval)
   }, [banners.length])

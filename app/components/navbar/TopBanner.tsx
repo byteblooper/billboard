@@ -17,7 +17,6 @@ const TopBanner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // Updated Indigo/Violet-theme sales data
   const salesData = [
     {
       icon: Tag,
@@ -53,7 +52,6 @@ const TopBanner = () => {
     },
   ];
 
-  // Animation and Interval Logic
   useEffect(() => {
     const interval = setInterval(() => {
       setIsAnimating(true);
@@ -76,8 +74,8 @@ const TopBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="relative bg-linear-to-r from-indigo-700 via-violet-600 to-indigo-500 overflow-hidden">
-      {/* Background Glows (UI Polish) */}
+    <div className="relative bg-gradient-to-r from-cyan-600 via-cyan-500 to-cyan-400 overflow-hidden">
+      {/* Background Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-4 -left-4 w-24 h-24 bg-white/10 rounded-full blur-xl animate-pulse opacity-70"></div>
         <div className="absolute top-0 right-1/4 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse delay-100 opacity-70"></div>
@@ -85,13 +83,14 @@ const TopBanner = () => {
       </div>
 
       {/* Main Content */}
-
       <div className="relative container mx-auto px-1 sm:px-4 py-2">
         <div className="flex items-center justify-between gap-1 sm:gap-2 md:gap-4">
+          {/* Left Icon */}
           <div className="hidden sm:flex items-center justify-center w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg shrink-0">
             <Sparkles className="w-5 h-5 text-white animate-pulse" />
           </div>
 
+          {/* Animated Text */}
           <div className="grow flex items-center justify-center min-w-0">
             <div
               className={`flex flex-wrap items-center justify-center gap-x-0.5 sm:gap-x-3 md:gap-x-4 gap-y-0.5 text-white 
@@ -102,7 +101,7 @@ const TopBanner = () => {
                   : "opacity-100 translate-y-0"
               }`}
             >
-              {/* Badge and Icon */}
+              {/* Badge */}
               <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
                 <CurrentIcon className="w-3 h-3 sm:w-4 md:w-5" />
                 <span className="font-bold text-[10px] sm:text-sm md:text-base tracking-wide">
@@ -110,22 +109,19 @@ const TopBanner = () => {
                 </span>
               </div>
 
-              {/* Separator 1 - Hidden on S/M */}
               <div className="hidden sm:block w-px h-4 bg-white/40"></div>
 
-              {/* Discount and Description (Core Message) */}
+              {/* Discount Text */}
               <p className="text-[9px] sm:text-xs md:text-sm font-medium shrink-0">
-                {/* Minimized text size for S/M */}
                 <span className="font-extrabold text-xs sm:text-base md:text-lg mx-1 text-yellow-300">
                   {currentSale.discount}
                 </span>
                 {currentSale.description}
               </p>
 
-              {/* Separator 2 - Hidden on S/M */}
               <div className="hidden sm:block w-px h-4 bg-white/40"></div>
 
-              {/* Tag - Hidden on S/M */}
+              {/* Tag */}
               <span className="hidden sm:flex items-center gap-1 text-xs md:text-sm shrink-0 whitespace-nowrap">
                 <CurrentTagIcon className="w-3.5 h-3.5" />
                 {currentSale.tag}
@@ -133,10 +129,10 @@ const TopBanner = () => {
             </div>
           </div>
 
-          {/* CTA Button (Hidden on S/M) */}
+          {/* CTA Button */}
           <button
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-white text-indigo-700 rounded-lg shrink-0
-            font-semibold text-xs md:text-sm hover:bg-indigo-50 transition-all duration-200 hover:scale-[1.05] shadow-xl shadow-indigo-500/30"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-white text-cyan-700 rounded-lg shrink-0
+            font-semibold text-xs md:text-sm hover:bg-cyan-50 transition-all duration-200 hover:scale-[1.05] shadow-lg shadow-cyan-500/30"
           >
             Shop Now
             <ArrowRight className="w-3 h-3" />
@@ -144,20 +140,17 @@ const TopBanner = () => {
 
           {/* Close Button */}
           <button
+            aria-label="Clear search"
             onClick={() => setIsVisible(false)}
             className="p-2 hover:bg-white/20 rounded-md transition-colors shrink-0"
-            aria-label="Close banner"
           >
             <X className="w-3.5 h-3.5 text-white" />
           </button>
         </div>
       </div>
 
-      {/* Bottom Glow Line */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r 
-        from-transparent via-white/50 to-transparent animate-pulse"
-      ></div>
+      {/* Glow Line */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-pulse"></div>
     </div>
   );
 };
