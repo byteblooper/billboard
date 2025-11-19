@@ -1,6 +1,6 @@
+import 'dotenv/config';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { config } from '../config/env';
 
 // Check if user is logged in (has valid token)
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
@@ -19,7 +19,7 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     const token = authHeader.substring(7);
 
     // Verify the token
-    const decoded = jwt.verify(token, config.JWT_SECRET) as { userId: string };
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'change-this-secret-key') as { userId: string };
 
     // Add user info to request (using 'any' to avoid TypeScript issues)
     (req as any).user = { id: decoded.userId };

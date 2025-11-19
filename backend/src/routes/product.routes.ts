@@ -1,42 +1,105 @@
-import { Router } from 'express';
-import * as productController from '../controllers/product.controller';
+import { Router, Request, Response } from 'express';
+import * as productService from '../services/product.service';
 import { authMiddleware } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-/**
- * @route   GET /api/products
- * @desc    Get all products
- * @access  Public
- */
-router.get('/', productController.getAllProducts);
+// GET all products
+router.get('/', async (req: Request, res: Response) => {
+  try {
+    const products = await productService.getAllProducts();
+    res.json({
+      success: true,
+      data: products,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
 
-/**
- * @route   GET /api/products/:id
- * @desc    Get product by ID
- * @access  Public
- */
-router.get('/:id', productController.getProductById);
+// GET product by ID
+router.get('/:id', async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const product = await productService.getProductById(id);
+    
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found',
+      });
+    }
+    
+    res.json({
+      success: true,
+      data: product,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
 
-/**
- * @route   POST /api/products
- * @desc    Create new product
- * @access  Private
- */
-router.post('/', authMiddleware, productController.createProduct);
+// CREATE product (POST /products)
+router.post('/', authMiddleware, async (req: Request, res: Response) => {
+  try {
+    const { name, description, price, category, stock, imageUrl } = req.body;
+    const product = await productService.createProduct(name, description, price, category, stock, imageUrl);
+    
+    res.status(201).json({
+      success: true,
+      message: 'Product created',
+      data: product,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
 
-/**
- * @route   PUT /api/products/:id
- * @desc    Update product
- * @access  Private
- */
-router.put('/:id', authMiddleware, productController.updateProduct);
+// UPDATE product
+router.put('/:id', authMiddleware, async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { name, description, price, category, stock, imageUrl } = req.body;
+    
+    const product = await productService.updateProduct(id, name, description, price, category, stock, imageUrl);
+    res.json({
+      success: true,
+      message: 'Product updated',
+      data: product,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
 
-/**
- * @route   DELETE /api/products/:id
- * @desc    Delete product
- * @access  Private
- */
-router.delete('/:id', authMiddleware, productController.deleteProduct);
+// DELETE product
+router.delete('/:id', authMiddleware, async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    await productService.deleteProduct(id);
+    
+    res.json({
+      success: true,
+      message: 'Product deleted',
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
 
 export default router;
