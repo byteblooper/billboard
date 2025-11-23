@@ -48,9 +48,9 @@ const dashboardStats = [
     change: '-2.3%',
     trend: 'down' as const,
     icon: Users,
-    color: 'text-orange-600',
-    bgColor: 'bg-orange-50',
-    borderColor: 'border-orange-200'
+    color: 'text-violet-600',
+    bgColor: 'bg-violet-50',
+    borderColor: 'border-violet-200'
   }
 ]
 

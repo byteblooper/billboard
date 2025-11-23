@@ -30,8 +30,8 @@ const StatsCard = ({ title, value, change, trend, icon: Icon, color, bgColor, bo
           {change}
         </span>
       </div>
-      <h3 className="text-sm text-slate-600 mb-1">{title}</h3>
-      <p className="text-2xl font-bold text-slate-900">{value}</p>
+      <h3 className="text-sm text-violet-600 mb-1">{title}</h3>
+      <p className="text-2xl font-bold text-violet-900">{value}</p>
     </div>
   )
 }

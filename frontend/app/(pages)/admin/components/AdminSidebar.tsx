@@ -12,14 +12,14 @@ interface AdminSidebarProps {
 
 const AdminSidebar = ({ activeTab, setActiveTab }: AdminSidebarProps) => {
   return (
-    <div className="bg-white rounded-lg border border-slate-200 p-3">
+    <div className="bg-white rounded-lg border border-violet-200 p-3">
       <nav className="space-y-1">
         <button
           onClick={() => setActiveTab('dashboard')}
           className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'dashboard'
-              ? 'bg-orange-50 text-orange-600'
-              : 'text-slate-700 hover:bg-slate-50'
+              ? 'bg-violet-50 text-violet-600'
+              : 'text-violet-700 hover:bg-violet-50'
           }`}
         >
           <LayoutDashboard className="w-4 h-4" />
@@ -29,8 +29,8 @@ const AdminSidebar = ({ activeTab, setActiveTab }: AdminSidebarProps) => {
           onClick={() => setActiveTab('products')}
           className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'products'
-              ? 'bg-orange-50 text-orange-600'
-              : 'text-slate-700 hover:bg-slate-50'
+              ? 'bg-violet-50 text-violet-600'
+              : 'text-violet-700 hover:bg-violet-50'
           }`}
         >
           <Package className="w-4 h-4" />
@@ -40,8 +40,8 @@ const AdminSidebar = ({ activeTab, setActiveTab }: AdminSidebarProps) => {
           onClick={() => setActiveTab('orders')}
           className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'orders'
-              ? 'bg-orange-50 text-orange-600'
-              : 'text-slate-700 hover:bg-slate-50'
+              ? 'bg-violet-50 text-violet-600'
+              : 'text-violet-700 hover:bg-violet-50'
           }`}
         >
           <ShoppingCart className="w-4 h-4" />
@@ -51,8 +51,8 @@ const AdminSidebar = ({ activeTab, setActiveTab }: AdminSidebarProps) => {
           onClick={() => setActiveTab('customers')}
           className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'customers'
-              ? 'bg-orange-50 text-orange-600'
-              : 'text-slate-700 hover:bg-slate-50'
+              ? 'bg-violet-50 text-violet-600'
+              : 'text-violet-700 hover:bg-violet-50'
           }`}
         >
           <Users className="w-4 h-4" />
@@ -62,8 +62,8 @@ const AdminSidebar = ({ activeTab, setActiveTab }: AdminSidebarProps) => {
           onClick={() => setActiveTab('stores')}
           className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'stores'
-              ? 'bg-orange-50 text-orange-600'
-              : 'text-slate-700 hover:bg-slate-50'
+              ? 'bg-violet-50 text-violet-600'
+              : 'text-violet-700 hover:bg-violet-50'
           }`}
         >
           <Store className="w-4 h-4" />
@@ -73,8 +73,8 @@ const AdminSidebar = ({ activeTab, setActiveTab }: AdminSidebarProps) => {
           onClick={() => setActiveTab('categories')}
           className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'categories'
-              ? 'bg-orange-50 text-orange-600'
-              : 'text-slate-700 hover:bg-slate-50'
+              ? 'bg-violet-50 text-violet-600'
+              : 'text-violet-700 hover:bg-violet-50'
           }`}
         >
           <Tag className="w-4 h-4" />
@@ -84,8 +84,8 @@ const AdminSidebar = ({ activeTab, setActiveTab }: AdminSidebarProps) => {
           onClick={() => setActiveTab('coupons')}
           className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'coupons'
-              ? 'bg-orange-50 text-orange-600'
-              : 'text-slate-700 hover:bg-slate-50'
+              ? 'bg-violet-50 text-violet-600'
+              : 'text-violet-700 hover:bg-violet-50'
           }`}
         >
           <Percent className="w-4 h-4" />
@@ -95,8 +95,8 @@ const AdminSidebar = ({ activeTab, setActiveTab }: AdminSidebarProps) => {
           onClick={() => setActiveTab('chats')}
           className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'chats'
-              ? 'bg-orange-50 text-orange-600'
-              : 'text-slate-700 hover:bg-slate-50'
+              ? 'bg-violet-50 text-violet-600'
+              : 'text-violet-700 hover:bg-violet-50'
           }`}
         >
           <MessageSquare className="w-4 h-4" />

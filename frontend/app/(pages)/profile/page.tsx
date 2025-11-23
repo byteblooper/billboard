@@ -37,7 +37,7 @@ const userInfo = {
 const stats = [
   { icon: ShoppingBag, label: 'Total Orders', value: '47', color: 'from-blue-500 to-indigo-500' },
   { icon: Heart, label: 'Wishlist Items', value: '23', color: 'from-pink-500 to-rose-500' },
-  { icon: Package, label: 'Active Orders', value: '3', color: 'from-orange-500 to-amber-500' },
+  { icon: Package, label: 'Active Orders', value: '3', color: 'from-violet-500 to-indigo-500' },
   { icon: Award, label: 'Reward Points', value: '1,250', color: 'from-emerald-500 to-teal-500' }
 ]
 
@@ -91,7 +91,7 @@ const [activeTab, setActiveTab] = useState('Personal Information')
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-50">
       <div className="container mx-auto px-4 py-8">
         {/* Profile Header */}
         <ProfileHeader userInfo={userInfo} />
@@ -116,12 +116,12 @@ const [activeTab, setActiveTab] = useState('Personal Information')
 
           {/* Main Content Area */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-2xl p-8 border border-slate-200">
+            <div className="bg-white rounded-2xl p-8 border border-violet-200">
 
               
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold text-slate-800">{activeTab}</h2>
-                <button className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-xl hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center gap-2">
+                <h2 className="text-2xl font-bold text-violet-800">{activeTab}</h2>
+                <button className="px-4 py-2 bg-gradient-to-r from-violet-500 to-indigo-500 text-white rounded-xl hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center gap-2">
                   <Edit2 className="w-4 h-4" />
                   Edit
                 </button>

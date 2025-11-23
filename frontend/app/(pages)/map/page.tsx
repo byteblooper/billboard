@@ -306,18 +306,18 @@ const demoShops = [
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-50">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-slate-800 mb-2">All Shops Near You</h1>
-          <p className="text-slate-600">Discover local shops and explore their products</p>
+          <h1 className="text-4xl font-bold text-violet-800 mb-2">All Shops Near You</h1>
+          <p className="text-violet-600">Discover local shops and explore their products</p>
         </div>
 
         {/* Mobile Filter Toggle */}
         <button
           onClick={() => setShowMobileFilters(!showMobileFilters)}
-          className="md:hidden mb-6 w-full px-6 py-3 bg-orange-500 text-white rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-orange-600 transition-colors"
+          className="md:hidden mb-6 w-full px-6 py-3 bg-violet-500 text-white rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-violet-600 transition-colors"
         >
           <SlidersHorizontal className="w-5 h-5" />
           Filters

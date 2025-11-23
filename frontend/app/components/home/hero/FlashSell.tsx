@@ -10,7 +10,6 @@ const FlashSell = () => {
     seconds: 30,
   });
 
-  // Countdown timer
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
@@ -34,39 +33,82 @@ const FlashSell = () => {
   }, []);
 
   return (
-    <div className="max-w-xl sm:max-w-2xl mx-auto p-6 sm:p-8 bg-white/10 backdrop-blur-lg border border-indigo-600/20 rounded-2xl shadow-xl shadow-indigo-400/20">
+    <div
+      className="
+        w-full max-w-md 
+        sm:max-w-xl 
+        mx-auto p-4 sm:p-6 md:p-8 
+        mb-5
+        bg-white/90 backdrop-blur-xl 
+        rounded-2xl shadow-2xl
+        border border-violet-200
+      "
+    >
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-        <h2 className="text-2xl sm:text-3xl font-extrabold bg-linear-to-r from-indigo-500 to-violet-500 bg-clip-text text-transparent flex items-center gap-2 animate-pulse">
+      <div
+        className="
+          flex flex-col sm:flex-row 
+          items-center justify-between 
+          gap-3 sm:gap-6
+        "
+      >
+        <h2
+          className="
+            text-xl sm:text-2xl md:text-3xl font-extrabold 
+            bg-gradient-to-r from-violet-400 to-indigo-500 
+            bg-clip-text text-transparent 
+            flex items-center gap-2 
+            animate-pulse text-center sm:text-left
+          "
+        >
           Mega Flash Sale
-          <Zap className="w-5 sm:w-6 h-5 sm:h-6 text-indigo-400" />
+          <Zap className="w-5 sm:w-6 h-5 sm:h-6 text-violet-500 drop-shadow-xl" />
         </h2>
 
-        <div className="flex items-center gap-2 sm:gap-3 text-indigo-200">
-          <Clock className="w-4 sm:w-5 h-4 text-violet-600 sm:h-5" />
-          <span className="text-sm sm:text-base text-violet-600 font-medium">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Clock className="w-4 sm:w-5 h-4 sm:h-5 text-indigo-500" />
+          <span className="text-sm sm:text-base text-indigo-600 font-medium">
             Ends in:
           </span>
         </div>
       </div>
 
       {/* Countdown Section */}
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 justify-center">
+      <div
+        className="
+          flex flex-wrap justify-center 
+          gap-3 sm:gap-4 mt-5 sm:mt-6
+        "
+      >
         {["hours", "minutes", "seconds"].map((unit, i) => {
-          const value = String(
-            timeLeft[unit as keyof typeof timeLeft]
-          ).padStart(2, "0");
+          const value = String(timeLeft[unit]).padStart(2, "0");
           const label =
             unit === "hours" ? "Hours" : unit === "minutes" ? "Mins" : "Secs";
+
           return (
             <div
               key={i}
-              className="flex flex-col items-center justify-center px-5 py-3 rounded-xl min-w-[70px] sm:min-w-20 bg-linear-to-tr from-indigo-600 via-violet-600 to-indigo-500 shadow-lg shadow-violet-500/30 transform hover:scale-105 transition-all duration-300"
+              className="
+                flex flex-col items-center justify-center 
+                px-4 py-3 
+                sm:px-5 sm:py-4 
+                rounded-xl 
+                min-w-[70px] 
+                bg-gradient-to-tr from-violet-700 via-violet-600 to-indigo-500
+                shadow-lg shadow-violet-500/40 
+                hover:scale-105 transition-all duration-300
+              "
             >
-              <span className="text-3xl sm:text-4xl font-extrabold text-white drop-shadow-[0_0_8px_rgba(139,92,246,0.6)]">
+              <span
+                className="
+                  text-2xl sm:text-3xl md:text-4xl 
+                  font-extrabold text-white 
+                  drop-shadow-[0_0_12px_rgba(139,92,246,0.9)]
+                "
+              >
                 {value}
               </span>
-              <span className="text-xs sm:text-sm text-indigo-200 uppercase tracking-wider">
+              <span className="text-xs sm:text-sm text-violet-100 uppercase tracking-wider">
                 {label}
               </span>
             </div>
@@ -74,8 +116,14 @@ const FlashSell = () => {
         })}
       </div>
 
-      {/* Decorative Footer Glow */}
-      <div className="mt-6 h-1 w-full rounded-full bg-linear-to-r from-indigo-400 via-violet-500 to-indigo-400 animate-pulse" />
+      {/* Decorative glow line */}
+      <div
+        className="
+          mt-6 h-1 w-full rounded-full 
+          bg-gradient-to-r from-violet-300 via-indigo-500 to-violet-300 
+          animate-pulse
+        "
+      />
     </div>
   );
 };

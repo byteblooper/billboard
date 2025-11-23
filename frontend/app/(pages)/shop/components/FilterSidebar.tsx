@@ -38,22 +38,22 @@ const FilterSidebar = ({
       <div className={`${
         showMobileFilters ? 'fixed right-0 top-0 bottom-0 w-80 bg-white overflow-y-auto' : ''
       } md:sticky md:top-24`}>
-        <div className="bg-white rounded-2xl p-6 border border-slate-200">
+        <div className="bg-white rounded-2xl p-6 border border-violet-200">
           {/* Mobile Close Button */}
           {showMobileFilters && (
             <button
               onClick={onCloseMobile}
-              className="md:hidden absolute top-4 right-4 p-2 hover:bg-slate-100 rounded-lg"
+              className="md:hidden absolute top-4 right-4 p-2 hover:bg-violet-100 rounded-lg"
             >
               <X className="w-6 h-6" />
             </button>
           )}
 
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-slate-800">Filters</h2>
+            <h2 className="text-xl font-bold text-violet-800">Filters</h2>
             <button
               onClick={onResetFilters}
-              className="text-sm text-orange-600 hover:text-orange-700 font-semibold"
+              className="text-sm text-violet-600 hover:text-violet-700 font-semibold"
             >
               Reset All
             </button>
@@ -62,7 +62,7 @@ const FilterSidebar = ({
           <div className="space-y-6">
             {/* Category Filter */}
             <div>
-              <h3 className="font-semibold text-slate-800 mb-3">Category</h3>
+              <h3 className="font-semibold text-violet-800 mb-3">Category</h3>
               <div className="space-y-2">
                 {categories.map((cat) => (
                   <label key={cat} className="flex items-center gap-2 cursor-pointer group">
@@ -71,9 +71,9 @@ const FilterSidebar = ({
                       name="category"
                       checked={filters.category === cat}
                       onChange={() => onFilterChange({ ...filters, category: cat })}
-                      className="w-4 h-4 text-orange-500 focus:ring-orange-500"
+                      className="w-4 h-4 text-violet-500 focus:ring-violet-500"
                     />
-                    <span className="text-slate-700 group-hover:text-orange-600">{cat}</span>
+                    <span className="text-violet-700 group-hover:text-violet-600">{cat}</span>
                   </label>
                 ))}
               </div>
@@ -81,7 +81,7 @@ const FilterSidebar = ({
 
             {/* Brand Filter */}
             <div>
-              <h3 className="font-semibold text-slate-800 mb-3">Brand</h3>
+              <h3 className="font-semibold text-violet-800 mb-3">Brand</h3>
               <div className="space-y-2 max-h-48 overflow-y-auto">
                 {brands.map((brand) => (
                   <label key={brand} className="flex items-center gap-2 cursor-pointer group">
@@ -90,9 +90,9 @@ const FilterSidebar = ({
                       name="brand"
                       checked={filters.brand === brand}
                       onChange={() => onFilterChange({ ...filters, brand: brand })}
-                      className="w-4 h-4 text-orange-500 focus:ring-orange-500"
+                      className="w-4 h-4 text-violet-500 focus:ring-violet-500"
                     />
-                    <span className="text-slate-700 group-hover:text-orange-600">{brand}</span>
+                    <span className="text-violet-700 group-hover:text-violet-600">{brand}</span>
                   </label>
                 ))}
               </div>
@@ -100,7 +100,7 @@ const FilterSidebar = ({
 
             {/* Rating Filter */}
             <div>
-              <h3 className="font-semibold text-slate-800 mb-3">Customer Rating</h3>
+              <h3 className="font-semibold text-violet-800 mb-3">Customer Rating</h3>
               <div className="space-y-2">
                 {[4, 3, 2, 1, 0].map((rating) => (
                   <label key={rating} className="flex items-center gap-2 cursor-pointer group">
@@ -109,7 +109,7 @@ const FilterSidebar = ({
                       name="rating"
                       checked={filters.minRating === rating}
                       onChange={() => onFilterChange({ ...filters, minRating: rating })}
-                      className="w-4 h-4 text-orange-500 focus:ring-orange-500"
+                      className="w-4 h-4 text-violet-500 focus:ring-violet-500"
                     />
                     <div className="flex items-center gap-1">
                       {rating > 0 ? (
@@ -118,14 +118,14 @@ const FilterSidebar = ({
                             <Star
                               key={i}
                               className={`w-4 h-4 ${
-                                i < rating ? 'text-amber-500 fill-amber-500' : 'text-slate-300'
+                                i < rating ? 'text-violet-500 fill-violet-500' : 'text-violet-300'
                               }`}
                             />
                           ))}
-                          <span className="text-slate-700 ml-1">& Up</span>
+                          <span className="text-violet-700 ml-1">& Up</span>
                         </>
                       ) : (
-                        <span className="text-slate-700">All Ratings</span>
+                        <span className="text-violet-700">All Ratings</span>
                       )}
                     </div>
                   </label>
@@ -135,22 +135,22 @@ const FilterSidebar = ({
 
             {/* Price Range */}
             <div>
-              <h3 className="font-semibold text-slate-800 mb-3">Price Range</h3>
+              <h3 className="font-semibold text-violet-800 mb-3">Price Range</h3>
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <input
                     type="number"
                     value={filters.minPrice}
                     onChange={(e) => onFilterChange({ ...filters, minPrice: Number(e.target.value) })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full px-3 py-2 border border-violet-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
                     placeholder="Min"
                   />
-                  <span className="text-slate-500">-</span>
+                  <span className="text-violet-500">-</span>
                   <input
                     type="number"
                     value={filters.maxPrice}
                     onChange={(e) => onFilterChange({ ...filters, maxPrice: Number(e.target.value) })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full px-3 py-2 border border-violet-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
                     placeholder="Max"
                   />
                 </div>
@@ -160,16 +160,16 @@ const FilterSidebar = ({
                   max="1000"
                   value={filters.maxPrice}
                   onChange={(e) => onFilterChange({ ...filters, maxPrice: Number(e.target.value) })}
-                  className="w-full accent-orange-500"
+                  className="w-full accent-violet-500"
                 />
               </div>
             </div>
 
             {/* Distance Range */}
             <div>
-              <h3 className="font-semibold text-slate-800 mb-3">Distance (km)</h3>
+              <h3 className="font-semibold text-violet-800 mb-3">Distance (km)</h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-between text-sm text-slate-600">
+                <div className="flex items-center justify-between text-sm text-violet-600">
                   <span>{filters.minDistance} km</span>
                   <span>{filters.maxDistance} km</span>
                 </div>
@@ -179,7 +179,7 @@ const FilterSidebar = ({
                   max="50"
                   value={filters.maxDistance}
                   onChange={(e) => onFilterChange({ ...filters, maxDistance: Number(e.target.value) })}
-                  className="w-full accent-orange-500"
+                  className="w-full accent-violet-500"
                 />
               </div>
             </div>

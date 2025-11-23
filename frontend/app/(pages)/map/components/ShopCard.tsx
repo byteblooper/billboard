@@ -28,7 +28,7 @@ type ShopCardProps = {
 
 const ShopCard = ({ shop }: ShopCardProps) => {
   return (
-    <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-6 border border-orange-200 hover:shadow-2xl transition-all duration-300">
+    <div className="bg-gradient-to-br from-violet-50 to-indigo-50 rounded-3xl p-6 border border-violet-200 hover:shadow-2xl transition-all duration-300">
       <div className="flex gap-4">
         {/* Shop Image */}
         <div className="shrink-0">
@@ -49,7 +49,7 @@ const ShopCard = ({ shop }: ShopCardProps) => {
           <div className="flex items-start justify-between mb-2">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <h3 className="text-2xl font-bold text-orange-900">
+                <h3 className="text-2xl font-bold text-violet-900">
                   {shop.name}
                 </h3>
                 {shop.verified && (
@@ -63,24 +63,24 @@ const ShopCard = ({ shop }: ShopCardProps) => {
                   {shop.isOpen ? 'Open' : 'Closed'}
                 </span>
               </div>
-              <p className="text-orange-600 font-medium mb-2">{shop.address}</p>
+              <p className="text-violet-600 font-medium mb-2">{shop.address}</p>
             </div>
 
             {/* Rating & Offers */}
             <div className="text-right">
               <div className="flex items-center gap-1 mb-1">
-                <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
-                <span className="text-xl font-bold text-slate-800">{shop.rating}</span>
-                <span className="text-slate-600">({shop.reviews})</span>
+                <Star className="w-5 h-5 text-indigo-500 fill-indigo-500" />
+                <span className="text-xl font-bold text-violet-800">{shop.rating}</span>
+                <span className="text-violet-600">({shop.reviews})</span>
               </div>
-              <div className="bg-orange-100 text-orange-700 px-3 py-1 rounded-lg text-sm font-semibold border border-orange-300">
+              <div className="bg-violet-100 text-violet-700 px-3 py-1 rounded-lg text-sm font-semibold border border-violet-300">
                 {shop.totalProducts} offers
               </div>
             </div>
           </div>
 
           {/* Travel Times */}
-          <div className="flex items-center gap-6 mb-4 text-orange-600">
+          <div className="flex items-center gap-6 mb-4 text-violet-600">
             <div className="flex items-center gap-1">
               <Footprints className="w-5 h-5" />
               <span className="font-medium">{shop.walkTime}</span>
@@ -97,7 +97,7 @@ const ShopCard = ({ shop }: ShopCardProps) => {
 
           {/* Actions */}
           <div className="flex gap-3">
-            <button className="px-6 py-3 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 transition-colors flex items-center gap-2">
+            <button className="px-6 py-3 bg-violet-500 text-white rounded-xl font-semibold hover:bg-violet-600 transition-colors flex items-center gap-2">
               <Navigation className="w-5 h-5" />
               Directions
             </button>
@@ -105,7 +105,7 @@ const ShopCard = ({ shop }: ShopCardProps) => {
               <Store className="w-5 h-5" />
               View Store
             </button>
-            <button className="px-6 py-3 bg-white text-orange-600 border-2 border-orange-300 rounded-xl font-semibold hover:bg-orange-50 transition-colors flex items-center gap-2">
+            <button className="px-6 py-3 bg-white text-violet-600 border-2 border-violet-300 rounded-xl font-semibold hover:bg-violet-50 transition-colors flex items-center gap-2">
               <Phone className="w-5 h-5" />
               Call
             </button>
