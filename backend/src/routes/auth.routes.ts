@@ -1,42 +1,85 @@
-import { Router } from 'express';
-import * as authController from '../controllers/auth.controller';
+import { Router, Request, Response } from 'express';
+import * as authService from '../services/auth.service';
 import { authMiddleware } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-/**
- * @route   POST /api/auth/register
- * @desc    Register a new user
- * @access  Public
- */
-router.post('/register', authController.register);
+// Register new user
+router.post('/register', async (req: Request, res: Response) => {
+  try {
+    const { email, password, name } = req.body;
+    const result = await authService.registerUser(email, password, name);
+    
+    res.status(201).json({
+      success: true,
+      message: 'User registered successfully',
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
 
-/**
- * @route   POST /api/auth/login
- * @desc    Login user
- * @access  Public
- */
-router.post('/login', authController.login);
+// Login user
+router.post('/login', async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+    const result = await authService.loginUser(email, password);
+    
+    res.json({
+      success: true,
+      message: 'Login successful',
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
 
-/**
- * @route   POST /api/auth/logout
- * @desc    Logout user
- * @access  Private
- */
-router.post('/logout', authMiddleware, authController.logout);
+// Get current user
+router.get('/me', authMiddleware, async (req: Request, res: Response) => {
+  try {
+    const userId = (req as any).user?.id;
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        message: 'Not authorized',
+      });
+    }
+    
+    const user = await authService.getUserById(userId);
+    res.json({
+      success: true,
+      data: user,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
 
-/**
- * @route   GET /api/auth/me
- * @desc    Get current logged-in user
- * @access  Private
- */
-router.get('/me', authMiddleware, authController.getCurrentUser);
+// Logout
+router.post('/logout', authMiddleware, async (req: Request, res: Response) => {
+  res.json({
+    success: true,
+    message: 'Logged out successfully',
+  });
+});
 
-/**
- * @route   POST /api/auth/refresh
- * @desc    Refresh access token
- * @access  Public
- */
-router.post('/refresh', authController.refreshToken);
+// Refresh token
+router.post('/refresh', async (req: Request, res: Response) => {
+  res.json({
+    success: true,
+    message: 'Token refresh not implemented yet',
+  });
+});
 
 export default router;

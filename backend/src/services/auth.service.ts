@@ -1,7 +1,7 @@
+import 'dotenv/config';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import prisma from '../config/database';
-import { config } from '../config/env';
 
 // Register a new user
 export const registerUser = async (email: string, password: string, name: string) => {
@@ -21,7 +21,7 @@ export const registerUser = async (email: string, password: string, name: string
   });
 
   // Create a token
-  const token = jwt.sign({ userId: user.id }, config.JWT_SECRET, { expiresIn: '7d' });
+  const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET || 'change-this-secret-key', { expiresIn: '7d' });
 
   return { user, token };
 };
@@ -41,7 +41,7 @@ export const loginUser = async (email: string, password: string) => {
   }
 
   // Create token
-  const token = jwt.sign({ userId: user.id }, config.JWT_SECRET, { expiresIn: '7d' });
+  const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET || 'change-this-secret-key', { expiresIn: '7d' });
 
   return {
     user: { id: user.id, email: user.email, name: user.name },
