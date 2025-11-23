@@ -20,7 +20,7 @@ const OrderHistoryTab = ({ orders }: OrderHistoryTabProps) => {
   return (
     <div className="space-y-4">
       {orders.map((order, index) => (
-        <div key={index} className="border border-slate-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:border-orange-300">
+        <div key={index} className="border border-violet-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:border-violet-300">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
               <Image
@@ -34,18 +34,18 @@ const OrderHistoryTab = ({ orders }: OrderHistoryTabProps) => {
             <div className="flex-1">
               <div className="flex items-start justify-between mb-2">
                 <div>
-                  <h3 className="font-bold text-slate-800">{order.id}</h3>
-                  <p className="text-slate-600 text-sm">{order.store}</p>
+                  <h3 className="font-bold text-violet-800">{order.id}</h3>
+                  <p className="text-violet-600 text-sm">{order.store}</p>
                 </div>
                 <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                   order.status === 'Delivered' ? 'bg-emerald-100 text-emerald-700' :
                   order.status === 'In Transit' ? 'bg-blue-100 text-blue-700' :
-                  'bg-orange-100 text-orange-700'
+                  'bg-violet-100 text-violet-700'
                 }`}>
                   {order.status}
                 </span>
               </div>
-              <div className="flex items-center gap-4 text-sm text-slate-500">
+              <div className="flex items-center gap-4 text-sm text-violet-500">
                 <span className="flex items-center gap-1">
                   <Package className="w-4 h-4" />
                   {order.items} items
@@ -57,8 +57,8 @@ const OrderHistoryTab = ({ orders }: OrderHistoryTabProps) => {
               </div>
             </div>
             <div className="text-right">
-              <div className="text-2xl font-bold text-orange-600 mb-2">{order.total}</div>
-              <button className="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-sm font-medium transition-colors">
+              <div className="text-2xl font-bold text-violet-600 mb-2">{order.total}</div>
+              <button className="px-4 py-2 bg-violet-100 hover:bg-violet-200 rounded-lg text-sm font-medium transition-colors">
                 View Details
               </button>
             </div>

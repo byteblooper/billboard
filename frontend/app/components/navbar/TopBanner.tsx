@@ -74,12 +74,12 @@ const TopBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="relative bg-gradient-to-r from-cyan-600 via-cyan-500 to-cyan-400 overflow-hidden">
+    <div className="relative bg-gradient-to-r from-violet-600 via-violet-500 to-indigo-500 overflow-hidden">
       {/* Background Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-4 -left-4 w-24 h-24 bg-white/10 rounded-full blur-xl animate-pulse opacity-70"></div>
-        <div className="absolute top-0 right-1/4 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse delay-100 opacity-70"></div>
-        <div className="absolute -bottom-4 right-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse delay-200 opacity-70"></div>
+        <div className="absolute -top-4 -left-4 w-24 h-24 bg-white/10 rounded-full blur-xl animate-pulse opacity-60"></div>
+        <div className="absolute top-0 right-1/4 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse delay-100 opacity-60"></div>
+        <div className="absolute -bottom-4 right-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse delay-200 opacity-60"></div>
       </div>
 
       {/* Main Content */}
@@ -93,16 +93,16 @@ const TopBanner = () => {
           {/* Animated Text */}
           <div className="grow flex items-center justify-center min-w-0">
             <div
-              className={`flex flex-wrap items-center justify-center gap-x-0.5 sm:gap-x-3 md:gap-x-4 gap-y-0.5 text-white 
+              className={`flex flex-wrap items-center justify-center gap-x-1 sm:gap-x-3 md:gap-x-4 gap-y-0.5 text-white 
               transition-all duration-300 ease-in-out text-center 
               ${
                 isAnimating
-                  ? "opacity-0 translate-y-1"
-                  : "opacity-100 translate-y-0"
+                  ? "opacity-0 tranviolet-y-1"
+                  : "opacity-100 tranviolet-y-0"
               }`}
             >
               {/* Badge */}
-              <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
+              <div className="flex items-center gap-1 shrink-0">
                 <CurrentIcon className="w-3 h-3 sm:w-4 md:w-5" />
                 <span className="font-bold text-[10px] sm:text-sm md:text-base tracking-wide">
                   {currentSale.badge}
@@ -131,8 +131,8 @@ const TopBanner = () => {
 
           {/* CTA Button */}
           <button
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-white text-cyan-700 rounded-lg shrink-0
-            font-semibold text-xs md:text-sm hover:bg-cyan-50 transition-all duration-200 hover:scale-[1.05] shadow-lg shadow-cyan-500/30"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-white text-violet-700 rounded-lg shrink-0
+            font-semibold text-xs md:text-sm hover:bg-violet-50 transition-all duration-200 hover:scale-[1.05] shadow-lg shadow-violet-500/30"
           >
             Shop Now
             <ArrowRight className="w-3 h-3" />
@@ -140,7 +140,7 @@ const TopBanner = () => {
 
           {/* Close Button */}
           <button
-            aria-label="Clear search"
+            aria-label="Close Banner"
             onClick={() => setIsVisible(false)}
             className="p-2 hover:bg-white/20 rounded-md transition-colors shrink-0"
           >

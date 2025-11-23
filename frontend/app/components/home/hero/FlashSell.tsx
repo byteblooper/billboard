@@ -39,7 +39,9 @@ const FlashSell = () => {
         sm:max-w-xl 
         mx-auto p-4 sm:p-6 md:p-8 
         mb-5
-        bg-white rounded-2xl shadow-xl
+        bg-white/90 backdrop-blur-xl 
+        rounded-2xl shadow-2xl
+        border border-violet-200
       "
     >
       {/* Header */}
@@ -53,19 +55,19 @@ const FlashSell = () => {
         <h2
           className="
             text-xl sm:text-2xl md:text-3xl font-extrabold 
-            bg-gradient-to-r from-cyan-300 to-cyan-500 
+            bg-gradient-to-r from-violet-400 to-indigo-500 
             bg-clip-text text-transparent 
             flex items-center gap-2 
             animate-pulse text-center sm:text-left
           "
         >
           Mega Flash Sale
-          <Zap className="w-5 sm:w-6 h-5 sm:h-6 text-cyan-400" />
+          <Zap className="w-5 sm:w-6 h-5 sm:h-6 text-violet-500 drop-shadow-xl" />
         </h2>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <Clock className="w-4 sm:w-5 h-4 sm:h-5 text-cyan-500" />
-          <span className="text-sm sm:text-base text-cyan-600 font-medium">
+          <Clock className="w-4 sm:w-5 h-4 sm:h-5 text-indigo-500" />
+          <span className="text-sm sm:text-base text-indigo-600 font-medium">
             Ends in:
           </span>
         </div>
@@ -92,8 +94,8 @@ const FlashSell = () => {
                 sm:px-5 sm:py-4 
                 rounded-xl 
                 min-w-[70px] 
-                bg-gradient-to-tr from-cyan-600 via-cyan-500 to-cyan-400
-                shadow-lg shadow-cyan-500/40 
+                bg-gradient-to-tr from-violet-700 via-violet-600 to-indigo-500
+                shadow-lg shadow-violet-500/40 
                 hover:scale-105 transition-all duration-300
               "
             >
@@ -101,12 +103,12 @@ const FlashSell = () => {
                 className="
                   text-2xl sm:text-3xl md:text-4xl 
                   font-extrabold text-white 
-                  drop-shadow-[0_0_12px_rgba(34,211,238,0.9)]
+                  drop-shadow-[0_0_12px_rgba(139,92,246,0.9)]
                 "
               >
                 {value}
               </span>
-              <span className="text-xs sm:text-sm text-cyan-100 uppercase tracking-wider">
+              <span className="text-xs sm:text-sm text-violet-100 uppercase tracking-wider">
                 {label}
               </span>
             </div>
@@ -118,7 +120,7 @@ const FlashSell = () => {
       <div
         className="
           mt-6 h-1 w-full rounded-full 
-          bg-gradient-to-r from-cyan-300 via-cyan-500 to-cyan-300 
+          bg-gradient-to-r from-violet-300 via-indigo-500 to-violet-300 
           animate-pulse
         "
       />

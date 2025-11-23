@@ -109,10 +109,10 @@ const CategoriesView = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-bold text-slate-900">Categories</h2>
-          <p className="text-sm text-slate-600 mt-0.5">Manage product categories and subcategories</p>
+          <h2 className="text-xl font-bold text-violet-900">Categories</h2>
+          <p className="text-sm text-violet-600 mt-0.5">Manage product categories and subcategories</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors text-sm font-medium">
+        <button className="flex items-center gap-2 px-4 py-2 bg-violet-500 text-white rounded-lg hover:bg-violet-600 transition-colors text-sm font-medium">
           <Plus className="w-4 h-4" />
           Add Category
         </button>
@@ -120,34 +120,34 @@ const CategoriesView = () => {
 
       {/* Search */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+        <Search className="absolute left-3 top-1/2 -tranviolet-y-1/2 w-4 h-4 text-violet-400" />
         <input
           type="text"
           placeholder="Search categories..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm"
+          className="w-full pl-9 pr-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
         />
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
+      <div className="bg-white rounded-lg border border-violet-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase">Category</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase">Slug</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase">Description</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase">Products</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase">Subcategories</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase">Status</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase">Actions</th>
+              <tr className="bg-violet-50 border-b border-violet-200">
+                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Category</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Slug</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Description</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Products</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Subcategories</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Status</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-violet-100">
               {filteredCategories.map((category) => (
-                <tr key={category.id} className="hover:bg-slate-50 transition-colors">
+                <tr key={category.id} className="hover:bg-violet-50 transition-colors">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
                       <Image
@@ -157,20 +157,20 @@ const CategoriesView = () => {
                         height={40}
                         className="rounded-lg object-cover"
                       />
-                      <span className="font-medium text-slate-900 text-sm">{category.name}</span>
+                      <span className="font-medium text-violet-900 text-sm">{category.name}</span>
                     </div>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="text-slate-600 text-sm font-mono">{category.slug}</span>
+                    <span className="text-violet-600 text-sm font-mono">{category.slug}</span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="text-slate-600 text-sm">{category.description}</span>
+                    <span className="text-violet-600 text-sm">{category.description}</span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="text-slate-900 font-medium text-sm">{category.productCount}</span>
+                    <span className="text-violet-900 font-medium text-sm">{category.productCount}</span>
                   </td>
                   <td className="px-4 py-3">
-                    <button className="flex items-center gap-1 text-orange-600 hover:text-orange-700 text-sm font-medium">
+                    <button className="flex items-center gap-1 text-violet-600 hover:text-violet-700 text-sm font-medium">
                       {category.subcategories}
                       <ChevronRight className="w-3 h-3" />
                     </button>
@@ -179,20 +179,20 @@ const CategoriesView = () => {
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                       category.status === 'active'
                         ? 'bg-green-100 text-green-700'
-                        : 'bg-slate-100 text-slate-700'
+                        : 'bg-violet-100 text-violet-700'
                     }`}>
                       {category.status}
                     </span>
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                     <button className="p-1.5 text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded transition-colors">
+                     <button className="p-1.5 text-violet-600 hover:text-violet-600 hover:bg-violet-50 rounded transition-colors">
                                            <Eye className="w-4 h-4" />
                                          </button>
-                      <button className="p-1.5 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
+                      <button className="p-1.5 text-violet-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
                                            <Edit className="w-4 h-4" />
                                          </button>
-                                         <button className="p-1.5 text-slate-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors">
+                                         <button className="p-1.5 text-violet-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors">
                                            <Trash2 className="w-4 h-4" />
                                          </button>
                     </div>
@@ -205,7 +205,7 @@ const CategoriesView = () => {
 
         {filteredCategories.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-slate-500 text-sm">No categories found</p>
+            <p className="text-violet-500 text-sm">No categories found</p>
           </div>
         )}
       </div>

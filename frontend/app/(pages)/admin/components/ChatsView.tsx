@@ -130,24 +130,24 @@ const ChatsView = () => {
     <div className="space-y-4">
       {/* Header */}
       <div>
-        <h2 className="text-xl font-bold text-slate-900">Customer Chats</h2>
-        <p className="text-sm text-slate-600 mt-0.5">Manage customer support conversations</p>
+        <h2 className="text-xl font-bold text-violet-900">Customer Chats</h2>
+        <p className="text-sm text-violet-600 mt-0.5">Manage customer support conversations</p>
       </div>
 
       {/* Chat Interface */}
-      <div className="bg-white rounded-lg border border-slate-200 overflow-hidden h-[600px] flex">
+      <div className="bg-white rounded-lg border border-violet-200 overflow-hidden h-[600px] flex">
         {/* Chat List */}
-        <div className="w-80 border-r border-slate-200 flex flex-col">
+        <div className="w-80 border-r border-violet-200 flex flex-col">
           {/* Search */}
-          <div className="p-3 border-b border-slate-200">
+          <div className="p-3 border-b border-violet-200">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -tranviolet-y-1/2 w-4 h-4 text-violet-400" />
               <input
                 type="text"
                 placeholder="Search conversations..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm"
+                className="w-full pl-9 pr-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
               />
             </div>
           </div>
@@ -158,8 +158,8 @@ const ChatsView = () => {
               <button
                 key={chat.id}
                 onClick={() => setSelectedChat(chat.id)}
-                className={`w-full p-3 border-b border-slate-100 hover:bg-slate-50 transition-colors text-left ${
-                  selectedChat === chat.id ? 'bg-orange-50' : ''
+                className={`w-full p-3 border-b border-violet-100 hover:bg-violet-50 transition-colors text-left ${
+                  selectedChat === chat.id ? 'bg-violet-50' : ''
                 }`}
               >
                 <div className="flex items-start gap-3">
@@ -177,13 +177,13 @@ const ChatsView = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-medium text-slate-900 text-sm truncate">{chat.customer}</span>
-                      <span className="text-xs text-slate-500 flex-shrink-0 ml-2">{chat.timestamp}</span>
+                      <span className="font-medium text-violet-900 text-sm truncate">{chat.customer}</span>
+                      <span className="text-xs text-violet-500 flex-shrink-0 ml-2">{chat.timestamp}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <p className="text-sm text-slate-600 truncate">{chat.lastMessage}</p>
+                      <p className="text-sm text-violet-600 truncate">{chat.lastMessage}</p>
                       {chat.unreadCount > 0 && (
-                        <span className="ml-2 px-1.5 py-0.5 bg-orange-500 text-white text-xs font-medium rounded-full flex-shrink-0">
+                        <span className="ml-2 px-1.5 py-0.5 bg-violet-500 text-white text-xs font-medium rounded-full flex-shrink-0">
                           {chat.unreadCount}
                         </span>
                       )}
@@ -199,7 +199,7 @@ const ChatsView = () => {
         {currentChat ? (
           <div className="flex-1 flex flex-col">
             {/* Chat Header */}
-            <div className="p-4 border-b border-slate-200 flex items-center justify-between">
+            <div className="p-4 border-b border-violet-200 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Image
                   src={currentChat.avatar}
@@ -209,14 +209,14 @@ const ChatsView = () => {
                   className="rounded-full"
                 />
                 <div>
-                  <h3 className="font-medium text-slate-900">{currentChat.customer}</h3>
-                  <p className="text-sm text-slate-500">
+                  <h3 className="font-medium text-violet-900">{currentChat.customer}</h3>
+                  <p className="text-sm text-violet-500">
                     {currentChat.status === 'active' ? 'Active now' : 'Resolved'}
                   </p>
                 </div>
               </div>
               {currentChat.status === 'active' && (
-                <button className="px-3 py-1.5 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors">
+                <button className="px-3 py-1.5 text-sm font-medium text-violet-700 bg-violet-100 hover:bg-violet-200 rounded-lg transition-colors">
                   Mark as Resolved
                 </button>
               )}
@@ -233,19 +233,19 @@ const ChatsView = () => {
                     <div
                       className={`rounded-lg px-4 py-2 ${
                         message.sender === 'admin'
-                          ? 'bg-orange-500 text-white'
-                          : 'bg-slate-100 text-slate-900'
+                          ? 'bg-violet-500 text-white'
+                          : 'bg-violet-100 text-violet-900'
                       }`}
                     >
                       <p className="text-sm">{message.text}</p>
                     </div>
                     <div className="flex items-center gap-1 mt-1 px-1">
-                      <span className="text-xs text-slate-500">{message.time}</span>
+                      <span className="text-xs text-violet-500">{message.time}</span>
                       {message.sender === 'admin' && (
                         message.read ? (
                           <CheckCheck className="w-3 h-3 text-blue-500" />
                         ) : (
-                          <Clock className="w-3 h-3 text-slate-400" />
+                          <Clock className="w-3 h-3 text-violet-400" />
                         )
                       )}
                     </div>
@@ -256,14 +256,14 @@ const ChatsView = () => {
 
             {/* Message Input */}
             {currentChat.status === 'active' && (
-              <div className="p-4 border-t border-slate-200">
+              <div className="p-4 border-t border-violet-200">
                 <div className="flex items-center gap-2">
                   <input
                     type="text"
                     placeholder="Type your message..."
-                    className="flex-1 px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm"
+                    className="flex-1 px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
                   />
-                  <button className="p-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors">
+                  <button className="p-2 bg-violet-500 text-white rounded-lg hover:bg-violet-600 transition-colors">
                     <Send className="w-5 h-5" />
                   </button>
                 </div>
@@ -272,7 +272,7 @@ const ChatsView = () => {
           </div>
         ) : (
           <div className="flex-1 flex items-center justify-center">
-            <p className="text-slate-500">Select a conversation to view messages</p>
+            <p className="text-violet-500">Select a conversation to view messages</p>
           </div>
         )}
       </div>

@@ -5,7 +5,6 @@ import { ArrowRight } from "lucide-react";
 import ProductCards from "../../productsCards/ProductCards";
 
 const Trending = () => {
-  // Trending products data
   const trendingProducts = [
     {
       id: 1,
@@ -77,21 +76,29 @@ const Trending = () => {
   ];
 
   return (
-    <div className="py-16 bg-gradient-to-b from-cyan-50 to-white">
+    <div className="py-16 bg-gradient-to-b from-violet-50 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4 md:gap-0">
           <div>
-            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-cyan-500 mb-2">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-violet-600 mb-2">
               Trending Near You
             </h2>
-            <p className="text-base sm:text-base md:text-lg text-cyan-600 font-medium">
+            <p className="text-base sm:text-base md:text-lg text-indigo-600 font-medium">
               Premium deals from verified stores
             </p>
           </div>
 
-          {/* Desktop & Tablet Button */}
-          <button className="hidden md:flex items-center gap-2 px-6 py-3 bg-white hover:bg-cyan-600 text-cyan-600 hover:text-white border-2 border-cyan-600 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+          {/* Desktop Button */}
+          <button
+            className="hidden md:flex items-center gap-2 px-6 py-3 
+            bg-white hover:bg-violet-600 
+            text-violet-600 hover:text-white 
+            border-2 border-violet-600 
+            rounded-full font-bold 
+            transition-all duration-300 
+            hover:scale-105 shadow-md hover:shadow-lg"
+          >
             View All Products
             <ArrowRight className="w-5 h-5" />
           </button>
@@ -104,9 +111,16 @@ const Trending = () => {
           ))}
         </div>
 
-        {/* Mobile View All Button */}
+        {/* Mobile Button */}
         <div className="mt-8 flex justify-center md:hidden">
-          <button className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg">
+          <button
+            className="flex items-center gap-2 px-8 py-3 
+            bg-gradient-to-r from-violet-500 to-indigo-600 
+            hover:from-violet-600 hover:to-indigo-700 
+            text-white rounded-full font-bold 
+            transition-all duration-300 
+            hover:scale-105 shadow-lg"
+          >
             View All Products
             <ArrowRight className="w-5 h-5" />
           </button>

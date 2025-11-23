@@ -79,15 +79,15 @@ const CartPage = () => {
   const total = subtotal - discount + deliveryFee
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-violet-50">
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-slate-900 mb-1 flex items-center gap-3">
-            <ShoppingCart className="w-7 h-7 text-orange-500" />
+          <h1 className="text-3xl font-bold text-violet-900 mb-1 flex items-center gap-3">
+            <ShoppingCart className="w-7 h-7 text-violet-500" />
             Shopping Cart
           </h1>
-          <p className="text-slate-600 text-sm">
+          <p className="text-violet-600 text-sm">
             {cartItems.length} {cartItems.length === 1 ? 'item' : 'items'} in your cart
           </p>
         </div>
@@ -99,11 +99,11 @@ const CartPage = () => {
               {cartItems.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white rounded-lg border border-slate-200 p-4 hover:shadow-md transition-shadow"
+                  className="bg-white rounded-lg border border-violet-200 p-4 hover:shadow-md transition-shadow"
                 >
                   <div className="flex gap-4">
                     {/* Product Image */}
-                    <div className="relative w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-slate-100">
+                    <div className="relative w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-violet-100">
                       <Image
                         src={item.image}
                         alt={item.name}
@@ -122,14 +122,14 @@ const CartPage = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between gap-4 mb-2">
                         <div className="flex-1">
-                          <h3 className="font-semibold text-slate-900 mb-1 line-clamp-1">
+                          <h3 className="font-semibold text-violet-900 mb-1 line-clamp-1">
                             {item.name}
                           </h3>
-                          <p className="text-xs text-orange-600 font-medium">{item.store}</p>
+                          <p className="text-xs text-violet-600 font-medium">{item.store}</p>
                         </div>
                         <button
                           onClick={() => removeItem(item.id)}
-                          className="text-slate-400 hover:text-red-600 transition-colors shrink-0"
+                          className="text-violet-400 hover:text-red-600 transition-colors shrink-0"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -138,11 +138,11 @@ const CartPage = () => {
                       <div className="flex items-end justify-between gap-4">
                         <div>
                           <div className="flex items-baseline gap-2 mb-2">
-                            <span className="text-lg font-bold text-slate-900">
+                            <span className="text-lg font-bold text-violet-900">
                               ${item.price}
                             </span>
                             {item.originalPrice > item.price && (
-                              <span className="text-xs text-slate-400 line-through">
+                              <span className="text-xs text-violet-400 line-through">
                                 ${item.originalPrice}
                               </span>
                             )}
@@ -153,7 +153,7 @@ const CartPage = () => {
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
                               disabled={item.quantity <= 1}
-                              className="w-7 h-7 flex items-center justify-center border border-slate-300 rounded hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                              className="w-7 h-7 flex items-center justify-center border border-violet-300 rounded hover:bg-violet-50 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                               <Minus className="w-3 h-3" />
                             </button>
@@ -161,11 +161,11 @@ const CartPage = () => {
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
                               disabled={item.quantity >= item.maxStock}
-                              className="w-7 h-7 flex items-center justify-center border border-slate-300 rounded hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                              className="w-7 h-7 flex items-center justify-center border border-violet-300 rounded hover:bg-violet-50 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                               <Plus className="w-3 h-3" />
                             </button>
-                            <span className="text-xs text-slate-500 ml-1">
+                            <span className="text-xs text-violet-500 ml-1">
                               (Max: {item.maxStock})
                             </span>
                           </div>
@@ -173,8 +173,8 @@ const CartPage = () => {
 
                         {/* Item Total */}
                         <div className="text-right">
-                          <p className="text-xs text-slate-600 mb-1">Item Total</p>
-                          <p className="text-xl font-bold text-orange-600">
+                          <p className="text-xs text-violet-600 mb-1">Item Total</p>
+                          <p className="text-xl font-bold text-violet-600">
                             ${(item.price * item.quantity).toFixed(2)}
                           </p>
                         </div>
@@ -187,7 +187,7 @@ const CartPage = () => {
               {/* Continue Shopping */}
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 text-orange-600 font-medium text-sm hover:text-orange-700 transition-colors"
+                className="inline-flex items-center gap-2 text-violet-600 font-medium text-sm hover:text-violet-700 transition-colors"
               >
                 <ShoppingBag className="w-4 h-4" />
                 Continue Shopping
@@ -196,12 +196,12 @@ const CartPage = () => {
 
             {/* Order Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-lg border border-slate-200 p-5 sticky top-6">
-                <h2 className="text-lg font-bold text-slate-900 mb-4">Order Summary</h2>
+              <div className="bg-white rounded-lg border border-violet-200 p-5 sticky top-6">
+                <h2 className="text-lg font-bold text-violet-900 mb-4">Order Summary</h2>
 
                 {/* Coupon Code */}
-                <div className="mb-4 pb-4 border-b border-slate-200">
-                  <label className="text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+                <div className="mb-4 pb-4 border-b border-violet-200">
+                  <label className="text-sm font-medium text-violet-700 mb-2 flex items-center gap-2">
                     <Tag className="w-4 h-4" />
                     Coupon Code
                   </label>
@@ -211,11 +211,11 @@ const CartPage = () => {
                       value={couponCode}
                       onChange={(e) => setCouponCode(e.target.value)}
                       placeholder="Enter code"
-                      className="flex-1 px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      className="flex-1 px-3 py-2 border border-violet-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
                     />
                     <button
                       onClick={applyCoupon}
-                      className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors"
+                      className="px-4 py-2 bg-violet-900 text-white rounded-lg text-sm font-medium hover:bg-violet-800 transition-colors"
                     >
                       Apply
                     </button>
@@ -229,31 +229,31 @@ const CartPage = () => {
                 </div>
 
                 {/* Price Breakdown */}
-                <div className="space-y-2 mb-4 pb-4 border-b border-slate-200">
+                <div className="space-y-2 mb-4 pb-4 border-b border-violet-200">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600">Subtotal</span>
-                    <span className="font-medium text-slate-900">${subtotal.toFixed(2)}</span>
+                    <span className="text-violet-600">Subtotal</span>
+                    <span className="font-medium text-violet-900">${subtotal.toFixed(2)}</span>
                   </div>
                   {totalSavings > 0 && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-slate-600">Total Savings</span>
+                      <span className="text-violet-600">Total Savings</span>
                       <span className="font-medium text-green-600">-${totalSavings.toFixed(2)}</span>
                     </div>
                   )}
                   {discount > 0 && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-slate-600">Discount</span>
+                      <span className="text-violet-600">Discount</span>
                       <span className="font-medium text-green-600">-${discount.toFixed(2)}</span>
                     </div>
                   )}
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-600">Delivery Fee</span>
-                    <span className="font-medium text-slate-900">
+                    <span className="text-violet-600">Delivery Fee</span>
+                    <span className="font-medium text-violet-900">
                       {deliveryFee === 0 ? 'FREE' : `$${deliveryFee.toFixed(2)}`}
                     </span>
                   </div>
                   {deliveryFee > 0 && (
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-violet-500">
                       Add ${(100 - subtotal).toFixed(2)} more for free delivery
                     </p>
                   )}
@@ -261,21 +261,21 @@ const CartPage = () => {
 
                 {/* Total */}
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-base font-bold text-slate-900">Total</span>
-                  <span className="text-2xl font-bold text-orange-600">${total.toFixed(2)}</span>
+                  <span className="text-base font-bold text-violet-900">Total</span>
+                  <span className="text-2xl font-bold text-violet-600">${total.toFixed(2)}</span>
                 </div>
 
                 {/* Checkout Button */}
                 <Link
                   href="/payment"
-                  className="w-full py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center gap-2 mb-3"
+                  className="w-full py-3 bg-violet-500 text-white rounded-lg font-semibold hover:bg-violet-600 transition-colors flex items-center justify-center gap-2 mb-3"
                 >
                   Proceed to Checkout
                   <ArrowRight className="w-5 h-5" />
                 </Link>
 
                 {/* Security Note */}
-                <div className="flex items-center justify-center gap-2 text-xs text-slate-500">
+                <div className="flex items-center justify-center gap-2 text-xs text-violet-500">
                   <Lock className="w-3 h-3" />
                   <span>Secure checkout</span>
                 </div>
@@ -283,15 +283,15 @@ const CartPage = () => {
             </div>
           </div>
         ) : (
-          <div className="bg-white rounded-lg border border-slate-200 p-12 text-center">
-            <ShoppingCart className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">Your Cart is Empty</h3>
-            <p className="text-slate-600 mb-6 text-sm">
+          <div className="bg-white rounded-lg border border-violet-200 p-12 text-center">
+            <ShoppingCart className="w-16 h-16 text-violet-300 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-violet-900 mb-2">Your Cart is Empty</h3>
+            <p className="text-violet-600 mb-6 text-sm">
               Add items to your cart to get started
             </p>
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-violet-500 text-white rounded-lg font-medium hover:bg-violet-600 transition-colors"
             >
               <ShoppingBag className="w-4 h-4" />
               Browse Products
