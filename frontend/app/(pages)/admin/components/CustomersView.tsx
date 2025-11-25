@@ -25,83 +25,83 @@ const CustomersView = () => {
   )
 
   return (
-    <div className="bg-white rounded-lg border border-violet-200">
-      <div className="p-4 border-b border-violet-200">
+    <div className="bg-white rounded-lg border border-gray-200">
+      <div className="p-4 border-b border-gray-200">
         <div className="flex items-center justify-between gap-4 mb-4">
-          <h2 className="font-semibold text-violet-900">Customers Management</h2>
+          <h2 className="font-semibold text-gray-900">Customers Management</h2>
         
         </div>
         <div className="relative">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -tranviolet-y-1/2 text-violet-400" />
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
           <input
             type="text"
             placeholder="Search customers..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-violet-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
           />
         </div>
       </div>
       
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-violet-50 border-b border-violet-200">
+          <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
-              <th className="text-left p-4 text-xs font-semibold text-violet-600">Customer</th>
-              <th className="text-left p-4 text-xs font-semibold text-violet-600">Contact</th>
-              <th className="text-left p-4 text-xs font-semibold text-violet-600">Orders</th>
-              <th className="text-left p-4 text-xs font-semibold text-violet-600">Total Spent</th>
-              <th className="text-left p-4 text-xs font-semibold text-violet-600">Joined</th>
-              <th className="text-left p-4 text-xs font-semibold text-violet-600">Status</th>
-              <th className="text-right p-4 text-xs font-semibold text-violet-600">Actions</th>
+              <th className="text-left p-4 text-xs font-semibold text-gray-600">Customer</th>
+              <th className="text-left p-4 text-xs font-semibold text-gray-600">Contact</th>
+              <th className="text-left p-4 text-xs font-semibold text-gray-600">Orders</th>
+              <th className="text-left p-4 text-xs font-semibold text-gray-600">Total Spent</th>
+              <th className="text-left p-4 text-xs font-semibold text-gray-600">Joined</th>
+              <th className="text-left p-4 text-xs font-semibold text-gray-600">Status</th>
+              <th className="text-right p-4 text-xs font-semibold text-gray-600">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-violet-200">
+          <tbody className="divide-y divide-gray-200">
             {filteredCustomers.map((customer) => (
-              <tr key={customer.id} className="hover:bg-violet-50 transition-colors">
+              <tr key={customer.id} className="hover:bg-gray-50 transition-colors">
                 <td className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-violet-100 text-violet-600 rounded-full flex items-center justify-center font-semibold text-sm">
+                    <div className="w-10 h-10 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center font-semibold text-sm">
                       {customer.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
-                      <div className="font-medium text-violet-900 text-sm">{customer.name}</div>
+                      <div className="font-medium text-gray-900 text-sm">{customer.name}</div>
                     </div>
                   </div>
                 </td>
                 <td className="p-4">
                   <div className="flex flex-col gap-1">
-                    <div className="flex items-center gap-1 text-xs text-violet-600">
+                    <div className="flex items-center gap-1 text-xs text-gray-600">
                       <Mail className="w-3 h-3" />
                       {customer.email}
                     </div>
-                    <div className="flex items-center gap-1 text-xs text-violet-600">
+                    <div className="flex items-center gap-1 text-xs text-gray-600">
                       <Phone className="w-3 h-3" />
                       {customer.phone}
                     </div>
                   </div>
                 </td>
-                <td className="p-4 text-sm text-violet-900 font-medium">{customer.orders}</td>
-                <td className="p-4 text-sm font-semibold text-violet-900">${customer.totalSpent.toFixed(2)}</td>
-                <td className="p-4 text-sm text-violet-600">{customer.joined}</td>
+                <td className="p-4 text-sm text-gray-900 font-medium">{customer.orders}</td>
+                <td className="p-4 text-sm font-semibold text-gray-900">${customer.totalSpent.toFixed(2)}</td>
+                <td className="p-4 text-sm text-gray-600">{customer.joined}</td>
                 <td className="p-4">
                   <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${
                     customer.status === 'active'
                       ? 'bg-green-100 text-green-700'
-                      : 'bg-violet-100 text-violet-700'
+                      : 'bg-gray-100 text-gray-700'
                   }`}>
                     {customer.status.charAt(0).toUpperCase() + customer.status.slice(1)}
                   </span>
                 </td>
                 <td className="p-4">
                   <div className="flex items-center justify-end gap-2">
-                    <button className="p-1.5 text-violet-600 hover:text-violet-600 hover:bg-violet-50 rounded transition-colors">
+                    <button className="p-1.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded transition-colors">
                       <Eye className="w-4 h-4" />
                     </button>
-                    <button className="p-1.5 text-violet-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
+                    <button className="p-1.5 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
                       <Edit className="w-4 h-4" />
                     </button>
-                    <button className="p-1.5 text-violet-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors">
+                    <button className="p-1.5 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
@@ -113,7 +113,7 @@ const CustomersView = () => {
       </div>
       
       {filteredCustomers.length === 0 && (
-        <div className="p-8 text-center text-violet-500">
+        <div className="p-8 text-center text-gray-500">
           <p>No customers found</p>
         </div>
       )}

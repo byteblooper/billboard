@@ -1,25 +1,31 @@
-import Image from "next/image";
-import TopBanner from "./components/navbar/TopBanner";
-import Navbar from "./components/navbar/Navbar";
-import Hero from "./components/home/hero/Hero";
-import Category from "./components/home/categories/Category";
-import Trending from "./components/home/trending/Trending";
-import WhyNearBy from "./components/home/whyNearby/WhyNearBy";
+import HomeHeader from "./components/home/HomeHeader";
+import DealsCarousel from "./components/home/DealsCarousel";
+import SidebarFilters from "./components/home/SidebarFilters";
+import GrocerySection from "./components/home/GrocerySection";
+import FashionSection from "./components/home/FashionSection";
+import GadgetSection from "./components/home/GadgetSection";
 
 
 export default function Home() {
   return (
-   <>
-  
-  
-    <Hero />
+    <main className="bg-gray-50 min-h-screen">
+      <HomeHeader />
+      <DealsCarousel />
+      <div className="container mx-auto px-4 py-5">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
+          {/* Sidebar */}
+          <aside className="lg:col-span-1">
+            <SidebarFilters />
+          </aside>
 
-    <Category />
-
-   <Trending />
-
-   <WhyNearBy />
-  
-   </>
+          {/* Main Content */}
+          <div className="lg:col-span-4 space-y-8">
+            <GrocerySection />
+            <FashionSection />
+            <GadgetSection />
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }

@@ -124,13 +124,13 @@ const teamMembers = [
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-violet-50">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-violet-500 via-violet-600 to-violet-900 text-white overflow-hidden">
+      <section className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white overflow-hidden">
         {/* Optional background shapes for extra depth */}
         <div className="absolute inset-0">
           <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-24 -right-16 w-96 h-96 bg-indigo-500 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-24 -right-16 w-96 h-96 bg-violet-600 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
         </div>
 
         <div className=" mx-auto px-4 py-24 relative z-10 flex flex-col md:flex-row items-center justify-center gap-10">
@@ -148,7 +148,7 @@ const AboutPage = () => {
             </div>
 
             {/* Heading */}
-            <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-violet-200">
+            <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
               Connecting You to Local Deals Within 50KM
             </h1>
 
@@ -190,15 +190,15 @@ const AboutPage = () => {
         ].map((item, i) => (
           <div
             key={i}
-            className="relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2"
+            className="relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2 border border-gray-200"
           >
-            <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-500 mb-6">
+            <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-violet-600 to-violet-700 mb-6">
               <item.icon className="w-8 h-8 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-violet-800 mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
               {item.title}
             </h2>
-            <p className="text-violet-600">{item.desc}</p>
+            <p className="text-gray-600">{item.desc}</p>
           </div>
         ))}
       </section>
@@ -206,7 +206,7 @@ const AboutPage = () => {
       {/* Core Values */}
       <section className="bg-white py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-violet-800 mb-12">
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
             Our Core Values
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -215,17 +215,17 @@ const AboutPage = () => {
               return (
                 <div
                   key={i}
-                  className="p-6 bg-gradient-to-br from-violet-50 to-white rounded-3xl shadow-md hover:shadow-xl transition-all transform hover:scale-105"
+                  className="p-6 bg-white rounded-3xl shadow-md hover:shadow-xl transition-all transform hover:scale-105 border border-gray-200"
                 >
                   <div
                     className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-br ${value.color}`}
                   >
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-violet-800 mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-violet-600">{value.desc}</p>
+                  <p className="text-gray-600">{value.desc}</p>
                 </div>
               );
             })}
@@ -235,10 +235,10 @@ const AboutPage = () => {
 
       {/* Why Choose Us */}
       <section className="container mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold text-center text-violet-800 mb-12">
+        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
           Why Choose NearByDeals?
         </h2>
-        <p className="text-center text-violet-600 mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
           We&apos;re not just another shopping platform. We&apos;re your local
           shopping companion.
         </p>
@@ -247,21 +247,21 @@ const AboutPage = () => {
             const Icon = feature.icon;
             return (
               <div key={idx} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-indigo-500/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all"></div>
-                <div className="relative bg-white rounded-2xl p-8 border border-violet-200 hover:border-violet-300 shadow-md hover:shadow-xl transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-200/50 to-gray-300/50 rounded-2xl blur-xl group-hover:blur-2xl transition-all"></div>
+                <div className="relative bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 shadow-md hover:shadow-xl transition-all duration-300">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-violet-500 to-indigo-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-violet-600 to-violet-700 rounded-xl flex items-center justify-center flex-shrink-0">
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-violet-800 mb-2">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
                         {feature.title}
                       </h3>
-                      <p className="text-violet-600 text-sm">{feature.desc}</p>
+                      <p className="text-gray-600 text-sm">{feature.desc}</p>
                     </div>
                   </div>
-                  <div className="pt-4 border-t border-violet-100">
-                    <span className="text-violet-600 font-bold text-lg">
+                  <div className="pt-4 border-t border-gray-200">
+                    <span className="text-gray-900 font-bold text-lg">
                       {feature.stats}
                     </span>
                   </div>
@@ -275,14 +275,14 @@ const AboutPage = () => {
       {/* Team Section */}
       <section className="bg-white py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-violet-800 mb-12">
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
             Meet Our Team
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, idx) => (
               <div
                 key={idx}
-                className="group relative bg-white rounded-3xl shadow-md p-6 hover:shadow-2xl transition-transform transform hover:-translate-y-2"
+                className="group relative bg-white rounded-3xl shadow-md p-6 hover:shadow-2xl transition-transform transform hover:-translate-y-2 border border-gray-200"
               >
                 <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-4">
                   <Image
@@ -293,10 +293,10 @@ const AboutPage = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-violet-800">
+                <h3 className="text-xl font-bold text-gray-900">
                   {member.name}
                 </h3>
-                <p className="text-violet-600">{member.role}</p>
+                <p className="text-gray-600">{member.role}</p>
               </div>
             ))}
           </div>
@@ -305,7 +305,7 @@ const AboutPage = () => {
 
       {/* CTA */}
       <section className="container mx-auto px-4 py-20 text-center">
-        <div className="bg-gradient-to-br from-violet-500 to-indigo-500 rounded-3xl p-12 shadow-xl relative overflow-hidden">
+        <div className="bg-gradient-to-br from-violet-600 to-violet-700 rounded-3xl p-12 shadow-xl relative overflow-hidden">
           <h2 className="text-4xl font-bold text-white mb-6">
             Join Our Community Today
           </h2>
@@ -313,10 +313,10 @@ const AboutPage = () => {
             Find deals, support local businesses, and get same-day delivery.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="px-8 py-4 bg-white text-violet-600 font-bold rounded-xl hover:scale-105 transition-transform shadow-lg">
+            <button className="px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:scale-105 transition-transform shadow-lg">
               Start Shopping
             </button>
-            <button className="px-8 py-4 border-2 border-white text-white rounded-xl hover:bg-white hover:text-violet-600 transition-all hover:scale-105">
+            <button className="px-8 py-4 border-2 border-white text-white rounded-xl hover:bg-white hover:text-gray-900 transition-all hover:scale-105">
               Become a Partner
             </button>
           </div>

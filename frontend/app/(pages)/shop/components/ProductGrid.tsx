@@ -31,9 +31,9 @@ const ProductGrid = ({ products, totalProducts, onResetFilters }: ProductGridPro
     <div>
       {/* Results Count */}
       <div className="mb-6">
-        <p className="text-violet-600">
-          Showing <span className="font-semibold text-violet-800">{products.length}</span> of{' '}
-          <span className="font-semibold text-violet-800">{totalProducts}</span> products
+        <p className="text-gray-600">
+          Showing <span className="font-semibold text-gray-900">{products.length}</span> of{' '}
+          <span className="font-semibold text-gray-900">{totalProducts}</span> products
         </p>
       </div>
 
@@ -47,11 +47,11 @@ const ProductGrid = ({ products, totalProducts, onResetFilters }: ProductGridPro
       ) : (
         <div className="text-center py-20">
           <div className="text-6xl mb-4">🔍</div>
-          <h3 className="text-2xl font-bold text-violet-800 mb-2">No products found</h3>
-          <p className="text-violet-600 mb-6">Try adjusting your filters or search query</p>
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">No products found</h3>
+          <p className="text-gray-600 mb-6">Try adjusting your filters or search query</p>
           <button
             onClick={onResetFilters}
-            className="px-6 py-3 bg-linear-to-r from-violet-500 to-indigo-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+            className="px-6 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-all"
           >
             Reset Filters
           </button>

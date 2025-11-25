@@ -27,7 +27,7 @@ export default function Navbar() {
   const menuItems = [
     { href: "/shop", label: "Shop", icon: Store },
     { href: "/map", label: "Map", icon: Map },
-    { href: "/compare", label: "Compare", icon: GitCompare },
+   
     { href: "/about", label: "About", icon: Info },
     { href: "/admin", label: "Admin", icon: Shield },
   ];
@@ -46,14 +46,14 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-violet-400/20 backdrop-blur-xl border-b border-violet-500/30 shadow-[0_4px_25px_rgba(0,0,0,0.12)]`}
+      className={`sticky top-0 z-50 bg-[#E6E6FA] border-b border-gray-200`}
     >
       <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-3 flex items-center justify-between gap-2">
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-2 group shrink-0">
-          <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-violet-300/40 group-hover:scale-105 transition-all">
-            <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
-          </div>
+          <div className="w-10 h-10 rounded-full bg-white border-2 border-violet-600 flex items-center justify-center">
+                          <MapPin className="w-5 h-5 text-violet-600" />
+                        </div>
 
           <div className="flex flex-col leading-tight select-none">
             <h1 className="text-sm sm:text-lg md:text-xl font-extrabold bg-gradient-to-r from-violet-600 to-indigo-700 bg-clip-text text-transparent whitespace-nowrap">
@@ -71,18 +71,29 @@ export default function Navbar() {
             const Icon = item.icon;
             const active = pathname === item.href;
             return (
+       
+            
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm ${transitionClass} ${
+                className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm ${transitionClass} ${
                   active
-                    ? "text-white bg-gradient-to-r from-violet-600 to-indigo-700 shadow-md shadow-violet-300/50"
-                    : "text-gray-800 hover:bg-white/40 hover:text-violet-700"
+                    ? "text-violet-700"
+                    : "text-gray-800 hover:text-violet-700"
                 }`}
-              >
-                <Icon className="w-4 h-4" />
+                
+              > <Icon className="w-4 h-4" />
                 {item.label}
+                <span 
+                  className={`absolute bottom-0 left-0 right-0 h-6/100 w-[calc(100%-20%)] mx-auto bg-violet-600 rounded-full transition-all duration-300 ease-in-out ${
+                    active ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+                  }`}
+                ></span>
               </Link>
+               
+            
+            
+           
             );
           })}
         </nav>
@@ -178,7 +189,7 @@ export default function Navbar() {
 
       {/* MOBILE SEARCH BAR */}
       {searchOpen && (
-        <div className="md:hidden px-4 pb-4 border-t border-violet-300/30 pt-3 bg-violet-100/40 backdrop-blur-xl">
+        <div className="md:hidden px-4 pb-4 border-t border-gray-200 pt-3 bg-[#E6E6FA]">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -tranviolet-y-1/2 text-gray-600 w-5 h-5" />
             <input
@@ -203,7 +214,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {mobileMenuOpen && (
-        <div className="lg:hidden px-4 pb-4 border-t border-violet-300/30 pt-3 bg-violet-100/40 backdrop-blur-xl">
+        <div className="lg:hidden px-4 pb-4 border-t border-gray-200 pt-3 bg-[#E6E6FA]">
           <nav className="flex flex-col gap-1">
             {menuItems.map((item) => {
               const Icon = item.icon;

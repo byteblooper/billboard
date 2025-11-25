@@ -1,44 +1,38 @@
 "use client";
 
-import {
-  Heart,
-  ShoppingCart,
-} from "lucide-react";
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
+import { Heart, ShoppingCart } from "lucide-react";
 
-type Product = {
+interface Product {
   id: number;
-  discount: number;
-  verified: boolean;
-  image: string;
-  rating: number;
-  reviews: number;
   name: string;
-  store: string;
-  price: number;
-  originalPrice: number;
+  price: string;
+  unit: string;
   distance: string;
-  walkTime: string;
-  bikeTime: string;
-  carTime: string;
-};
+  category: string;
+  image?: string;
+}
 
-type ProductCardsProps = {
+interface ProductCardProps {
   product: Product;
-};
+}
 
-const ProductCards = ({ product }: ProductCardsProps) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="bg-white rounded-xl p-3 shadow-sm hover:shadow-lg transition-all duration-300 group">
       {/* Product Image */}
       <div className="aspect-square bg-gray-100 rounded-lg mb-2.5 flex items-center justify-center relative overflow-hidden">
-        <Image 
-          src={product.image} 
-          alt={product.name}
-          fill
-          className="object-cover"
-        />
+        {product.image ? (
+          <Image 
+            src={product.image} 
+            alt={product.name}
+            fill
+            className="object-cover"
+          />
+        ) : (
+          <div className="text-gray-400 text-3xl font-black">{product.name[0]}</div>
+        )}
         <button className="absolute top-2 right-2 w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-red-50 transition-colors z-10">
           <Heart className="w-3.5 h-3.5 text-gray-600" />
         </button>
@@ -47,9 +41,9 @@ const ProductCards = ({ product }: ProductCardsProps) => {
       {/* Product Info */}
       <div className="mb-2.5">
         <div className="text-xs text-gray-500 mb-0.5">{product.distance}</div>
-        <h3 className="text-sm font-bold text-gray-900 mb-0.5 line-clamp-2">{product.name}</h3>
+        <h3 className="text-sm font-bold text-gray-900 mb-0.5">{product.name}</h3>
         <p className="text-base font-black text-gray-900">
-          ${product.price} <span className="text-xs font-normal text-gray-500 line-through">${product.originalPrice}</span>
+          {product.price} bdt <span className="text-xs font-normal text-gray-500">{product.unit}</span>
         </p>
       </div>
 
@@ -62,4 +56,4 @@ const ProductCards = ({ product }: ProductCardsProps) => {
   );
 };
 
-export default ProductCards;
+export default ProductCard;

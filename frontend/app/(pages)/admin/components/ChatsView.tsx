@@ -130,24 +130,24 @@ const ChatsView = () => {
     <div className="space-y-4">
       {/* Header */}
       <div>
-        <h2 className="text-xl font-bold text-violet-900">Customer Chats</h2>
-        <p className="text-sm text-violet-600 mt-0.5">Manage customer support conversations</p>
+        <h2 className="text-xl font-bold text-gray-900">Customer Chats</h2>
+        <p className="text-sm text-gray-600 mt-0.5">Manage customer support conversations</p>
       </div>
 
       {/* Chat Interface */}
-      <div className="bg-white rounded-lg border border-violet-200 overflow-hidden h-[600px] flex">
+      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden h-[600px] flex">
         {/* Chat List */}
-        <div className="w-80 border-r border-violet-200 flex flex-col">
+        <div className="w-80 border-r border-gray-200 flex flex-col">
           {/* Search */}
-          <div className="p-3 border-b border-violet-200">
+          <div className="p-3 border-b border-gray-200">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -tranviolet-y-1/2 w-4 h-4 text-violet-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search conversations..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
+                className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
               />
             </div>
           </div>

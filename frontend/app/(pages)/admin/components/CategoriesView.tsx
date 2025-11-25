@@ -109,10 +109,10 @@ const CategoriesView = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-bold text-violet-900">Categories</h2>
-          <p className="text-sm text-violet-600 mt-0.5">Manage product categories and subcategories</p>
+          <h2 className="text-xl font-bold text-gray-900">Categories</h2>
+          <p className="text-sm text-gray-600 mt-0.5">Manage product categories and subcategories</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-violet-500 text-white rounded-lg hover:bg-violet-600 transition-colors text-sm font-medium">
+        <button className="flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors text-sm font-medium">
           <Plus className="w-4 h-4" />
           Add Category
         </button>
@@ -120,34 +120,34 @@ const CategoriesView = () => {
 
       {/* Search */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -tranviolet-y-1/2 w-4 h-4 text-violet-400" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         <input
           type="text"
           placeholder="Search categories..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-9 pr-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
+          className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
         />
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-lg border border-violet-200 overflow-hidden">
+      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-violet-50 border-b border-violet-200">
-                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Category</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Slug</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Description</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Products</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Subcategories</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Status</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-violet-600 uppercase">Actions</th>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-600 uppercase">Category</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-600 uppercase">Slug</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-600 uppercase">Description</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-600 uppercase">Products</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-600 uppercase">Subcategories</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-600 uppercase">Status</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-600 uppercase">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-violet-100">
+            <tbody className="divide-y divide-gray-100">
               {filteredCategories.map((category) => (
-                <tr key={category.id} className="hover:bg-violet-50 transition-colors">
+                <tr key={category.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
                       <Image
