@@ -52,7 +52,7 @@ const EmptyCart: React.FC<EmptyCartProps> = ({ recommendedProducts }) => {
           {recommendedProducts.slice(0, 4).map((product) => (
             <Link
               key={product.id}
-              href={`/productDetails?id=${product.id}`}
+              href={`/productDetails/${product.id}`}
               className="group bg-white rounded-xl border border-violet-200 p-3 hover:shadow-lg transition-all duration-300"
             >
               <div className="aspect-square rounded-lg overflow-hidden mb-2 bg-violet-50">

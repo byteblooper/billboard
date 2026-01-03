@@ -178,12 +178,12 @@ const ChatsView = () => {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-medium text-violet-900 text-sm truncate">{chat.customer}</span>
-                      <span className="text-xs text-violet-500 flex-shrink-0 ml-2">{chat.timestamp}</span>
+                      <span className="text-xs text-violet-500 shrink-0 ml-2">{chat.timestamp}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <p className="text-sm text-violet-600 truncate">{chat.lastMessage}</p>
                       {chat.unreadCount > 0 && (
-                        <span className="ml-2 px-1.5 py-0.5 bg-violet-500 text-white text-xs font-medium rounded-full flex-shrink-0">
+                        <span className="ml-2 px-1.5 py-0.5 bg-violet-500 text-white text-xs font-medium rounded-full shrink-0">
                           {chat.unreadCount}
                         </span>
                       )}

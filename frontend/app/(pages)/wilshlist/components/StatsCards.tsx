@@ -4,6 +4,7 @@ import React from 'react'
 import { Package, Zap, TrendingUp, Star } from 'lucide-react'
 import { WishlistItem } from './WishlistItemCard'
 
+
 interface StatsCardsProps {
   items: WishlistItem[]
 }

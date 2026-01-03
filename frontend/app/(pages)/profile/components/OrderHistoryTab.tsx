@@ -22,7 +22,7 @@ const OrderHistoryTab = ({ orders }: OrderHistoryTabProps) => {
       {orders.map((order, index) => (
         <div key={index} className="border border-violet-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:border-violet-300">
           <div className="flex flex-col md:flex-row gap-4">
-            <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+            <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0">
               <Image
                 src={order.image}
                 alt={order.store}

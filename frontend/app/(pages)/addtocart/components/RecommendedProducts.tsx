@@ -29,7 +29,7 @@ const RecommendedProducts: React.FC<RecommendedProductsProps> = ({ products }) =
         {products.map((product) => (
           <Link
             key={product.id}
-            href={`/productDetails?id=${product.id}`}
+            href={`/productDetails/${product.id}`}
             className="group bg-linear-to-br from-violet-50 to-indigo-50 rounded-xl p-3 hover:shadow-md transition-all duration-300"
           >
             <div className="aspect-square rounded-lg overflow-hidden mb-2 bg-white">

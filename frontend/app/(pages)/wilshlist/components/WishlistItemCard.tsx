@@ -118,7 +118,7 @@ const WishlistItemCard: React.FC<WishlistItemCardProps> = ({
                     </span>
                   )}
                 </div>
-                <Link href={`/productDetails?id=${item.productId}`}>
+                <Link href={`/productDetails/${item.productId}`}>
                   <h3 className="font-semibold text-violet-900 hover:text-violet-600 transition-colors line-clamp-1">
                     {item.name}
                   </h3>

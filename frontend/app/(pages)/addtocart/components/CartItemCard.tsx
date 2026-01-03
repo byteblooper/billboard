@@ -47,7 +47,7 @@ const CartItemCard: React.FC<CartItemCardProps> = ({
     <div className="bg-white rounded-xl border border-violet-200 p-4 hover:shadow-lg hover:border-violet-300 transition-all duration-300">
       <div className="flex gap-4">
         {/* Product Image */}
-        <Link href={`/productDetails?id=${item.productId}`} className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden bg-linear-to-br from-violet-100 to-indigo-100 group">
+        <Link href={`/productDetails/${item.productId}`} className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden bg-linear-to-br from-violet-100 to-indigo-100 group">
           <Image
             src={item.image}
             alt={item.name}
@@ -66,7 +66,7 @@ const CartItemCard: React.FC<CartItemCardProps> = ({
         <div className="flex-1 min-w-0">
           <div className="flex justify-between gap-4 mb-2">
             <div className="flex-1">
-              <Link href={`/productDetails?id=${item.productId}`}>
+              <Link href={`/productDetails/${item.productId}`}>
                 <h3 className="font-semibold text-violet-900 mb-1 line-clamp-1 hover:text-violet-600 transition-colors">
                   {item.name}
                 </h3>

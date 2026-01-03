@@ -7,7 +7,6 @@ interface TeamMember {
   name: string;
   role: string;
   image: string;
-  gradient: string;
 }
 
 const teamMembers: TeamMember[] = [
@@ -16,28 +15,24 @@ const teamMembers: TeamMember[] = [
     role: "Head of Operations",
     image:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-    gradient: "from-emerald-500 to-teal-500",
   },
   {
     name: "Lisa Anderson",
     role: "Product Manager",
     image:
       "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
-    gradient: "from-purple-500 to-violet-500",
   },
   {
     name: "Maria Garcia",
     role: "Customer Success",
     image:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop",
-    gradient: "from-indigo-500 to-yellow-500",
   },
   {
     name: "Robert Taylor",
     role: "Business Development",
     image:
       "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop",
-    gradient: "from-red-500 to-violet-500",
   },
 ];
 
