@@ -20,7 +20,7 @@ const StatsCards = ({ stats }: StatsCardsProps) => {
         return (
           <div key={index} className="bg-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-tranviolet-y-1 border border-violet-200">
             <div className="flex items-center justify-between mb-4">
-              <div className={`w-12 h-12 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center`}>
+              <div className={`w-12 h-12 bg-linear-to-br ${stat.color} rounded-xl flex items-center justify-center`}>
                 <Icon className="w-6 h-6 text-white" />
               </div>
               <TrendingUp className="w-5 h-5 text-emerald-500" />

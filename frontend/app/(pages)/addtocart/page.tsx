@@ -1,307 +1,235 @@
-﻿'use client'
+'use client'
 
 import React, { useState } from 'react'
-import { ShoppingCart, Trash2, Plus, Minus, Tag, ArrowRight, Lock, ShoppingBag, Percent } from 'lucide-react'
-import Image from 'next/image'
+import { ArrowLeft, CheckCircle2, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
+import CartItemCard, { CartItem } from './components/CartItemCard'
+import RecommendedProducts, { RecommendedProduct } from './components/RecommendedProducts'
+import EmptyCart from './components/EmptyCart'
+import OutOfStockItem from './components/OutOfStockItem'
+import OrderSummary from './components/OrderSummary'
+
+
 
 // Demo Data
-const demoCartItems = [
+const initialCartItems: CartItem[] = [
   {
     id: 1,
     productId: 101,
-    name: 'Premium Wireless Headphones',
-    store: 'TechHub Electronics',
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop',
+    name: 'Premium Wireless Headphones with Noise Cancellation',
+    store: 'AudioTech Store',
+    storeVerified: true,
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop',
     price: 149.99,
     originalPrice: 199.99,
     quantity: 1,
     inStock: true,
-    maxStock: 5
+    maxStock: 5,
+    distance: '0.8 km',
+    deliveryTime: '15-20 min'
   },
   {
     id: 2,
     productId: 102,
-    name: 'Classic Leather Watch',
-    store: 'Fashion Avenue',
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop',
+    name: 'Classic Leather Watch - Rose Gold Edition',
+    store: 'LuxTime Boutique',
+    storeVerified: true,
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop',
     price: 89.99,
-    originalPrice: 149.99,
+    originalPrice: 129.99,
     quantity: 2,
     inStock: true,
-    maxStock: 3
+    maxStock: 10,
+    distance: '1.2 km',
+    deliveryTime: '20-30 min'
   },
   {
     id: 3,
-    productId: 105,
-    name: 'Smart Watch Ultra',
-    store: 'TechHub Electronics',
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=300&h=300&fit=crop',
-    price: 299.99,
-    originalPrice: 461.99,
+    productId: 103,
+    name: 'Designer Sunglasses - UV Protection',
+    store: 'SunStyle Shop',
+    storeVerified: false,
+    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop',
+    price: 79.99,
+    originalPrice: 99.99,
     quantity: 1,
     inStock: true,
-    maxStock: 2
+    maxStock: 8,
+    distance: '0.5 km',
+    deliveryTime: '10-15 min'
+  },
+  {
+    id: 4,
+    productId: 104,
+    name: 'Running Shoes Pro - Limited Edition',
+    store: 'SpeedFit Athletics',
+    storeVerified: true,
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop',
+    price: 119.99,
+    originalPrice: 149.99,
+    quantity: 1,
+    inStock: false,
+    maxStock: 0,
+    distance: '2.1 km',
+    deliveryTime: '25-35 min'
   }
 ]
 
-const CartPage = () => {
-  const [cartItems, setCartItems] = useState(demoCartItems)
+const recommendedProducts: RecommendedProduct[] = [
+  { id: 201, name: 'Bluetooth Speaker Mini', image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=200&h=200&fit=crop', price: 39.99, originalPrice: 59.99, store: 'AudioTech Store' },
+  { id: 202, name: 'Smart Watch Band', image: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=200&h=200&fit=crop', price: 24.99, originalPrice: 34.99, store: 'LuxTime Boutique' },
+  { id: 203, name: 'Phone Case Premium', image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=200&h=200&fit=crop', price: 19.99, originalPrice: 29.99, store: 'TechPro Shop' },
+  { id: 204, name: 'Portable Charger 10000mAh', image: 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=200&h=200&fit=crop', price: 34.99, originalPrice: 49.99, store: 'TechPro Shop' }
+]
+
+const validCoupons: Record<string, number> = {
+  'SAVE10': 0.10,
+  'WELCOME20': 0.20,
+  'NEARBY15': 0.15
+}
+
+export default function CartPage() {
+  const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems)
   const [couponCode, setCouponCode] = useState('')
   const [appliedCoupon, setAppliedCoupon] = useState('')
+  const [couponError, setCouponError] = useState('')
 
+  // Calculations
+  const inStockItems = cartItems.filter(item => item.inStock)
+  const outOfStockItems = cartItems.filter(item => !item.inStock)
+  
+  const subtotal = inStockItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+  const totalOriginal = inStockItems.reduce((sum, item) => sum + (item.originalPrice * item.quantity), 0)
+  const totalSavings = totalOriginal - subtotal
+  const discountRate = appliedCoupon ? validCoupons[appliedCoupon] : 0
+  const discount = subtotal * discountRate
+  const deliveryFee = subtotal >= 100 ? 0 : 5.99
+  const total = subtotal - discount + deliveryFee
+  const totalItems = inStockItems.reduce((sum, item) => sum + item.quantity, 0)
+
+  // Handlers
   const updateQuantity = (id: number, newQuantity: number) => {
-    setCartItems(prev =>
-      prev.map(item =>
-        item.id === id && newQuantity <= item.maxStock && newQuantity > 0
-          ? { ...item, quantity: newQuantity }
-          : item
+    if (newQuantity < 1) return
+    setCartItems(items =>
+      items.map(item =>
+        item.id === id ? { ...item, quantity: Math.min(newQuantity, item.maxStock) } : item
       )
     )
   }
 
   const removeItem = (id: number) => {
-    setCartItems(prev => prev.filter(item => item.id !== id))
+    setCartItems(items => items.filter(item => item.id !== id))
+  }
+
+  const moveToWishlist = (id: number) => {
+    removeItem(id)
   }
 
   const applyCoupon = () => {
-    if (couponCode.trim()) {
-      setAppliedCoupon(couponCode)
+    if (validCoupons[couponCode.toUpperCase()]) {
+      setAppliedCoupon(couponCode.toUpperCase())
+      setCouponError('')
       setCouponCode('')
+    } else {
+      setCouponError('Invalid coupon code')
     }
   }
 
-  // Calculations
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  const totalSavings = cartItems.reduce((sum, item) => sum + (item.originalPrice - item.price) * item.quantity, 0)
-  const discount = appliedCoupon ? subtotal * 0.1 : 0
-  const deliveryFee = subtotal > 100 ? 0 : 5.99
-  const total = subtotal - discount + deliveryFee
+  const removeCoupon = () => {
+    setAppliedCoupon('')
+  }
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="min-h-screen bg-linear-to-br from-violet-50 via-white to-indigo-50">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <EmptyCart recommendedProducts={recommendedProducts} />
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <div className="min-h-screen bg-violet-50">
-      <div className="container mx-auto px-4 py-6">
+    <div className="min-h-screen bg-linear-to-br from-violet-50 via-white to-indigo-50">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-3xl font-bold text-violet-900 mb-1 flex items-center gap-3">
-            <ShoppingCart className="w-7 h-7 text-violet-500" />
-            Shopping Cart
-          </h1>
-          <p className="text-violet-600 text-sm">
-            {cartItems.length} {cartItems.length === 1 ? 'item' : 'items'} in your cart
-          </p>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <Link href="/shop" className="p-2 hover:bg-violet-100 rounded-lg transition-colors">
+              <ArrowLeft className="w-5 h-5 text-violet-700" />
+            </Link>
+            <div>
+              <h1 className="text-2xl font-bold text-violet-900">Shopping Cart</h1>
+              <p className="text-sm text-violet-600">{totalItems} items in your cart</p>
+            </div>
+          </div>
         </div>
 
-        {cartItems.length > 0 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Cart Items */}
-            <div className="lg:col-span-2 space-y-3">
-              {cartItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-white rounded-lg border border-violet-200 p-4 hover:shadow-md transition-shadow"
-                >
-                  <div className="flex gap-4">
-                    {/* Product Image */}
-                    <div className="relative w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-violet-100">
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        width={96}
-                        height={96}
-                        className="w-full h-full object-cover"
-                      />
-                      {item.originalPrice > item.price && (
-                        <div className="absolute top-1 right-1 bg-red-500 text-white px-1.5 py-0.5 rounded text-xs font-semibold">
-                          -{Math.round(((item.originalPrice - item.price) / item.originalPrice) * 100)}%
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Product Info */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex justify-between gap-4 mb-2">
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-violet-900 mb-1 line-clamp-1">
-                            {item.name}
-                          </h3>
-                          <p className="text-xs text-violet-600 font-medium">{item.store}</p>
-                        </div>
-                        <button
-                          onClick={() => removeItem(item.id)}
-                          className="text-violet-400 hover:text-red-600 transition-colors shrink-0"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-
-                      <div className="flex items-end justify-between gap-4">
-                        <div>
-                          <div className="flex items-baseline gap-2 mb-2">
-                            <span className="text-lg font-bold text-violet-900">
-                              ${item.price}
-                            </span>
-                            {item.originalPrice > item.price && (
-                              <span className="text-xs text-violet-400 line-through">
-                                ${item.originalPrice}
-                              </span>
-                            )}
-                          </div>
-
-                          {/* Quantity Controls */}
-                          <div className="flex items-center gap-2">
-                            <button
-                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              disabled={item.quantity <= 1}
-                              className="w-7 h-7 flex items-center justify-center border border-violet-300 rounded hover:bg-violet-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                            >
-                              <Minus className="w-3 h-3" />
-                            </button>
-                            <span className="w-8 text-center text-sm font-medium">{item.quantity}</span>
-                            <button
-                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              disabled={item.quantity >= item.maxStock}
-                              className="w-7 h-7 flex items-center justify-center border border-violet-300 rounded hover:bg-violet-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                            >
-                              <Plus className="w-3 h-3" />
-                            </button>
-                            <span className="text-xs text-violet-500 ml-1">
-                              (Max: {item.maxStock})
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Item Total */}
-                        <div className="text-right">
-                          <p className="text-xs text-violet-600 mb-1">Item Total</p>
-                          <p className="text-xl font-bold text-violet-600">
-                            ${(item.price * item.quantity).toFixed(2)}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-              {/* Continue Shopping */}
-              <Link
-                href="/shop"
-                className="inline-flex items-center gap-2 text-violet-600 font-medium text-sm hover:text-violet-700 transition-colors"
-              >
-                <ShoppingBag className="w-4 h-4" />
-                Continue Shopping
-              </Link>
-            </div>
-
-            {/* Order Summary */}
-            <div className="lg:col-span-1">
-              <div className="bg-white rounded-lg border border-violet-200 p-5 sticky top-6">
-                <h2 className="text-lg font-bold text-violet-900 mb-4">Order Summary</h2>
-
-                {/* Coupon Code */}
-                <div className="mb-4 pb-4 border-b border-violet-200">
-                  <label className="text-sm font-medium text-violet-700 mb-2 flex items-center gap-2">
-                    <Tag className="w-4 h-4" />
-                    Coupon Code
-                  </label>
-                  <div className="flex gap-2 mt-2">
-                    <input
-                      type="text"
-                      value={couponCode}
-                      onChange={(e) => setCouponCode(e.target.value)}
-                      placeholder="Enter code"
-                      className="flex-1 px-3 py-2 border border-violet-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
-                    />
-                    <button
-                      onClick={applyCoupon}
-                      className="px-4 py-2 bg-violet-900 text-white rounded-lg text-sm font-medium hover:bg-violet-800 transition-colors"
-                    >
-                      Apply
-                    </button>
-                  </div>
-                  {appliedCoupon && (
-                    <div className="mt-2 flex items-center gap-2 text-xs text-green-600">
-                      <Percent className="w-3 h-3" />
-                      Coupon &quot;{appliedCoupon}&quot; applied (10% off)
-                    </div>
-                  )}
-                </div>
-
-                {/* Price Breakdown */}
-                <div className="space-y-2 mb-4 pb-4 border-b border-violet-200">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-violet-600">Subtotal</span>
-                    <span className="font-medium text-violet-900">${subtotal.toFixed(2)}</span>
-                  </div>
-                  {totalSavings > 0 && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-violet-600">Total Savings</span>
-                      <span className="font-medium text-green-600">-${totalSavings.toFixed(2)}</span>
-                    </div>
-                  )}
-                  {discount > 0 && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-violet-600">Discount</span>
-                      <span className="font-medium text-green-600">-${discount.toFixed(2)}</span>
-                    </div>
-                  )}
-                  <div className="flex justify-between text-sm">
-                    <span className="text-violet-600">Delivery Fee</span>
-                    <span className="font-medium text-violet-900">
-                      {deliveryFee === 0 ? 'FREE' : `$${deliveryFee.toFixed(2)}`}
-                    </span>
-                  </div>
-                  {deliveryFee > 0 && (
-                    <p className="text-xs text-violet-500">
-                      Add ${(100 - subtotal).toFixed(2)} more for free delivery
-                    </p>
-                  )}
-                </div>
-
-                {/* Total */}
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-base font-bold text-violet-900">Total</span>
-                  <span className="text-2xl font-bold text-violet-600">${total.toFixed(2)}</span>
-                </div>
-
-                {/* Checkout Button */}
-                <Link
-                  href="/payment"
-                  className="w-full py-3 bg-violet-500 text-white rounded-lg font-semibold hover:bg-violet-600 transition-colors flex items-center justify-center gap-2 mb-3"
-                >
-                  Proceed to Checkout
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-
-                {/* Security Note */}
-                <div className="flex items-center justify-center gap-2 text-xs text-violet-500">
-                  <Lock className="w-3 h-3" />
-                  <span>Secure checkout</span>
-                </div>
+        <div className="grid lg:grid-cols-3 gap-6">
+          {/* Cart Items */}
+          <div className="lg:col-span-2 space-y-4">
+            {/* In Stock Items */}
+            {inStockItems.length > 0 && (
+              <div className="space-y-3">
+                <h2 className="text-sm font-semibold text-violet-700 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  Available Items ({inStockItems.length})
+                </h2>
+                {inStockItems.map((item) => (
+                  <CartItemCard
+                    key={item.id}
+                    item={item}
+                    onUpdateQuantity={updateQuantity}
+                    onRemove={removeItem}
+                    onMoveToWishlist={moveToWishlist}
+                  />
+                ))}
               </div>
-            </div>
+            )}
+
+            {/* Out of Stock Items */}
+            {outOfStockItems.length > 0 && (
+              <div className="mt-6 space-y-3">
+                <h2 className="text-sm font-semibold text-amber-700 flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-amber-500" />
+                  Out of Stock Items ({outOfStockItems.length})
+                </h2>
+                {outOfStockItems.map((item) => (
+                  <OutOfStockItem
+                    key={item.id}
+                    item={item}
+                    onRemove={removeItem}
+                    onMoveToWishlist={moveToWishlist}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Recommended Products */}
+            <RecommendedProducts products={recommendedProducts} />
           </div>
-        ) : (
-          <div className="bg-white rounded-lg border border-violet-200 p-12 text-center">
-            <ShoppingCart className="w-16 h-16 text-violet-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-violet-900 mb-2">Your Cart is Empty</h3>
-            <p className="text-violet-600 mb-6 text-sm">
-              Add items to your cart to get started
-            </p>
-            <Link
-              href="/shop"
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-violet-500 text-white rounded-lg font-medium hover:bg-violet-600 transition-colors"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              Browse Products
-            </Link>
+
+          {/* Order Summary */}
+          <div className="lg:col-span-1">
+            <OrderSummary
+              subtotal={subtotal}
+              totalSavings={totalSavings}
+              discount={discount}
+              discountRate={discountRate}
+              deliveryFee={deliveryFee}
+              total={total}
+              totalItems={totalItems}
+              appliedCoupon={appliedCoupon}
+              couponCode={couponCode}
+              couponError={couponError}
+              onCouponChange={setCouponCode}
+              onApplyCoupon={applyCoupon}
+              onRemoveCoupon={removeCoupon}
+              onCouponErrorClear={() => setCouponError('')}
+            />
           </div>
-        )}
+        </div>
       </div>
     </div>
   )
 }
-
-export default CartPage
-

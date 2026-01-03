@@ -26,7 +26,7 @@ const SidebarMenu = ({ menuItems, activeTab, setActiveTab }: SidebarMenuProps) =
               onClick={() => setActiveTab(item.label)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
                 activeTab === item.label
-                  ? 'bg-gradient-to-r from-violet-500 to-indigo-500 text-white shadow-lg'
+                  ? 'bg-linear-to-r from-violet-500 to-indigo-500 text-white shadow-lg'
                   : 'text-violet-700 hover:bg-violet-50'
               }`}
             >

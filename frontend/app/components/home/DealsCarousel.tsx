@@ -100,7 +100,7 @@ const [activeTab, setActiveTab] = useState("Latest");
           {dealCards.map((card) => (
             <div
               key={card.id}
-              className={`${card.bgColor} rounded-xl p-4 min-w-[200px] h-30 shrink-0 shadow-sm hover:shadow-md transition-shadow cursor-pointer relative overflow-hidden`}
+              className={`${card.bgColor} rounded-xl p-4 min-w-52 h-30 shrink-0 shadow-sm hover:shadow-md transition-shadow cursor-pointer relative overflow-hidden`}
             >
               <Image 
                 src={card.image} 

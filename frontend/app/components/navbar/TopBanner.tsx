@@ -74,7 +74,7 @@ const TopBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="relative bg-gradient-to-r from-violet-600 via-violet-500 to-indigo-500 overflow-hidden">
+    <div className="relative bg-linear-to-r from-violet-600 via-violet-500 to-indigo-500 overflow-hidden">
       {/* Background Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-4 -left-4 w-24 h-24 bg-white/10 rounded-full blur-xl animate-pulse opacity-60"></div>
@@ -150,7 +150,7 @@ const TopBanner = () => {
       </div>
 
       {/* Glow Line */}
-      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-white/50 to-transparent animate-pulse"></div>
     </div>
   );
 };

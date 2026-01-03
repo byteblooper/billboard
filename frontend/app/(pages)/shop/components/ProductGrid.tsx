@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductCards from '@/app/components/productsCards/ProductCards'
+import ProductCards from '@/app/components/ProductCards'
 
 type Product = {
   id: number

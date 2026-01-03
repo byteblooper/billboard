@@ -15,7 +15,7 @@ type ProfileHeaderProps = {
 
 const ProfileHeader = ({ userInfo }: ProfileHeaderProps) => {
   return (
-    <div className="bg-gradient-to-br from-violet-900 via-violet-800 to-violet-900 rounded-3xl p-8 mb-8 text-white relative overflow-hidden">
+    <div className="bg-linear-to-br from-violet-900 via-violet-800 to-violet-900 rounded-3xl p-8 mb-8 text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(251,146,60,0.3),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(251,146,60,0.2),transparent_50%)]"></div>
@@ -24,7 +24,7 @@ const ProfileHeader = ({ userInfo }: ProfileHeaderProps) => {
       <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
         {/* Avatar */}
         <div className="relative group">
-          <div className="absolute -inset-2 bg-gradient-to-br from-violet-500 to-indigo-500 rounded-full blur opacity-75"></div>
+          <div className="absolute -inset-2 bg-linear-to-br from-violet-500 to-indigo-500 rounded-full blur opacity-75"></div>
           <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-2xl">
             <Image
               src={userInfo.avatar}
@@ -34,7 +34,7 @@ const ProfileHeader = ({ userInfo }: ProfileHeaderProps) => {
               className="w-full h-full object-cover"
             />
           </div>
-          <button className="absolute bottom-0 right-0 w-10 h-10 bg-gradient-to-br from-violet-500 to-indigo-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+          <button className="absolute bottom-0 right-0 w-10 h-10 bg-linear-to-br from-violet-500 to-indigo-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
             <Camera className="w-5 h-5 text-white" />
           </button>
         </div>
@@ -43,7 +43,7 @@ const ProfileHeader = ({ userInfo }: ProfileHeaderProps) => {
         <div className="flex-1 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
             <h1 className="text-3xl font-bold">{userInfo.name}</h1>
-            <span className="px-3 py-1 bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full text-xs font-semibold">
+            <span className="px-3 py-1 bg-linear-to-r from-violet-500 to-indigo-500 rounded-full text-xs font-semibold">
               {userInfo.memberLevel}
             </span>
           </div>
