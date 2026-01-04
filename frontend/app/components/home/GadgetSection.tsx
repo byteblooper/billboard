@@ -3,16 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import ProductCard from "./ProductCard";
+import { gadgetItems } from "@/app/data";
 
 const GadgetSection = () => {
-  const gadgetItems = [
-    { id: 1, name: "Gaming Monitor", price: "1250", unit: "Old", distance: "2.1 km", category: "gadget", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400" },
-    { id: 2, name: "Gaming Console", price: "200", unit: "Old", distance: "3.2 km", category: "gadget", image: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400" },
-    { id: 3, name: "Wireless Headphones", price: "6250", unit: "Old", distance: "1.7 km", category: "gadget", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" },
-    { id: 4, name: "Hair Dryer", price: "340", unit: "Per Piece", distance: "2.9 km", category: "gadget", image: "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400" },
-    { id: 5, name: "Mechanical Keyboard", price: "6650", unit: "Old", distance: "4.1 km", category: "gadget", image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400" },
-    { id: 6, name: "Gaming Mouse", price: "750", unit: "Old", distance: "2.6 km", category: "gadget", image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400" },
-  ];
 
   return (
     <section className="mb-8">

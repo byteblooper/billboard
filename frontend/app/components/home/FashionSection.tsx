@@ -3,17 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import ProductCard from "./ProductCard";
-
+import { fashionItems } from "@/app/data";
 
 const FashionSection = () => {
-  const fashionItems = [
-    { id: 1, name: "Casual Shoes", price: "6650", unit: "Per Piece", distance: "1.2 km", category: "fashion", image: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400" },
-    { id: 2, name: "Winter Hoodie", price: "850", unit: "Per Piece", distance: "2.8 km", category: "fashion", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400" },
-    { id: 3, name: "Leather Handbag", price: "6800", unit: "Per Piece", distance: "3.1 km", category: "fashion", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400" },
-    { id: 4, name: "High Heels", price: "8500", unit: "Per Piece", distance: "2.3 km", category: "fashion", image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400" },
-    { id: 5, name: "Party Dress", price: "6850", unit: "Per Piece", distance: "1.9 km", category: "fashion", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400" },
-    { id: 6, name: "Lipstick Set", price: "340", unit: "Per Piece", distance: "4.5 km", category: "fashion", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400" },
-  ];
 
   return (
     <section className="mb-8">

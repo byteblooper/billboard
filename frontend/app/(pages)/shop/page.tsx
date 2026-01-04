@@ -1,12 +1,11 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
-import { SlidersHorizontal } from 'lucide-react'
+import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react'
+import { SlidersHorizontal, Loader2 } from 'lucide-react'
 import ProductCards from '@/app/components/ProductCards'
 import SearchBar from './components/SearchBar'
 import FilterSidebar from './components/FilterSidebar'
-import Pagination from './components/Pagination'
-
+import { shopProducts } from '@/app/data'
 
 // Types
 type FilterState = {
@@ -21,173 +20,6 @@ type FilterState = {
   sortBy: string
 }
 
-type Product = {
-  id: number
-  discount: number
-  verified: boolean
-  image: string
-  rating: number
-  reviews: number
-  name: string
-  store: string
-  price: number
-  originalPrice: number
-  distance: string
-  walkTime: string
-  bikeTime: string
-  carTime: string
-  category: string
-  brand: string
-}
-
-// Demo Data
-const demoProducts: Product[] = [
-  {
-    id: 1,
-    discount: 25,
-    verified: true,
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
-    rating: 4.8,
-    reviews: 2341,
-    name: 'Premium Wireless Headphones',
-    store: 'AudioTech Store',
-    price: 149.99,
-    originalPrice: 199.99,
-    distance: '0.8',
-    walkTime: '10 min',
-    bikeTime: '3 min',
-    carTime: '2 min',
-    category: 'Electronics',
-    brand: 'AudioTech'
-  },
-  {
-    id: 2,
-    discount: 31,
-    verified: true,
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',
-    rating: 4.6,
-    reviews: 892,
-    name: 'Classic Leather Watch',
-    store: 'LuxTime Boutique',
-    price: 89.99,
-    originalPrice: 129.99,
-    distance: '1.2',
-    walkTime: '15 min',
-    bikeTime: '5 min',
-    carTime: '3 min',
-    category: 'Fashion',
-    brand: 'LuxTime'
-  },
-  {
-    id: 3,
-    discount: 20,
-    verified: false,
-    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop',
-    rating: 4.4,
-    reviews: 456,
-    name: 'Designer Sunglasses',
-    store: 'SunStyle Shop',
-    price: 79.99,
-    originalPrice: 99.99,
-    distance: '0.5',
-    walkTime: '6 min',
-    bikeTime: '2 min',
-    carTime: '1 min',
-    category: 'Fashion',
-    brand: 'SunStyle'
-  },
-  {
-    id: 4,
-    discount: 20,
-    verified: true,
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
-    rating: 4.9,
-    reviews: 1567,
-    name: 'Running Shoes Pro',
-    store: 'SpeedFit Athletics',
-    price: 119.99,
-    originalPrice: 149.99,
-    distance: '2.1',
-    walkTime: '26 min',
-    bikeTime: '8 min',
-    carTime: '5 min',
-    category: 'Sports',
-    brand: 'SpeedFit'
-  },
-  {
-    id: 5,
-    discount: 15,
-    verified: true,
-    image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop',
-    rating: 4.7,
-    reviews: 234,
-    name: 'Premium Skincare Set',
-    store: 'TechPro Store',
-    price: 84.99,
-    originalPrice: 99.99,
-    distance: '1.5',
-    walkTime: '18 min',
-    bikeTime: '5 min',
-    carTime: '4 min',
-    category: 'Electronics',
-    brand: 'TechPro'
-  },
-  {
-    id: 6,
-    discount: 30,
-    verified: true,
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
-    rating: 4.5,
-    reviews: 678,
-    name: 'Travel Backpack',
-    store: 'TravelPro Gear',
-    price: 69.99,
-    originalPrice: 99.99,
-    distance: '3.2',
-    walkTime: '40 min',
-    bikeTime: '12 min',
-    carTime: '8 min',
-    category: 'Fashion',
-    brand: 'TravelPro'
-  },
-  {
-    id: 7,
-    discount: 10,
-    verified: false,
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
-    rating: 4.3,
-    reviews: 189,
-    name: 'Stainless Steel Cookware Set',
-    store: 'HomeStyle Kitchen',
-    price: 179.99,
-    originalPrice: 199.99,
-    distance: '1.8',
-    walkTime: '22 min',
-    bikeTime: '7 min',
-    carTime: '5 min',
-    category: 'Home',
-    brand: 'HomeStyle'
-  },
-  {
-    id: 8,
-    discount: 40,
-    verified: true,
-    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=400&fit=crop',
-    rating: 4.9,
-    reviews: 512,
-    name: 'Professional Camera',
-    store: 'PhotoPro Studio',
-    price: 599.99,
-    originalPrice: 999.99,
-    distance: '4.5',
-    walkTime: '55 min',
-    bikeTime: '18 min',
-    carTime: '12 min',
-    category: 'Electronics',
-    brand: 'PhotoPro'
-  }
-]
-
 const defaultFilters: FilterState = {
   category: 'All',
   brand: 'All',
@@ -200,16 +32,18 @@ const defaultFilters: FilterState = {
   sortBy: 'relevance'
 }
 
-const ITEMS_PER_PAGE = 6
+const ITEMS_PER_LOAD = 10
 
 export default function ShopPage() {
   const [filters, setFilters] = useState<FilterState>(defaultFilters)
   const [showMobileFilters, setShowMobileFilters] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_LOAD)
+  const [isLoading, setIsLoading] = useState(false)
+  const loaderRef = useRef<HTMLDivElement>(null)
 
   // Filter products
   const filteredProducts = useMemo(() => {
-    let result = [...demoProducts]
+    let result = [...shopProducts]
 
     // Search
     if (filters.searchQuery) {
@@ -262,21 +96,50 @@ export default function ShopPage() {
     return result
   }, [filters])
 
-  // Pagination
-  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE)
-  const paginatedProducts = filteredProducts.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  )
+  // Visible products for infinite scroll
+  const visibleProducts = useMemo(() => {
+    return filteredProducts.slice(0, visibleCount)
+  }, [filteredProducts, visibleCount])
+
+  const hasMore = visibleCount < filteredProducts.length
+
+  // Load more products
+  const loadMore = useCallback(() => {
+    if (isLoading || !hasMore) return
+    setIsLoading(true)
+    // Simulate loading delay for smooth UX
+    setTimeout(() => {
+      setVisibleCount(prev => Math.min(prev + ITEMS_PER_LOAD, filteredProducts.length))
+      setIsLoading(false)
+    }, 300)
+  }, [isLoading, hasMore, filteredProducts.length])
+
+  // Intersection Observer for infinite scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore && !isLoading) {
+          loadMore()
+        }
+      },
+      { threshold: 0.1, rootMargin: '100px' }
+    )
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [hasMore, isLoading, loadMore])
 
   const resetFilters = () => {
     setFilters(defaultFilters)
-    setCurrentPage(1)
+    setVisibleCount(ITEMS_PER_LOAD)
   }
 
   const handleFilterChange = (newFilters: FilterState) => {
     setFilters(newFilters)
-    setCurrentPage(1)
+    setVisibleCount(ITEMS_PER_LOAD)
   }
 
   return (
@@ -310,16 +173,42 @@ export default function ShopPage() {
           <div className="flex-1">
             {/* Results Count */}
             <div className="mb-4 text-sm text-violet-600">
-              Showing {paginatedProducts.length} of {filteredProducts.length} products
+              Showing {visibleProducts.length} of {filteredProducts.length} products
             </div>
 
             {/* Products */}
-            {paginatedProducts.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {paginatedProducts.map((product) => (
-                  <ProductCards key={product.id} product={product} />
-                ))}
-              </div>
+            {visibleProducts.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {visibleProducts.map((product) => (
+                    <ProductCards key={product.id} product={product} />
+                  ))}
+                </div>
+
+                {/* Infinite Scroll Loader */}
+                {hasMore && (
+                  <div 
+                    ref={loaderRef} 
+                    className="flex justify-center items-center py-8"
+                  >
+                    {isLoading ? (
+                      <div className="flex items-center gap-2 text-violet-600">
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        <span className="text-sm font-medium">Loading more...</span>
+                      </div>
+                    ) : (
+                      <div className="h-8" />
+                    )}
+                  </div>
+                )}
+
+                {/* End of Results */}
+                {!hasMore && filteredProducts.length > ITEMS_PER_LOAD && (
+                  <div className="text-center py-8 text-violet-500 text-sm">
+                    You&apos;ve reached the end of the list
+                  </div>
+                )}
+              </>
             ) : (
               <div className="bg-white rounded-xl p-12 text-center border border-violet-100">
                 <SlidersHorizontal className="w-12 h-12 text-violet-300 mx-auto mb-4" />
@@ -332,15 +221,6 @@ export default function ShopPage() {
                   Reset Filters
                 </button>
               </div>
-            )}
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
-              />
             )}
           </div>
         </div>

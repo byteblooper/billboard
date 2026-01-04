@@ -3,52 +3,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-interface DealCard {
-  id: number;
-  title: string;
-  subtitle: string;
-  bgColor: string;
-  image: string;
-}
+import { dealCards } from "@/app/data";
 
 const DealsCarousel = () => {
-  const dealCards: DealCard[] = [
-    {
-      id: 1,
-      title: "25% OFF",
-      subtitle: "VEGETABLES",
-      bgColor: "bg-orange-100",
-      image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400",
-    },
-    {
-      id: 2,
-      title: "SPECIAL OFFER",
-      subtitle: "Save Big Today",
-      bgColor: "bg-blue-50",
-      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=400",
-    },
-    {
-      id: 3,
-      title: "HOT DEALS",
-      subtitle: "Limited Time",
-      bgColor: "bg-red-50",
-      image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400",
-    },
-    {
-      id: 4,
-      title: "DELICIOUS",
-      subtitle: "50% OFF",
-      bgColor: "bg-purple-100",
-      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400",
-    },
-    {
-      id: 5,
-      title: "FRIDAY DEALS",
-      subtitle: "Special Price",
-      bgColor: "bg-yellow-100",
-      image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=400",
-    },
-  ];
 const [activeTab, setActiveTab] = useState("Latest");
   return (
     <div className="bg-white py-3 border-b border-gray-200">

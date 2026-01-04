@@ -3,16 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import ProductCard from "./ProductCard";
+import { groceryItems } from "@/app/data";
 
 const GrocerySection = () => {
-  const groceryItems = [
-    { id: 1, name: "Fresh Milk", price: "450", unit: "Per Piece", distance: "2.6 km", category: "grocery", image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400" },
-    { id: 2, name: "Premium Coffee", price: "100", unit: "Per Pack", distance: "1.2 km", category: "grocery", image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400" },
-    { id: 3, name: "Biscuits Pack", price: "200", unit: "Per Piece", distance: "3.5 km", category: "grocery", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400" },
-    { id: 4, name: "Snacks Combo", price: "850", unit: "Per Combo", distance: "2.1 km", category: "grocery", image: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400" },
-    { id: 5, name: "Tomato Sauce", price: "50", unit: "Per Piece", distance: "1.8 km", category: "grocery", image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400" },
-    { id: 6, name: "Chips Variety", price: "340", unit: "Per Combo", distance: "4.2 km", category: "grocery", image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400" },
-  ];
 
   return (
     <section className="mb-8">
