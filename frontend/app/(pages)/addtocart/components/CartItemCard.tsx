@@ -30,18 +30,16 @@ export interface CartItem {
   deliveryTime: string
 }
 
-interface CartItemCardProps {
+const CartItemCard = ({
+  item,
+  onUpdateQuantity,
+  onRemove,
+  onMoveToWishlist,
+}: {
   item: CartItem
   onUpdateQuantity: (id: number, quantity: number) => void
   onRemove: (id: number) => void
   onMoveToWishlist: (id: number) => void
-}
-
-const CartItemCard: React.FC<CartItemCardProps> = ({
-  item,
-  onUpdateQuantity,
-  onRemove,
-  onMoveToWishlist
 }) => {
   return (
     <div className="bg-white rounded-xl border border-violet-200 p-4 hover:shadow-lg hover:border-violet-300 transition-all duration-300">

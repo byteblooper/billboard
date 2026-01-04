@@ -4,7 +4,19 @@ import React from 'react'
 import Image from 'next/image'
 import { MapPin, Clock, Star, ShieldCheck, MessageCircle, ExternalLink } from 'lucide-react'
 
-interface StoreInfoProps {
+const StoreInfo = ({
+  name,
+  image,
+  rating,
+  reviews,
+  verified,
+  distance,
+  walkTime,
+  bikeTime,
+  carTime,
+  address,
+  openHours,
+}: {
   name: string
   image: string
   rating: number
@@ -16,20 +28,6 @@ interface StoreInfoProps {
   carTime: string
   address: string
   openHours: string
-}
-
-const StoreInfo: React.FC<StoreInfoProps> = ({
-  name,
-  image,
-  rating,
-  reviews,
-  verified,
-  distance,
-  walkTime,
-  bikeTime,
-  carTime,
-  address,
-  openHours
 }) => {
   return (
     <div className="bg-white rounded-2xl border border-violet-100 p-5 space-y-4 shadow-sm">

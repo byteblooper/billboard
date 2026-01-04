@@ -5,21 +5,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { Heart, ShoppingCart } from "lucide-react";
 
-interface Product {
-  id: number;
-  name: string;
-  price: string;
-  unit: string;
-  distance: string;
-  category: string;
-  image?: string;
-}
-
-interface ProductCardProps {
-  product: Product;
-}
-
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard = ({
+  product,
+}: {
+  product: {
+    id: number;
+    name: string;
+    price: string;
+    unit: string;
+    distance: string;
+    category: string;
+    image?: string;
+  };
+}) => {
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();

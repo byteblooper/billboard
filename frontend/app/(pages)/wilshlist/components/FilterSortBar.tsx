@@ -14,7 +14,17 @@ export interface Collection {
   icon: string
 }
 
-interface FilterSortBarProps {
+const FilterSortBar = ({
+  sortBy,
+  filterBy,
+  viewMode,
+  showFilters,
+  collections,
+  onSortChange,
+  onFilterChange,
+  onViewModeChange,
+  onToggleFilters,
+}: {
   sortBy: SortOption
   filterBy: FilterOption
   viewMode: ViewMode
@@ -24,18 +34,6 @@ interface FilterSortBarProps {
   onFilterChange: (filter: FilterOption) => void
   onViewModeChange: (mode: ViewMode) => void
   onToggleFilters: () => void
-}
-
-const FilterSortBar: React.FC<FilterSortBarProps> = ({
-  sortBy,
-  filterBy,
-  viewMode,
-  showFilters,
-  collections,
-  onSortChange,
-  onFilterChange,
-  onViewModeChange,
-  onToggleFilters
 }) => {
   return (
     <div className="bg-white rounded-xl border border-violet-200 p-4 mb-4">

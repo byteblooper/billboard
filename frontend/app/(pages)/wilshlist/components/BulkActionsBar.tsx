@@ -3,20 +3,18 @@
 import React from 'react'
 import { ShoppingCart, Trash2, CheckCircle2 } from 'lucide-react'
 
-interface BulkActionsBarProps {
+const BulkActionsBar = ({
+  selectedCount,
+  totalCount,
+  onSelectAll,
+  onAddToCart,
+  onRemove,
+}: {
   selectedCount: number
   totalCount: number
   onSelectAll: () => void
   onAddToCart: () => void
   onRemove: () => void
-}
-
-const BulkActionsBar: React.FC<BulkActionsBarProps> = ({
-  selectedCount,
-  totalCount,
-  onSelectAll,
-  onAddToCart,
-  onRemove
 }) => {
   if (selectedCount === 0) return null
 

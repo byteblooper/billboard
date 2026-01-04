@@ -22,7 +22,7 @@ const missionData: MissionItem[] = [
   },
 ];
 
-const MissionVisionSection: React.FC = () => {
+const MissionVisionSection = () => {
   return (
     <section className="container mx-auto px-4 py-20 grid md:grid-cols-2 gap-12">
       {missionData.map((item, i) => {

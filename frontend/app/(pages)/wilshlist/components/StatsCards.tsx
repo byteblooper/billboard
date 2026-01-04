@@ -4,12 +4,11 @@ import React from 'react'
 import { Package, Zap, TrendingUp, Star } from 'lucide-react'
 import { WishlistItem } from './WishlistItemCard'
 
-
-interface StatsCardsProps {
+const StatsCards = ({
+  items,
+}: {
   items: WishlistItem[]
-}
-
-const StatsCards: React.FC<StatsCardsProps> = ({ items }) => {
+}) => {
   const totalSavings = items.reduce((acc, item) => 
     acc + (item.originalPrice - item.price), 0
   )

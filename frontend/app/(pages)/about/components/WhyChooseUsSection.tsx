@@ -49,7 +49,7 @@ const whyChooseUs: WhyChooseItem[] = [
   },
 ];
 
-const WhyChooseUsSection: React.FC = () => {
+const WhyChooseUsSection = () => {
   return (
     <section className="container mx-auto px-4 py-20">
       <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">

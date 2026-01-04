@@ -3,16 +3,11 @@
 import React from "react";
 import { Award } from "lucide-react";
 
-interface StatItem {
-  value: string;
-  label: string;
-}
-
-interface HeroSectionProps {
-  statsData: StatItem[];
-}
-
-const HeroSection: React.FC<HeroSectionProps> = ({ statsData }) => {
+const HeroSection = ({
+  statsData,
+}: {
+  statsData: { value: string; label: string }[]
+}) => {
   return (
     <section className="relative bg-linear-to-br from-gray-800 via-gray-900 to-black text-white overflow-hidden">
       {/* Background shapes for depth */}

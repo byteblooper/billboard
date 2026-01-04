@@ -13,7 +13,22 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 
-interface OrderSummaryProps {
+const OrderSummary = ({
+  subtotal,
+  totalSavings,
+  discount,
+  discountRate,
+  deliveryFee,
+  total,
+  totalItems,
+  appliedCoupon,
+  couponCode,
+  couponError,
+  onCouponChange,
+  onApplyCoupon,
+  onRemoveCoupon,
+  onCouponErrorClear,
+}: {
   subtotal: number
   totalSavings: number
   discount: number
@@ -28,23 +43,6 @@ interface OrderSummaryProps {
   onApplyCoupon: () => void
   onRemoveCoupon: () => void
   onCouponErrorClear: () => void
-}
-
-const OrderSummary: React.FC<OrderSummaryProps> = ({
-  subtotal,
-  totalSavings,
-  discount,
-  discountRate,
-  deliveryFee,
-  total,
-  totalItems,
-  appliedCoupon,
-  couponCode,
-  couponError,
-  onCouponChange,
-  onApplyCoupon,
-  onRemoveCoupon,
-  onCouponErrorClear
 }) => {
   return (
     <div className="bg-white rounded-xl border border-violet-200 p-5 sticky top-6 shadow-sm">

@@ -36,7 +36,7 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
-const TeamSection: React.FC = () => {
+const TeamSection = () => {
   return (
     <section className="bg-white py-20">
       <div className="container mx-auto px-4">

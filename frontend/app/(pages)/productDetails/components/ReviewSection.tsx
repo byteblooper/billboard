@@ -4,32 +4,28 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { Star, ThumbsUp, ThumbsDown, CheckCircle, Filter, ChevronDown } from 'lucide-react'
 
-interface Review {
-  id: number
-  author: string
-  avatar: string
-  rating: number
-  date: string
-  title: string
-  content: string
-  helpful: number
-  notHelpful: number
-  verified: boolean
-  images?: string[]
-}
-
-interface ReviewSectionProps {
-  reviews: Review[]
-  averageRating: number
-  totalReviews: number
-  ratingDistribution: { stars: number; count: number; percentage: number }[]
-}
-
-const ReviewSection: React.FC<ReviewSectionProps> = ({
+const ReviewSection = ({
   reviews,
   averageRating,
   totalReviews,
-  ratingDistribution
+  ratingDistribution,
+}: {
+  reviews: {
+    id: number
+    author: string
+    avatar: string
+    rating: number
+    date: string
+    title: string
+    content: string
+    helpful: number
+    notHelpful: number
+    verified: boolean
+    images?: string[]
+  }[]
+  averageRating: number
+  totalReviews: number
+  ratingDistribution: { stars: number; count: number; percentage: number }[]
 }) => {
   const [filterRating, setFilterRating] = useState<number | null>(null)
   const [sortBy, setSortBy] = useState<'newest' | 'helpful' | 'rating'>('newest')

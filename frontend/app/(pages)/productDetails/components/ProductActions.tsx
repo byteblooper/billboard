@@ -3,20 +3,18 @@
 import React, { useState } from 'react'
 import { Heart, ShoppingCart, Minus, Plus, Share2, Bell } from 'lucide-react'
 
-interface ProductActionsProps {
+const ProductActions = ({
+  productId,
+  productName,
+  price,
+  inStock,
+  stockCount = 10,
+}: {
   productId: number
   productName: string
   price: number
   inStock: boolean
   stockCount?: number
-}
-
-const ProductActions: React.FC<ProductActionsProps> = ({
-  productId,
-  productName,
-  price,
-  inStock,
-  stockCount = 10
 }) => {
   const [quantity, setQuantity] = useState(1)
   const [isWishlisted, setIsWishlisted] = useState(false)

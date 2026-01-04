@@ -5,12 +5,13 @@ import { LayoutDashboard, Package, ShoppingCart, Users, Store, Tag, Percent, Mes
 
 type TabType = 'dashboard' | 'products' | 'orders' | 'customers' | 'stores' | 'categories' | 'coupons' | 'chats'
 
-interface AdminSidebarProps {
+const AdminSidebar = ({
+  activeTab,
+  setActiveTab,
+}: {
   activeTab: TabType
   setActiveTab: (tab: TabType) => void
-}
-
-const AdminSidebar = ({ activeTab, setActiveTab }: AdminSidebarProps) => {
+}) => {
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-3">
       <nav className="space-y-1">

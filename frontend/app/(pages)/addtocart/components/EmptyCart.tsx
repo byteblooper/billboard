@@ -6,11 +6,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { RecommendedProduct } from './RecommendedProducts'
 
-interface EmptyCartProps {
+const EmptyCart = ({
+  recommendedProducts,
+}: {
   recommendedProducts: RecommendedProduct[]
-}
-
-const EmptyCart: React.FC<EmptyCartProps> = ({ recommendedProducts }) => {
+}) => {
   return (
     <div className="max-w-md mx-auto">
       <div className="bg-white rounded-2xl border border-violet-200 p-12 text-center shadow-sm">

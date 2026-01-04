@@ -4,16 +4,11 @@ import React from 'react'
 import { ChevronRight, Home } from 'lucide-react'
 import Link from 'next/link'
 
-interface BreadcrumbItem {
-  label: string
-  href?: string
-}
-
-interface BreadcrumbsProps {
-  items: BreadcrumbItem[]
-}
-
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
+const Breadcrumbs = ({
+  items,
+}: {
+  items: { label: string; href?: string }[]
+}) => {
   return (
     <nav className="flex items-center gap-2 text-sm overflow-x-auto pb-2">
       <Link

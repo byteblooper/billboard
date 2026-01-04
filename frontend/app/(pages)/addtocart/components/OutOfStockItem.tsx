@@ -5,16 +5,14 @@ import { Trash2, Heart } from 'lucide-react'
 import Image from 'next/image'
 import { CartItem } from './CartItemCard'
 
-interface OutOfStockItemProps {
+const OutOfStockItem = ({
+  item,
+  onRemove,
+  onMoveToWishlist,
+}: {
   item: CartItem
   onRemove: (id: number) => void
   onMoveToWishlist: (id: number) => void
-}
-
-const OutOfStockItem: React.FC<OutOfStockItemProps> = ({
-  item,
-  onRemove,
-  onMoveToWishlist
 }) => {
   return (
     <div className="bg-white/60 rounded-xl border border-amber-200 p-4 opacity-75">

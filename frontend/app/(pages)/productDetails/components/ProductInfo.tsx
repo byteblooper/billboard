@@ -3,19 +3,7 @@
 import React from 'react'
 import { Star, ShieldCheck, Truck, RotateCcw, Tag } from 'lucide-react'
 
-interface ProductInfoProps {
-  name: string
-  price: number
-  originalPrice: number
-  discount: number
-  rating: number
-  reviews: number
-  verified: boolean
-  description: string
-  features: string[]
-}
-
-const ProductInfo: React.FC<ProductInfoProps> = ({
+const ProductInfo = ({
   name,
   price,
   originalPrice,
@@ -24,7 +12,15 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   reviews,
   verified,
   description,
-  features
+}: {
+  name: string
+  price: number
+  originalPrice: number
+  discount: number
+  rating: number
+  reviews: number
+  verified: boolean
+  description: string
 }) => {
   return (
     <div className="space-y-6">
@@ -92,23 +88,8 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
       {/* Description */}
       <div>
         <h3 className="text-lg font-semibold text-gray-900 mb-2">Description</h3>
-        <p className="text-gray-600 leading-relaxed">{description}</p>
+        <p className="text-gray-600 leading-relaxed whitespace-pre-line">{description}</p>
       </div>
-
-      {/* Features */}
-      {features.length > 0 && (
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-3">Key Features</h3>
-          <ul className="space-y-2">
-            {features.map((feature, index) => (
-              <li key={index} className="flex items-start gap-2 text-gray-600">
-                <span className="w-1.5 h-1.5 rounded-full bg-violet-500 mt-2 shrink-0" />
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       {/* Trust Badges */}
       <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-100">

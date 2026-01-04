@@ -30,35 +30,31 @@ const demoProducts = [
 
 The stunning 6.7-inch Super Retina XDR display with ProMotion technology offers an incredibly smooth scrolling experience and supports always-on display. The titanium design makes it our lightest Pro model ever, while maintaining exceptional durability.
 
-Capture professional-quality photos and videos with the advanced 48MP main camera system featuring a 5x optical zoom on the telephoto lens. The new Action button lets you customize your experience with quick access to your favorite features.`,
-    features: [
-      'A17 Pro chip with 6-core GPU for console-level gaming',
-      '48MP main camera with 5x optical zoom telephoto',
-      'Titanium design - lightest Pro model ever',
-      '6.7" Super Retina XDR display with ProMotion',
-      'Customizable Action button',
-      'USB-C with USB 3 speeds up to 10 Gb/s',
-      'All-day battery life with fast charging support'
-    ],
+Capture professional-quality photos and videos with the advanced 48MP main camera system featuring a 5x optical zoom on the telephoto lens. The new Action button lets you customize your experience with quick access to your favorite features.
+
+Key Features:
+• A17 Pro chip with 6-core GPU for console-level gaming
+• 48MP main camera with 5x optical zoom telephoto
+• Titanium design - lightest Pro model ever
+• 6.7" Super Retina XDR display with ProMotion
+• Customizable Action button
+• USB-C with USB 3 speeds up to 10 Gb/s
+• All-day battery life with fast charging support
+
+Specifications:
+• Display: 6.7" Super Retina XDR (2796 x 1290 pixels)
+• Processor: A17 Pro chip
+• Storage: 256GB | RAM: 8GB
+• Camera: 48MP + 12MP + 12MP (Rear) | 12MP TrueDepth (Front)
+• Battery: 4422 mAh
+• OS: iOS 17
+• Weight: 221 grams
+• Water Resistance: IP68`,
     images: [
       'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80',
       'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80',
       'https://images.unsplash.com/photo-1580910051074-3eb694886f2b?w=800&q=80',
       'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800&q=80'
-    ],
-    specifications: [
-      { label: 'Display', value: '6.7" Super Retina XDR' },
-      { label: 'Resolution', value: '2796 x 1290 pixels' },
-      { label: 'Processor', value: 'A17 Pro chip' },
-      { label: 'Storage', value: '256GB' },
-      { label: 'RAM', value: '8GB' },
-      { label: 'Main Camera', value: '48MP + 12MP + 12MP' },
-      { label: 'Front Camera', value: '12MP TrueDepth' },
-      { label: 'Battery', value: '4422 mAh' },
-      { label: 'OS', value: 'iOS 17' },
-      { label: 'Weight', value: '221 grams' },
-      { label: 'Dimensions', value: '159.9 x 76.7 x 8.25 mm' },
-      { label: 'Water Resistance', value: 'IP68' }
     ],
     store: {
       name: 'TechZone Electronics',
@@ -91,35 +87,31 @@ Capture professional-quality photos and videos with the advanced 48MP main camer
 
 The revolutionary 200MP camera system captures incredible detail in every shot. Night photography reaches new heights with advanced AI-powered processing. Record stunning 8K video and never miss a moment.
 
-Powered by the Snapdragon 8 Gen 3 for Galaxy, experience lightning-fast performance for gaming, multitasking, and AI features that adapt to how you use your phone.`,
-    features: [
-      '200MP main camera with advanced AI processing',
-      'Snapdragon 8 Gen 3 for Galaxy processor',
-      'Built-in S Pen with enhanced functionality',
-      '6.8" Dynamic AMOLED 2X display',
-      '5000mAh battery with 45W fast charging',
-      'Titanium frame with Gorilla Armor glass',
-      'Galaxy AI features for productivity'
-    ],
+Powered by the Snapdragon 8 Gen 3 for Galaxy, experience lightning-fast performance for gaming, multitasking, and AI features that adapt to how you use your phone.
+
+Key Features:
+• 200MP main camera with advanced AI processing
+• Snapdragon 8 Gen 3 for Galaxy processor
+• Built-in S Pen with enhanced functionality
+• 6.8" Dynamic AMOLED 2X display
+• 5000mAh battery with 45W fast charging
+• Titanium frame with Gorilla Armor glass
+• Galaxy AI features for productivity
+
+Specifications:
+• Display: 6.8" Dynamic AMOLED 2X (3120 x 1440 pixels)
+• Processor: Snapdragon 8 Gen 3
+• Storage: 512GB | RAM: 12GB
+• Camera: 200MP + 12MP + 50MP + 10MP (Rear) | 12MP (Front)
+• Battery: 5000 mAh
+• OS: Android 14
+• Weight: 232 grams
+• Water Resistance: IP68`,
     images: [
       'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&q=80',
       'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?w=800&q=80',
       'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=800&q=80',
       'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&q=80'
-    ],
-    specifications: [
-      { label: 'Display', value: '6.8" Dynamic AMOLED 2X' },
-      { label: 'Resolution', value: '3120 x 1440 pixels' },
-      { label: 'Processor', value: 'Snapdragon 8 Gen 3' },
-      { label: 'Storage', value: '512GB' },
-      { label: 'RAM', value: '12GB' },
-      { label: 'Main Camera', value: '200MP + 12MP + 50MP + 10MP' },
-      { label: 'Front Camera', value: '12MP' },
-      { label: 'Battery', value: '5000 mAh' },
-      { label: 'OS', value: 'Android 14' },
-      { label: 'Weight', value: '232 grams' },
-      { label: 'Dimensions', value: '162.3 x 79.0 x 8.6 mm' },
-      { label: 'Water Resistance', value: 'IP68' }
     ],
     store: {
       name: 'Galaxy Store',
@@ -152,35 +144,30 @@ Powered by the Snapdragon 8 Gen 3 for Galaxy, experience lightning-fast performa
 
 The new design is lighter and more comfortable than ever, with soft-fit leather for long listening sessions. Crystal clear hands-free calling with AI-powered noise reduction ensures your voice is always heard clearly.
 
-With up to 30 hours of battery life and quick charging (3 hours of playback from 3 minutes of charge), your music never has to stop.`,
-    features: [
-      'Industry-leading noise cancellation with 8 microphones',
-      '30-hour battery life with quick charge',
-      'Speak-to-Chat pauses music automatically',
-      'Multipoint connection for 2 devices',
-      'Crystal clear calls with AI noise reduction',
-      'Touch controls and voice assistant support',
-      'Lightweight design at 250g'
-    ],
+With up to 30 hours of battery life and quick charging (3 hours of playback from 3 minutes of charge), your music never has to stop.
+
+Key Features:
+• Industry-leading noise cancellation with 8 microphones
+• 30-hour battery life with quick charge
+• Speak-to-Chat pauses music automatically
+• Multipoint connection for 2 devices
+• Crystal clear calls with AI noise reduction
+• Touch controls and voice assistant support
+• Lightweight design at 250g
+
+Specifications:
+• Driver Unit: 30mm
+• Frequency Response: 4Hz - 40,000Hz
+• Battery Life: 30 hours
+• Quick Charge: 3 min = 3 hours playback
+• Bluetooth: 5.2
+• Codecs: SBC, AAC, LDAC
+• Weight: 250g`,
     images: [
       'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=800&q=80',
       'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80',
       'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&q=80',
       'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&q=80'
-    ],
-    specifications: [
-      { label: 'Driver Unit', value: '30mm' },
-      { label: 'Frequency Response', value: '4Hz - 40,000Hz' },
-      { label: 'Impedance', value: '48 ohms' },
-      { label: 'Battery Life', value: '30 hours' },
-      { label: 'Charging Time', value: '3.5 hours' },
-      { label: 'Quick Charge', value: '3 min = 3 hours' },
-      { label: 'Weight', value: '250g' },
-      { label: 'Bluetooth', value: '5.2' },
-      { label: 'Codecs', value: 'SBC, AAC, LDAC' },
-      { label: 'NFC', value: 'Yes' },
-      { label: 'Microphones', value: '8' },
-      { label: 'Foldable', value: 'Yes' }
     ],
     store: {
       name: 'Audio Paradise',
@@ -213,35 +200,30 @@ With up to 30 hours of battery life and quick charging (3 hours of playback from
 
 The Liquid Retina XDR display offers extreme dynamic range with 1600 nits peak brightness, perfect for HDR content. P3 wide color gamut and ProMotion technology provide stunning visuals for creative professionals.
 
-With up to 18 hours of battery life, you can work all day without searching for an outlet. The new Space Black finish is stunning and resists fingerprints.`,
-    features: [
-      'Apple M3 Pro chip with 12-core CPU',
-      '18-core GPU for graphics-intensive tasks',
-      '18GB unified memory',
-      '14.2" Liquid Retina XDR display',
-      'Up to 18 hours battery life',
-      'Six-speaker sound system with Spatial Audio',
-      'MagSafe 3 charging and multiple ports'
-    ],
+With up to 18 hours of battery life, you can work all day without searching for an outlet. The new Space Black finish is stunning and resists fingerprints.
+
+Key Features:
+• Apple M3 Pro chip with 12-core CPU
+• 18-core GPU for graphics-intensive tasks
+• 18GB unified memory
+• 14.2" Liquid Retina XDR display
+• Up to 18 hours battery life
+• Six-speaker sound system with Spatial Audio
+• MagSafe 3 charging and multiple ports
+
+Specifications:
+• Chip: Apple M3 Pro (12-core CPU, 18-core GPU)
+• Memory: 18GB Unified
+• Storage: 512GB SSD
+• Display: 14.2" Liquid Retina XDR (3024 x 1964)
+• Ports: 3x Thunderbolt 4, HDMI, SD, MagSafe
+• Battery: Up to 18 hours
+• Weight: 1.61 kg`,
     images: [
       'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80',
       'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80',
       'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&q=80',
       'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&q=80'
-    ],
-    specifications: [
-      { label: 'Chip', value: 'Apple M3 Pro' },
-      { label: 'CPU Cores', value: '12 (6P + 6E)' },
-      { label: 'GPU Cores', value: '18' },
-      { label: 'Memory', value: '18GB Unified' },
-      { label: 'Storage', value: '512GB SSD' },
-      { label: 'Display', value: '14.2" Liquid Retina XDR' },
-      { label: 'Resolution', value: '3024 x 1964' },
-      { label: 'Battery', value: 'Up to 18 hours' },
-      { label: 'Weight', value: '1.61 kg' },
-      { label: 'Ports', value: '3x Thunderbolt 4, HDMI, SD, MagSafe' },
-      { label: 'Keyboard', value: 'Backlit Magic Keyboard' },
-      { label: 'Touch ID', value: 'Yes' }
     ],
     store: {
       name: 'Apple Premium Reseller',
@@ -274,35 +256,31 @@ With up to 18 hours of battery life, you can work all day without searching for 
 
 The result is a shoe that delivers exceptional cushioning and a smooth, responsive ride. The breathable mesh upper keeps your feet cool, while the sleek silhouette looks great with any outfit.
 
-Whether you're hitting the streets or spending the day on your feet, the Air Max 270 React provides all-day comfort and head-turning style.`,
-    features: [
-      'Nike React foam for soft, responsive cushioning',
-      'Max Air 270 unit for maximum impact protection',
-      'Breathable mesh upper',
-      'No-sew overlays for durability',
-      'Rubber outsole for traction',
-      'Foam midsole for lightweight comfort',
-      'Pull tab for easy on/off'
-    ],
+Whether you're hitting the streets or spending the day on your feet, the Air Max 270 React provides all-day comfort and head-turning style.
+
+Key Features:
+• Nike React foam for soft, responsive cushioning
+• Max Air 270 unit for maximum impact protection
+• Breathable mesh upper
+• No-sew overlays for durability
+• Rubber outsole for traction
+• Foam midsole for lightweight comfort
+• Pull tab for easy on/off
+
+Specifications:
+• Style: Air Max 270 React
+• Color: Black/White
+• Material: Mesh, Synthetic
+• Sole: Rubber
+• Cushioning: React + Air Max
+• Available Sizes: US 6-14
+• Weight: 340g (Size 10)
+• Fit: True to size`,
     images: [
       'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
       'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&q=80',
       'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=800&q=80',
       'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&q=80'
-    ],
-    specifications: [
-      { label: 'Brand', value: 'Nike' },
-      { label: 'Style', value: 'Air Max 270 React' },
-      { label: 'Color', value: 'Black/White' },
-      { label: 'Material', value: 'Mesh, Synthetic' },
-      { label: 'Sole', value: 'Rubber' },
-      { label: 'Closure', value: 'Lace-up' },
-      { label: 'Cushioning', value: 'React + Air Max' },
-      { label: 'Available Sizes', value: 'US 6-14' },
-      { label: 'Weight', value: '340g (Size 10)' },
-      { label: 'Fit', value: 'True to size' },
-      { label: 'Gender', value: 'Unisex' },
-      { label: 'Care', value: 'Spot clean' }
     ],
     store: {
       name: 'Sneaker World',
@@ -482,7 +460,6 @@ export default async function ProductDetailsPage({ params }: Props) {
               reviews={product.reviews}
               verified={product.verified}
               description={product.description}
-              features={product.features}
             />
 
             <ProductActions
@@ -500,7 +477,6 @@ export default async function ProductDetailsPage({ params }: Props) {
           <div className="lg:col-span-2">
             <ProductTabs
               description={product.description}
-              specifications={product.specifications}
             />
           </div>
           <div>

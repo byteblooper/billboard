@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 
-const CTASection: React.FC = () => {
+const CTASection = () => {
   return (
     <section className="container mx-auto px-4 py-20 text-center">
       <div className="bg-linear-to-br from-violet-600 to-violet-700 rounded-3xl p-12 shadow-xl relative overflow-hidden">

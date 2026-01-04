@@ -5,26 +5,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Star, Heart, ShoppingCart, ShieldCheck } from 'lucide-react'
 
-interface RelatedProduct {
-  id: number
-  name: string
-  image: string
-  price: number
-  originalPrice: number
-  discount: number
-  rating: number
-  reviews: number
-  verified: boolean
-}
-
-interface RelatedProductsProps {
-  products: RelatedProduct[]
-  title?: string
-}
-
-const RelatedProducts: React.FC<RelatedProductsProps> = ({
+const RelatedProducts = ({
   products,
-  title = 'Related Products'
+  title = 'Related Products',
+}: {
+  products: {
+    id: number
+    name: string
+    image: string
+    price: number
+    originalPrice: number
+    discount: number
+    rating: number
+    reviews: number
+    verified: boolean
+  }[]
+  title?: string
 }) => {
   const handleQuickAction = (e: React.MouseEvent) => {
     e.preventDefault()

@@ -4,12 +4,13 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
 
-interface ProductGalleryProps {
+const ProductGallery = ({
+  images,
+  productName,
+}: {
   images: string[]
   productName: string
-}
-
-const ProductGallery: React.FC<ProductGalleryProps> = ({ images, productName }) => {
+}) => {
   const [selectedImage, setSelectedImage] = useState(0)
   const [isZoomed, setIsZoomed] = useState(false)
 

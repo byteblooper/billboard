@@ -3,11 +3,11 @@
 import React from 'react'
 import { Filter } from 'lucide-react'
 
-interface NoFilterMatchProps {
+const NoFilterMatch = ({
+  onClearFilter,
+}: {
   onClearFilter: () => void
-}
-
-const NoFilterMatch: React.FC<NoFilterMatchProps> = ({ onClearFilter }) => {
+}) => {
   return (
     <div className="bg-white rounded-xl border border-violet-200 p-12 text-center">
       <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-violet-100 flex items-center justify-center">

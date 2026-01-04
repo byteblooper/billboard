@@ -14,11 +14,11 @@ export interface RecommendedProduct {
   store: string
 }
 
-interface RecommendedProductsProps {
+const RecommendedProducts = ({
+  products,
+}: {
   products: RecommendedProduct[]
-}
-
-const RecommendedProducts: React.FC<RecommendedProductsProps> = ({ products }) => {
+}) => {
   return (
     <div className="mt-8 bg-white rounded-xl border border-violet-200 p-5">
       <h3 className="text-lg font-bold text-violet-900 mb-4 flex items-center gap-2">

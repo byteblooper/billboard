@@ -35,22 +35,20 @@ export interface WishlistItem {
   savedDays: number
 }
 
-interface WishlistItemCardProps {
+const WishlistItemCard = ({
+  item,
+  isSelected,
+  viewMode,
+  onSelect,
+  onAddToCart,
+  onRemove,
+}: {
   item: WishlistItem
   isSelected: boolean
   viewMode: 'grid' | 'list'
   onSelect: (id: number) => void
   onAddToCart: (id: number) => void
   onRemove: (id: number) => void
-}
-
-const WishlistItemCard: React.FC<WishlistItemCardProps> = ({
-  item,
-  isSelected,
-  viewMode,
-  onSelect,
-  onAddToCart,
-  onRemove
 }) => {
   if (viewMode === 'list') {
     return (
