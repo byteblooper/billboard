@@ -9,18 +9,18 @@ const FashionSection = () => {
 
   return (
     <section className="mb-8">
-      <h2 className="text-2xl font-black text-violet-600 mb-4">Fashion List</h2>
+      <h2 className="text-xl sm:text-2xl font-black text-violet-600 mb-4">Fashion List</h2>
 
+      <div className="flex flex-col lg:flex-row justify-between gap-4">
+        {/* Product Grid - Responsive columns */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 flex-1 gap-3 sm:gap-4">
+          {fashionItems.map((item) => (
+            <ProductCard key={item.id} product={item} />
+          ))}
+        </div>
 
-    <div className="flex justify-between gap-4 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 flex-1 gap-4 ">
-        {fashionItems.map((item) => (
-          <ProductCard key={item.id} product={item} />
-        ))}
-        
-      </div>
-      {/* Big Sale Banner */}
-        <div className="w-70 bg-linear-to-br from-orange-400 to-yellow-500 rounded-xl p-5 text-white relative overflow-hidden shadow-lg shrink-0">
+        {/* Big Sale Banner - Hidden on mobile */}
+        <div className="hidden lg:block w-70 bg-linear-to-br from-orange-400 to-yellow-500 rounded-xl p-5 text-white relative overflow-hidden shadow-lg shrink-0">
           <Image 
             src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400" 
             alt="Fashion Sale"
@@ -39,10 +39,10 @@ const FashionSection = () => {
             <p className="text-xs opacity-90">Limited time fashion deals</p>
           </div>
         </div>
+      </div>
 
-    </div>
       <div className="text-center mt-5">
-        <button className="px-6 py-2 mt-5 bg-black text-white rounded-full font-semibold text-sm hover:bg-gray-800 transition-colors">
+        <button className="px-6 py-2.5 bg-black text-white rounded-full font-semibold text-sm hover:bg-gray-800 transition-colors">
           Load More
         </button>
       </div>

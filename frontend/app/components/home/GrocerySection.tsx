@@ -9,18 +9,18 @@ const GrocerySection = () => {
 
   return (
     <section className="mb-8">
-      <h2 className="text-2xl font-black text-violet-600 mb-4">Grocery List</h2>
+      <h2 className="text-xl sm:text-2xl font-black text-violet-600 mb-4">Grocery List</h2>
 
+      <div className="flex flex-col lg:flex-row justify-between gap-4">
+        {/* Product Grid - Responsive columns */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 flex-1 gap-3 sm:gap-4">
+          {groceryItems.map((item) => (
+            <ProductCard key={item.id} product={item} />
+          ))}
+        </div>
 
-    <div className="flex justify-between gap-4 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 flex-1 gap-4 ">
-        {groceryItems.map((item) => (
-          <ProductCard key={item.id} product={item} />
-        ))}
-        
-      </div>
-      {/* Flash Sale Banner */}
-        <div className="w-70 bg-linear-to-br from-violet-600 via-purple-600 to-pink-600 rounded-xl p-5 text-white relative overflow-hidden shadow-lg shrink-0">
+        {/* Flash Sale Banner - Hidden on mobile (shown separately) */}
+        <div className="hidden lg:block w-70 bg-linear-to-br from-violet-600 via-purple-600 to-pink-600 rounded-xl p-5 text-white relative overflow-hidden shadow-lg shrink-0">
           <Image 
             src="https://images.unsplash.com/photo-1601599561213-832382fd07ba?w=400" 
             alt="Flash Sale"
@@ -43,10 +43,10 @@ const GrocerySection = () => {
           </div>
           <div className="absolute bottom-0 right-0 w-28 h-28 bg-white/10 rounded-full blur-3xl"></div>
         </div>
+      </div>
 
-    </div>
       <div className="text-center mt-5">
-        <button className="px-6 py-2 mt-5 bg-black text-white rounded-full font-semibold text-sm hover:bg-gray-800 transition-colors">
+        <button className="px-6 py-2.5 bg-black text-white rounded-full font-semibold text-sm hover:bg-gray-800 transition-colors">
           Load More
         </button>
       </div>
