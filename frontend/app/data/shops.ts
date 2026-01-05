@@ -155,6 +155,3 @@ export const defaultShopFilters: ShopFilterState = {
   isOpen: null,
   verifiedOnly: false
 }
-
-// Shop categories
-export const shopCategories = ['All', 'Electronics', 'Fashion', 'Food & Beverage', 'Sports', 'Home & Garden', 'Health & Beauty']

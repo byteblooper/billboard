@@ -1,5 +1,5 @@
 import React from 'react'
-import { Camera, Edit2, Mail, MapPin, Phone, Settings } from 'lucide-react'
+import { Camera, Edit2, Mail, MapPin, Phone, Settings, User } from 'lucide-react'
 import Image from 'next/image'
 
 type ProfileHeaderProps = {
@@ -25,14 +25,18 @@ const ProfileHeader = ({ userInfo }: ProfileHeaderProps) => {
         {/* Avatar */}
         <div className="relative group">
           <div className="absolute -inset-2 bg-linear-to-br from-violet-500 to-indigo-500 rounded-full blur opacity-75"></div>
-          <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-2xl">
-            <Image
-              src={userInfo.avatar}
-              alt={userInfo.name}
-              width={128}
-              height={128}
-              className="w-full h-full object-cover"
-            />
+          <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-violet-200 flex items-center justify-center">
+            {userInfo.avatar ? (
+              <Image
+                src={userInfo.avatar}
+                alt={userInfo.name}
+                width={128}
+                height={128}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <User className="w-16 h-16 text-violet-600" />
+            )}
           </div>
           <button className="absolute bottom-0 right-0 w-10 h-10 bg-linear-to-br from-violet-500 to-indigo-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
             <Camera className="w-5 h-5 text-white" />
@@ -50,16 +54,20 @@ const ProfileHeader = ({ userInfo }: ProfileHeaderProps) => {
           <div className="space-y-2 text-violet-300">
             <p className="flex items-center justify-center md:justify-start gap-2">
               <Mail className="w-4 h-4" />
-              {userInfo.email}
+              {userInfo.email || 'No email provided'}
             </p>
-            <p className="flex items-center justify-center md:justify-start gap-2">
-              <Phone className="w-4 h-4" />
-              {userInfo.phone}
-            </p>
-            <p className="flex items-center justify-center md:justify-start gap-2">
-              <MapPin className="w-4 h-4" />
-              {userInfo.location}
-            </p>
+            {userInfo.phone && (
+              <p className="flex items-center justify-center md:justify-start gap-2">
+                <Phone className="w-4 h-4" />
+                {userInfo.phone}
+              </p>
+            )}
+            {userInfo.location && (
+              <p className="flex items-center justify-center md:justify-start gap-2">
+                <MapPin className="w-4 h-4" />
+                {userInfo.location}
+              </p>
+            )}
           </div>
         </div>
 

@@ -1,18 +1,53 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSession } from 'next-auth/react'
 import PersonalInfoTab from './components/PersonalInfoTab'
 import OrderHistoryTab from './components/OrderHistoryTab'
 import ProfileHeader from './components/ProfileHeader'
 import StatsCards from './components/StatsCards'
 import SidebarMenu from './components/SidebarMenu'
-import { userInfo, userStats, orders, profileMenuItems } from '@/app/data'
+import { defaultUserStats, orders, profileMenuItems, type UserInfo } from '@/app/data'
 
 // Types
 type TabType = 'Personal Info' | 'Order History' | 'Wishlist' | 'Addresses' | 'Payment Methods' | 'Notifications' | 'Settings'
 
 export default function ProfilePage() {
+  const { data: session, status } = useSession()
   const [activeTab, setActiveTab] = useState<TabType>('Personal Info')
+  const [mounted, setMounted] = useState(false)
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Build user info from session (only after mounted)
+  const userInfo: UserInfo = mounted ? {
+    name: session?.user?.name || (session?.user as any)?.username || 'User',
+    email: session?.user?.email || '',
+    phone: '',
+    location: '',
+    avatar: session?.user?.image || '',
+    memberLevel: 'Member',
+    joinDate: 'Member'
+  } : {
+    name: 'User',
+    email: '',
+    phone: '',
+    location: '',
+    avatar: '',
+    memberLevel: 'Member',
+    joinDate: 'Member'
+  }
+
+  if (!mounted || status === 'loading') {
+    return (
+      <div className="min-h-screen bg-linear-to-br from-violet-50 via-white to-indigo-50 flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-violet-600 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    )
+  }
 
   const renderContent = () => {
     switch (activeTab) {
@@ -37,7 +72,7 @@ export default function ProfilePage() {
         <ProfileHeader userInfo={userInfo} />
 
         {/* Stats Cards */}
-        <StatsCards stats={userStats} />
+        <StatsCards stats={defaultUserStats} />
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-4 gap-6">

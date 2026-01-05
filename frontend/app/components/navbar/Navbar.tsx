@@ -23,31 +23,27 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
-
-// Demo user data - set to null for logged out state, or provide data for logged in
-const demoUser = {
-  name: "John Doe",
-  email: "john.doe@email.com",
-  avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-  memberLevel: "Gold Member",
-  role: "admin" 
-};
-
-// Demo cart and wishlist counts
-const demoCartCount = 5;
-const demoWishlistCount = 3;
+import { useSession, signOut } from "next-auth/react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { data: session, status } = useSession();
+  const [mounted, setMounted] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [query, setQuery] = useState("");
   
-  // Use demo user - change to null to show sign in/sign up
-  const [user, setUser] = useState<typeof demoUser | null>(demoUser);
-  
   const profileRef = useRef<HTMLDivElement>(null);
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // User data from session (only after mounted)
+  const user = mounted ? session?.user : null;
+  const isAdmin = (user as any)?.role === "admin"; // Add role check if you have it in your user model
 
   const allMenuItems = [
     { href: "/shop", label: "Shop", icon: Store, adminOnly: false },
@@ -58,7 +54,7 @@ export default function Navbar() {
 
   // Filter menu items based on user role - only show admin route to admins
   const menuItems = allMenuItems.filter(
-    (item) => !item.adminOnly || (user?.role === "admin")
+    (item) => !item.adminOnly || isAdmin
   );
 
   const transitionClass = "transition-all duration-300 ease-in-out";
@@ -92,14 +88,9 @@ export default function Navbar() {
     setMobileMenuOpen(false);
   };
 
-  const handleLogout = () => {
-    setUser(null);
+  const handleLogout = async () => {
     setProfileDropdownOpen(false);
-  };
-
-  const handleDemoLogin = () => {
-    setUser(demoUser);
-    setProfileDropdownOpen(false);
+    await signOut({ callbackUrl: '/' });
   };
 
   return (
@@ -194,11 +185,6 @@ export default function Navbar() {
             className="relative p-2 hover:bg-white/40 rounded-full group transition"
           >
             <Heart className="w-5 h-5 text-gray-700 group-hover:text-violet-600" />
-            {demoWishlistCount > 0 && (
-              <span className="absolute -top-1 -right-1 text-[9px] sm:text-[10px] bg-violet-600 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold ring-1 ring-white/50">
-                {demoWishlistCount}
-              </span>
-            )}
           </Link>
 
           {/* CART */}
@@ -207,11 +193,6 @@ export default function Navbar() {
             className="relative p-2 hover:bg-white/40 rounded-full group transition"
           >
             <ShoppingCart className="w-5 h-5 text-gray-700 group-hover:text-violet-700" />
-            {demoCartCount > 0 && (
-              <span className="absolute -top-1 -right-1 text-[9px] sm:text-[10px] bg-indigo-700 text-white w-4 h-4 rounded-full flex items-center justify-center font-bold ring-1 ring-white/50">
-                {demoCartCount}
-              </span>
-            )}
           </Link>
 
           {/* PROFILE / AUTH */}
@@ -222,14 +203,18 @@ export default function Navbar() {
                 onClick={toggleProfileDropdown}
                 className="hidden sm:flex items-center gap-2 p-1.5 hover:bg-white/40 rounded-full transition"
               >
-                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-violet-400">
-                  <Image
-                    src={user.avatar}
-                    alt={user.name}
-                    width={32}
-                    height={32}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-violet-400 bg-violet-100 flex items-center justify-center">
+                  {user.image ? (
+                    <Image
+                      src={user.image}
+                      alt={user.name || 'User'}
+                      width={32}
+                      height={32}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <User className="w-4 h-4 text-violet-600" />
+                  )}
                 </div>
                 <ChevronDown className={`w-4 h-4 text-gray-600 transition-transform ${profileDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -259,18 +244,22 @@ export default function Navbar() {
                 {/* User Info */}
                 <div className="p-4 bg-linear-to-r from-violet-50 to-indigo-50 border-b border-gray-100">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-violet-400">
-                      <Image
-                        src={user.avatar}
-                        alt={user.name}
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-violet-400 bg-violet-100 flex items-center justify-center">
+                      {user.image ? (
+                        <Image
+                          src={user.image}
+                          alt={user.name || 'User'}
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <User className="w-6 h-6 text-violet-600" />
+                      )}
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">{user.name}</p>
-                      <p className="text-xs text-violet-600">{user.memberLevel}</p>
+                      <p className="font-semibold text-gray-900">{user.name || (user as any).username || 'User'}</p>
+                      <p className="text-xs text-violet-600">{user.email}</p>
                     </div>
                   </div>
                 </div>

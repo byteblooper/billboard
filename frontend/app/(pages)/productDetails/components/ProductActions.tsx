@@ -25,7 +25,7 @@ const ProductActions = ({
   }
 
   const handleAddToCart = () => {
-    console.log(`Adding ${quantity} of product ${productId} to cart`)
+    // TODO: Implement add to cart functionality
     setAddedToCart(true)
     setTimeout(() => setAddedToCart(false), 2000)
   }
@@ -41,8 +41,8 @@ const ProductActions = ({
           title: productName,
           url: window.location.href
         })
-      } catch (err) {
-        console.log('Share cancelled', err)
+      } catch {
+        // Share was cancelled or failed
       }
     } else {
       navigator.clipboard.writeText(window.location.href)

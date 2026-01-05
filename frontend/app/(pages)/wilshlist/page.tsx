@@ -94,11 +94,11 @@ export default function WishlistPage() {
   }
 
   const addToCart = (id: number) => {
-    console.log('Add to cart:', id)
+    // TODO: Implement add to cart functionality
   }
 
   const addAllToCart = () => {
-    console.log('Add all selected to cart:', selectedItems)
+    // TODO: Implement add all to cart functionality
   }
 
   // Empty state

@@ -21,13 +21,13 @@ const ProductCard = ({
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(`Added product ${product.id} to cart`);
+    // TODO: Implement add to cart functionality
   };
 
   const handleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(`Added product ${product.id} to wishlist`);
+    // TODO: Implement wishlist functionality
   };
 
   return (

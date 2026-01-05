@@ -7,7 +7,7 @@ import ProductTabs from '../components/ProductTabs'
 import StoreInfo from '../components/StoreInfo'
 import ReviewSection from '../components/ReviewSection'
 import RelatedProducts from '../components/RelatedProducts'
-import { productDetailsDatabase, getProductById, getRelatedProducts, demoReviews, getRatingDistribution } from '@/app/data'
+import { productDetailsDatabase, getRelatedProducts, demoReviews, getRatingDistribution } from '@/app/data'
 
 // Create lookup database from array
 const productsDatabase: Record<string, typeof productDetailsDatabase[0]> = {}

@@ -49,19 +49,3 @@ export const orders: Order[] = [
     image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=100&h=100&fit=crop'
   }
 ]
-
-// Order status helper
-export const getStatusStyles = (status: Order['status']) => {
-  switch (status) {
-    case 'delivered':
-      return 'bg-emerald-100 text-emerald-700'
-    case 'in-transit':
-      return 'bg-blue-100 text-blue-700'
-    case 'processing':
-      return 'bg-violet-100 text-violet-700'
-    case 'cancelled':
-      return 'bg-red-100 text-red-700'
-    default:
-      return 'bg-gray-100 text-gray-700'
-  }
-}

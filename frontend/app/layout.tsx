@@ -4,6 +4,7 @@ import "./globals.css";
 import TopBanner from "./components/navbar/TopBanner";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/Footer";
+import SessionProvider from "./providers/SessionProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <TopBanner />
-        <Navbar />
-        <main>
-
-        {children}
-        </main>
-        <Footer />
+        <SessionProvider>
+          <TopBanner />
+          <Navbar />
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );
