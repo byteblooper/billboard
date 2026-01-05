@@ -34,6 +34,7 @@ export async function POST(request: NextRequest) {
       email,
       phone: phone || "",
       password: hashedPassword,
+      role: "user",
     });
 
     return NextResponse.json(

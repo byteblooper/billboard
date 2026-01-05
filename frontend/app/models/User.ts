@@ -9,15 +9,21 @@ export interface IUser {
   phone?: string
   password: string
   avatar?: string
+  role: 'user' | 'admin'
   createdAt: Date
   updatedAt: Date
 }
 
+
+
+//conncted with database and get collection
 async function getCollection() {
   const client = await clientPromise
   return client.db().collection<IUser>('users')
 }
 
+
+//use this like: UserModel.create(), UserModel.findOne(), UserModel.updateOne()
 const UserModel = {
   async findOne(query: Filter<IUser>) {
     const collection = await getCollection()

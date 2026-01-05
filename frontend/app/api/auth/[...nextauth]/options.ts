@@ -87,6 +87,7 @@ export const authOptions: NextAuthConfig = {
               phone: "",
               password: "", 
               avatar: user.image || "",
+              role: "user",
             });
           }
         } catch (error) {
