@@ -22,7 +22,7 @@ const EmptyWishlist = ({
           Save items you love to your wishlist and never miss a deal. Start exploring and add products you&apos;re interested in!
         </p>
         <Link
-          href="/shop"
+          href="/products"
           className="inline-flex items-center gap-2 px-8 py-3 bg-linear-to-r from-violet-500 to-indigo-500 text-white rounded-xl font-semibold hover:from-violet-600 hover:to-indigo-600 transition-all duration-300 shadow-lg shadow-violet-200 hover:shadow-xl hover:scale-105"
         >
           <ShoppingBag className="w-5 h-5" />

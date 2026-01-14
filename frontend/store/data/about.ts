@@ -1,11 +1,20 @@
-// About Page Types and Demo Data
+// ============================================================================
+// ABOUT DATA - About Page Data Repository
+// ============================================================================
+
+// ============================================================================
+// TYPES
+// ============================================================================
 
 export interface StatItem {
   value: string
   label: string
 }
 
-// Stats for hero section
+// ============================================================================
+// DEMO DATA - STATS
+// ============================================================================
+
 export const statsData: StatItem[] = [
   { value: '50K+', label: 'Active Users' },
   { value: '2,000+', label: 'Partner Stores' },
@@ -13,7 +22,10 @@ export const statsData: StatItem[] = [
   { value: '50KM', label: 'Radius' },
 ]
 
-// JSON-LD structured data for SEO
+// ============================================================================
+// JSON-LD STRUCTURED DATA FOR SEO
+// ============================================================================
+
 export const aboutJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',

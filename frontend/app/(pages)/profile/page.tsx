@@ -7,7 +7,51 @@ import OrderHistoryTab from './components/OrderHistoryTab'
 import ProfileHeader from './components/ProfileHeader'
 import StatsCards from './components/StatsCards'
 import SidebarMenu from './components/SidebarMenu'
-import { defaultUserStats, orders, profileMenuItems, type UserInfo } from '@/app/data'
+import { Package, Heart, Wallet, ShoppingBag, User, MapPin, CreditCard, Bell, Settings } from 'lucide-react'
+import { orders as storeOrders, getOrderStats, getStatusInfo } from '@/store'
+
+// Types from old data file - keeping for compatibility
+interface UserInfo {
+  name: string
+  email: string
+  phone: string
+  location: string
+  avatar: string
+  memberSince: string
+  joinDate: string
+  memberLevel: string
+}
+
+// Transform orders to legacy format for OrderHistoryTab
+const orders = storeOrders.map(o => ({
+  id: o.id,
+  store: o.store.name,
+  items: o.itemCount,
+  total: `৳${o.total.toLocaleString()}`,
+  status: getStatusInfo(o.status).label,
+  date: new Date(o.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+  image: o.items[0]?.image || ''
+}))
+
+// Get stats from store
+const orderStats = getOrderStats()
+const defaultUserStats = [
+  { icon: Package, label: 'Total Orders', value: orderStats.totalOrders.toString(), color: 'from-violet-500 to-violet-600' },
+  { icon: ShoppingBag, label: 'Items Purchased', value: storeOrders.reduce((sum, o) => sum + o.itemCount, 0).toString(), color: 'from-blue-500 to-blue-600' },
+  { icon: Wallet, label: 'Total Savings', value: '৳2,500', color: 'from-emerald-500 to-emerald-600' },
+  { icon: Heart, label: 'Wishlist Items', value: '6', color: 'from-rose-500 to-rose-600' }
+]
+
+// Profile menu items
+const profileMenuItems = [
+  { id: 'Personal Info', label: 'Personal Info', icon: User, active: false },
+  { id: 'Order History', label: 'Order History', icon: Package, active: false },
+  { id: 'Wishlist', label: 'Wishlist', icon: Heart, active: false },
+  { id: 'Addresses', label: 'Addresses', icon: MapPin, active: false },
+  { id: 'Payment Methods', label: 'Payment Methods', icon: CreditCard, active: false },
+  { id: 'Notifications', label: 'Notifications', icon: Bell, active: false },
+  { id: 'Settings', label: 'Settings', icon: Settings, active: false }
+]
 
 // Types
 type TabType = 'Personal Info' | 'Order History' | 'Wishlist' | 'Addresses' | 'Payment Methods' | 'Notifications' | 'Settings'
@@ -29,16 +73,18 @@ export default function ProfilePage() {
     phone: '',
     location: '',
     avatar: session?.user?.image || '',
-    memberLevel: 'Member',
-    joinDate: 'Member'
+    memberSince: 'Member since 2024',
+    joinDate: '2024',
+    memberLevel: 'Gold Member'
   } : {
     name: 'User',
     email: '',
     phone: '',
     location: '',
     avatar: '',
-    memberLevel: 'Member',
-    joinDate: 'Member'
+    memberSince: 'Member',
+    joinDate: '',
+    memberLevel: 'Member'
   }
 
   if (!mounted || status === 'loading') {
@@ -74,10 +120,33 @@ export default function ProfilePage() {
         {/* Stats Cards */}
         <StatsCards stats={defaultUserStats} />
 
+        {/* Mobile Tab Navigation */}
+        <div className="lg:hidden mb-6 -mx-4 px-4 overflow-x-auto scrollbar-hide">
+          <div className="flex gap-2 pb-2">
+            {profileMenuItems.map((item, index) => {
+              const Icon = item.icon
+              return (
+                <button
+                  key={index}
+                  onClick={() => setActiveTab(item.label as TabType)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-all ${
+                    activeTab === item.label
+                      ? 'bg-violet-600 text-white'
+                      : 'bg-white text-violet-700 border border-violet-200'
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {item.label}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
         {/* Main Content */}
         <div className="grid lg:grid-cols-4 gap-6">
-          {/* Sidebar Menu */}
-          <div className="lg:col-span-1">
+          {/* Sidebar Menu - Hidden on Mobile */}
+          <div className="hidden lg:block lg:col-span-1">
             <SidebarMenu
               menuItems={profileMenuItems}
               activeTab={activeTab}

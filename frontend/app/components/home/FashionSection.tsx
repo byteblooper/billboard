@@ -3,7 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import ProductCard from "./ProductCard";
-import { fashionItems } from "@/app/data";
+import { getFashionItems } from "@/store";
+
+// Get fashion items from store
+const fashionItems = getFashionItems()
 
 const FashionSection = () => {
 

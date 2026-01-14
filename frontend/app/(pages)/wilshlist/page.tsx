@@ -12,7 +12,10 @@ import StatsCards from './components/StatsCards'
 import FilterSortBar from './components/FilterSortBar'
 import BulkActionsBar from './components/BulkActionsBar'
 import NoFilterMatch from './components/NoFilterMatch'
-import { initialWishlistItems, getCollections, type Collection } from '@/app/data'
+import { getLegacyWishlistItems, getCollections, type Collection } from '@/store'
+
+// Get initial wishlist items from store
+const initialWishlistItems = getLegacyWishlistItems()
 
 // Types
 type SortOption = 'recent' | 'price-low' | 'price-high' | 'discount' | 'rating'
@@ -114,24 +117,25 @@ export default function WishlistPage() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-violet-50 via-white to-indigo-50">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-violet-600 to-indigo-600 flex items-center justify-center">
-              <Heart className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-linear-to-br from-violet-600 to-indigo-600 flex items-center justify-center">
+              <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-violet-900">My Wishlist</h1>
-              <p className="text-sm text-violet-600">{wishlistItems.length} items saved</p>
+              <h1 className="text-xl sm:text-2xl font-bold text-violet-900">My Wishlist</h1>
+              <p className="text-xs sm:text-sm text-violet-600">{wishlistItems.length} items saved</p>
             </div>
           </div>
           <Link
-            href="/shop"
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-violet-600 hover:bg-violet-100 rounded-lg transition-colors"
+            href="/products"
+            className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-violet-600 hover:bg-violet-100 rounded-lg transition-colors"
           >
             <Sparkles className="w-4 h-4" />
-            Continue Shopping
+            <span className="hidden sm:inline">Continue Shopping</span>
+            <span className="sm:hidden">Shop More</span>
           </Link>
         </div>
 

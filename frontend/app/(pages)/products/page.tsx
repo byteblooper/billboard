@@ -5,7 +5,27 @@ import { SlidersHorizontal, Loader2 } from 'lucide-react'
 import ProductCards from '@/app/components/ProductCards'
 import SearchBar from './components/SearchBar'
 import FilterSidebar from './components/FilterSidebar'
-import { shopProducts } from '@/app/data'
+import { products } from '@/store'
+
+// Convert store products to shop format
+const shopProducts = products.map(p => ({
+  id: p.id,
+  name: p.name,
+  price: p.pricing.price,
+  originalPrice: p.pricing.originalPrice,
+  discount: p.pricing.discount,
+  rating: p.rating.rating,
+  reviews: p.rating.reviews,
+  verified: p.verified,
+  image: p.image,
+  store: p.store.name,
+  distance: p.store.location.distance.replace(' km', ''),
+  walkTime: p.store.location.walkTime,
+  bikeTime: p.store.location.bikeTime,
+  carTime: p.store.location.carTime,
+  category: p.category,
+  brand: p.brand
+}))
 
 // Types
 type FilterState = {
@@ -24,7 +44,7 @@ const defaultFilters: FilterState = {
   category: 'All',
   brand: 'All',
   minPrice: 0,
-  maxPrice: 1000,
+  maxPrice: 200000,
   minDistance: 0,
   maxDistance: 10,
   minRating: 0,
@@ -146,9 +166,19 @@ export default function ShopPage() {
     <div className="min-h-screen bg-linear-to-br from-violet-50 via-white to-indigo-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-violet-900 mb-2">Discover Products</h1>
-          <p className="text-violet-600">Find amazing products from stores near you</p>
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-violet-900 mb-1 sm:mb-2">Discover Products</h1>
+            <p className="text-sm sm:text-base text-violet-600">Find amazing products from stores near you</p>
+          </div>
+          {/* Mobile Filter Button */}
+          <button
+            onClick={() => setShowMobileFilters(true)}
+            className="md:hidden flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-lg font-medium text-sm"
+          >
+            <SlidersHorizontal className="w-4 h-4" />
+            Filters
+          </button>
         </div>
 
         {/* Search Bar */}

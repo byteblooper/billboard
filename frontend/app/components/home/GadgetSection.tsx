@@ -3,7 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import ProductCard from "./ProductCard";
-import { gadgetItems } from "@/app/data";
+import { getGadgetItems } from "@/store";
+
+// Get gadget items from store
+const gadgetItems = getGadgetItems()
 
 const GadgetSection = () => {
 

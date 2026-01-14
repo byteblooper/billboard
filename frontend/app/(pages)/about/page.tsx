@@ -5,7 +5,7 @@ import CoreValuesSection from "./components/CoreValuesSection";
 import WhyChooseUsSection from "./components/WhyChooseUsSection";
 import TeamSection from "./components/TeamSection";
 import CTASection from "./components/CTASection";
-import { statsData, aboutJsonLd } from "@/app/data";
+import { statsData, aboutJsonLd } from "@/store";
 
 // SEO Metadata
 export const metadata: Metadata = {

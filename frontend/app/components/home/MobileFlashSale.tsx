@@ -7,7 +7,7 @@ import Link from "next/link";
 const MobileFlashSale = () => {
   return (
     <div className="lg:hidden px-4 py-4">
-      <Link href="/shop?sale=flash" className="block">
+      <Link href="/products?sale=flash" className="block">
         <div className="relative w-full h-40 sm:h-48 rounded-2xl overflow-hidden shadow-lg">
           {/* Gradient Background */}
           <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-violet-600 to-pink-500" />

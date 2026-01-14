@@ -21,8 +21,8 @@ type FilterSidebarProps = {
   onCloseMobile: () => void
 }
 
-const categories = ['All', 'Electronics', 'Fashion', 'Sports', 'Home']
-const brands = ['All', 'AudioTech', 'LuxTime', 'SunStyle', 'SpeedFit', 'TechPro', 'TravelPro', 'HomeStyle', 'PhotoPro']
+const categories = ['All', 'Gaming', 'Smartphones', 'Keyboards', 'Watches', 'Sunglasses', 'Running Shoes', 'Cameras', 'Backpacks', 'Electronics', 'Fashion', 'Sports', 'Home']
+const brands = ['All', 'A4tech Bloody', 'Samsung', 'Razer', 'Apple', 'Ray-Ban', 'Nike', 'Canon', 'Thule', 'AudioTech', 'LuxTime', 'SunStyle', 'SpeedFit', 'TechPro', 'TravelPro', 'HomeStyle', 'PhotoPro']
 
 const FilterSidebar = ({ 
   filters, 

@@ -3,7 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import ProductCard from "./ProductCard";
-import { groceryItems } from "@/app/data";
+import { getGroceryItems } from "@/store";
+
+// Get grocery items from store
+const groceryItems = getGroceryItems()
 
 const GrocerySection = () => {
 

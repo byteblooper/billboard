@@ -37,7 +37,7 @@ const MobileAdBanner = ({
   title = "SPECIAL OFFER",
   subtitle = "Limited Time Only",
   discount = "50% OFF",
-  link = "/shop",
+  link = "/products",
   image,
 }: MobileAdBannerProps) => {
   const style = variants[variant];

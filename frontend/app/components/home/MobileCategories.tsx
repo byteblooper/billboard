@@ -5,16 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 const categories = [
-  { id: 1, name: "Vegetables", image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?w=200&h=200&fit=crop", href: "/shop?category=vegetables" },
-  { id: 2, name: "Frozen", image: "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=200&h=200&fit=crop", href: "/shop?category=frozen" },
-  { id: 3, name: "Drinks", image: "https://images.unsplash.com/photo-1527960471264-932f39eb5846?w=200&h=200&fit=crop", href: "/shop?category=drinks" },
-  { id: 4, name: "Fruits", image: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=200&h=200&fit=crop", href: "/shop?category=fruits" },
-  { id: 5, name: "Electronics", image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=200&h=200&fit=crop", href: "/shop?category=electronics" },
-  { id: 6, name: "Mouse", image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop", href: "/shop?category=mouse" },
-  { id: 7, name: "Headphone", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop", href: "/shop?category=headphone" },
-  { id: 8, name: "Keyboard", image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=200&h=200&fit=crop", href: "/shop?category=keyboard" },
-  { id: 9, name: "Laptop", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200&h=200&fit=crop", href: "/shop?category=laptop" },
-  { id: 10, name: "Hub", image: "https://images.unsplash.com/photo-1625723044792-44de16ccb4e9?w=200&h=200&fit=crop", href: "/shop?category=hub" },
+  { id: 1, name: "Vegetables", image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?w=200&h=200&fit=crop", href: "/products?category=vegetables" },
+  { id: 2, name: "Frozen", image: "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=200&h=200&fit=crop", href: "/products?category=frozen" },
+  { id: 3, name: "Drinks", image: "https://images.unsplash.com/photo-1527960471264-932f39eb5846?w=200&h=200&fit=crop", href: "/products?category=drinks" },
+  { id: 4, name: "Fruits", image: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=200&h=200&fit=crop", href: "/products?category=fruits" },
+  { id: 5, name: "Electronics", image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=200&h=200&fit=crop", href: "/products?category=electronics" },
+  { id: 6, name: "Mouse", image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop", href: "/products?category=mouse" },
+  { id: 7, name: "Headphone", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop", href: "/products?category=headphone" },
+  { id: 8, name: "Keyboard", image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=200&h=200&fit=crop", href: "/products?category=keyboard" },
+  { id: 9, name: "Laptop", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200&h=200&fit=crop", href: "/products?category=laptop" },
+  { id: 10, name: "Hub", image: "https://images.unsplash.com/photo-1625723044792-44de16ccb4e9?w=200&h=200&fit=crop", href: "/products?category=hub" },
 ];
 
 const MobileCategories = () => {

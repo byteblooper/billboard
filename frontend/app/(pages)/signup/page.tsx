@@ -152,23 +152,23 @@ export default function SignupPage() {
       </div>
 
       {/* Right Panel - Signup Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-8">
         <div className="w-full max-w-md">
-          <div className="lg:hidden text-center mb-8">
-            <Link href="/" className="text-2xl font-bold text-violet-800 inline-flex items-center gap-2">
-              <Store className="w-8 h-8" />
-              Billboard
+          <div className="lg:hidden text-center mb-6 sm:mb-8">
+            <Link href="/" className="text-xl sm:text-2xl font-bold text-violet-800 inline-flex items-center gap-2">
+              <Store className="w-6 h-6 sm:w-8 sm:h-8" />
+              NearByDeals
             </Link>
           </div>
 
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-violet-900 mb-2">Create your account</h2>
-            <p className="text-violet-600">Fill in your details to get started</p>
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-violet-900 mb-2">Create your account</h2>
+            <p className="text-sm sm:text-base text-violet-600">Fill in your details to get started</p>
           </div>
 
           {/* Error Message */}
           {error && (
-            <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 text-red-700">
+            <div className="mb-4 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 text-red-700">
               <AlertCircle className="w-5 h-5 shrink-0" />
               <p className="text-sm">{error}</p>
             </div>
@@ -176,14 +176,14 @@ export default function SignupPage() {
 
           {/* Success Message */}
           {success && (
-            <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3 text-green-700">
+            <div className="mb-4 p-3 sm:p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3 text-green-700">
               <Check className="w-5 h-5 shrink-0" />
               <p className="text-sm">{success}</p>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="grid grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-violet-700 mb-1.5">First Name</label>
                 <div className="relative">

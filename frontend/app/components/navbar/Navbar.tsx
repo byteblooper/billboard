@@ -43,10 +43,10 @@ export default function Navbar() {
 
   // User data from session (only after mounted)
   const user = mounted ? session?.user : null;
-  const isAdmin = (user as any)?.role === "admin"; // Add role check if you have it in your user model
+  const isAdmin = (user as any)?.role === "admin" || "user"; // Add role check if you have it in your user model
 
   const allMenuItems = [
-    { href: "/shop", label: "Shop", icon: Store, adminOnly: false },
+    { href: "/products", label: "All Products", icon: Store, adminOnly: false },
     { href: "/map", label: "Map", icon: Map, adminOnly: false },
     { href: "/about", label: "About", icon: Info, adminOnly: false },
     { href: "/admin", label: "Admin", icon: Shield, adminOnly: true },

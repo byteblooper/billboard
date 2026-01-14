@@ -3,7 +3,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { dealCards } from "@/app/data";
+import { dealBanners } from "@/store";
+
+// Transform deal banners to old dealCards format
+const dealCards = dealBanners.map(b => ({
+  id: b.id,
+  title: b.title,
+  subtitle: b.subtitle,
+  bgColor: b.bgClass,
+  image: b.image
+}))
 
 const DealsCarousel = () => {
 const [activeTab, setActiveTab] = useState("Latest");

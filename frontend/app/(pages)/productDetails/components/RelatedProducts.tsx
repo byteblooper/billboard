@@ -1,119 +1,129 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Star, Heart, ShoppingCart, ShieldCheck } from 'lucide-react'
+import { ShoppingBag, Loader2 } from 'lucide-react'
+import type { RelatedProductsProps } from '../types'
 
-const RelatedProducts = ({
+const ITEMS_PER_PAGE = 12
+const ITEMS_PER_LOAD = 8
+
+const RelatedProducts: React.FC<RelatedProductsProps> = ({
   products,
-  title = 'Related Products',
-}: {
-  products: {
-    id: number
-    name: string
-    image: string
-    price: number
-    originalPrice: number
-    discount: number
-    rating: number
-    reviews: number
-    verified: boolean
-  }[]
-  title?: string
+  title = 'More Relevant Product',
 }) => {
-  const handleQuickAction = (e: React.MouseEvent) => {
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleLoadMore = useCallback(() => {
+    setIsLoading(true)
+    // Simulate network delay for better UX
+    setTimeout(() => {
+      setVisibleCount((prev) => prev + ITEMS_PER_LOAD)
+      setIsLoading(false)
+    }, 500)
+  }, [])
+
+  const handleAddToBag = useCallback((e: React.MouseEvent, productId: number) => {
     e.preventDefault()
     e.stopPropagation()
+    // TODO: Implement add to cart functionality
+    console.log('Add to bag:', productId)
+  }, [])
+
+  if (!products || products.length === 0) {
+    return null
   }
+
+  const visibleProducts = products.slice(0, visibleCount)
+  const hasMore = visibleCount < products.length
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-        <span className="w-1.5 h-6 bg-linear-to-b from-violet-500 to-indigo-500 rounded-full" />
+      <h2 className="text-xl font-bold text-violet-600">
         {title}
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {products.map((product) => (
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        {visibleProducts.map((product) => (
           <Link
             key={product.id}
             href={`/productDetails/${product.id}`}
-            className="group bg-white rounded-2xl border border-violet-100 overflow-hidden hover:shadow-lg hover:shadow-violet-100 transition-all cursor-pointer"
+            className="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg hover:border-violet-200 transition-all"
           >
             {/* Image Container */}
-            <div className="relative aspect-square bg-gray-50">
+            <div className="relative aspect-square bg-gray-50 p-2">
               <Image
                 src={product.image}
                 alt={product.name}
                 fill
-                className="object-contain p-4 group-hover:scale-105 transition-transform"
+                className="object-contain p-2 group-hover:scale-105 transition-transform"
+                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
               />
 
               {/* Discount Badge */}
               {product.discount > 0 && (
-                <span className="absolute top-3 left-3 px-2 py-1 bg-red-500 text-white text-xs font-semibold rounded-lg">
+                <span className="absolute top-2 left-2 px-1.5 py-0.5 bg-red-500 text-white text-[10px] font-semibold rounded">
                   -{product.discount}%
                 </span>
               )}
-
-              {/* Verified Badge */}
-              {product.verified && (
-                <span className="absolute top-3 right-3 w-6 h-6 bg-violet-500 rounded-full flex items-center justify-center">
-                  <ShieldCheck className="w-3.5 h-3.5 text-white" />
-                </span>
-              )}
-
-              {/* Quick Actions */}
-              <div className="absolute bottom-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button onClick={handleQuickAction} className="p-2 bg-white rounded-full shadow-md hover:bg-violet-50 transition-colors">
-                  <Heart className="w-4 h-4 text-violet-600" />
-                </button>
-                <button onClick={handleQuickAction} className="p-2 bg-violet-600 rounded-full shadow-md hover:bg-violet-700 transition-colors">
-                  <ShoppingCart className="w-4 h-4 text-white" />
-                </button>
-              </div>
             </div>
 
             {/* Product Info */}
-            <div className="p-4">
-              <h3 className="font-medium text-gray-900 text-sm line-clamp-2 mb-2 group-hover:text-violet-700 transition-colors">
-                {product.name}
-              </h3>
-
-              {/* Rating */}
-              <div className="flex items-center gap-1 mb-2">
-                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                <span className="text-xs font-medium text-gray-700">
-                  {product.rating.toFixed(1)}
-                </span>
-                <span className="text-xs text-gray-400">
-                  ({product.reviews})
-                </span>
-              </div>
-
+            <div className="p-3">
+              {/* Delivery Time */}
+              <p className="text-[10px] text-gray-400 mb-1">Delivery 2 Hours</p>
+              
               {/* Price */}
-              <div className="flex items-baseline gap-2">
-                <span className="text-lg font-bold text-violet-700">
-                  ${product.price.toFixed(2)}
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-sm font-bold text-gray-900">
+                  {product.price.toLocaleString()} bdt
                 </span>
                 {product.discount > 0 && (
-                  <span className="text-xs text-gray-400 line-through">
-                    ${product.originalPrice.toFixed(2)}
+                  <span className="text-[10px] text-gray-400 line-through">
+                    {product.originalPrice.toLocaleString()}
                   </span>
                 )}
               </div>
+
+              {/* Product Name */}
+              <h3 className="text-xs text-gray-700 line-clamp-1 mb-3">
+                {product.name}
+              </h3>
+
+              {/* Add to Bag Button */}
+              <button 
+                onClick={(e) => handleAddToBag(e, product.id)}
+                className="w-full py-1.5 bg-violet-600 text-white text-xs font-medium rounded-lg hover:bg-violet-700 transition-colors flex items-center justify-center gap-1"
+              >
+                <ShoppingBag className="w-3 h-3" />
+                Add to bag
+              </button>
             </div>
           </Link>
         ))}
       </div>
 
-      {/* View All Button */}
-      <div className="text-center">
-        <Link href="/shop" className="inline-block px-6 py-2.5 border-2 border-violet-600 text-violet-700 font-medium rounded-xl hover:bg-violet-50 transition-all">
-          View All Products
-        </Link>
-      </div>
+      {/* Load More Button */}
+      {hasMore && (
+        <div className="text-center pt-4">
+          <button 
+            onClick={handleLoadMore}
+            disabled={isLoading}
+            className="inline-flex items-center gap-2 px-8 py-2.5 bg-white border-2 border-gray-200 text-gray-700 font-medium rounded-lg hover:border-violet-300 hover:bg-violet-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Loading...
+              </>
+            ) : (
+              'Load More'
+            )}
+          </button>
+        </div>
+      )}
     </div>
   )
 }

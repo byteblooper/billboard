@@ -150,28 +150,28 @@ export default function SigninPage() {
       </div>
 
       {/* Right Side - Sign In Form */}
-      <div className="flex-1 flex items-center justify-center p-8">
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-8">
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
-          <div className="lg:hidden text-center mb-8">
+          <div className="lg:hidden text-center mb-6 sm:mb-8">
             <Link href="/" className="inline-flex items-center gap-2">
               <div className="w-10 h-10 rounded-xl bg-linear-to-br from-violet-600 to-indigo-600 flex items-center justify-center">
                 <MapPin className="w-5 h-5 text-white" />
               </div>
-              <h1 className="text-2xl font-bold bg-linear-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+              <h1 className="text-xl sm:text-2xl font-bold bg-linear-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
                 NearByDeals
               </h1>
             </Link>
           </div>
 
           {/* Header */}
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-violet-900 mb-2">Welcome back</h2>
-            <p className="text-violet-600">Sign in to your account to continue shopping</p>
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-violet-900 mb-2">Welcome back</h2>
+            <p className="text-sm sm:text-base text-violet-600">Sign in to your account to continue shopping</p>
           </div>
 
           {/* Form Card */}
-          <div className="bg-white rounded-2xl shadow-xl border border-violet-100 p-8">
+          <div className="bg-white rounded-2xl shadow-xl border border-violet-100 p-6 sm:p-8">
             {/* Error Message */}
             {error && (
               <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 text-red-700">

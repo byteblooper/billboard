@@ -8,7 +8,21 @@ import RecommendedProducts, { RecommendedProduct } from './components/Recommende
 import EmptyCart from './components/EmptyCart'
 import OutOfStockItem from './components/OutOfStockItem'
 import OrderSummary from './components/OrderSummary'
-import { initialCartItems, recommendedProducts, validCoupons } from '@/app/data'
+import { getLegacyCartItems, getValidCouponsRecord, products } from '@/store'
+
+// Transform products to recommended products format
+const recommendedProducts: RecommendedProduct[] = products.slice(0, 4).map(p => ({
+  id: p.id,
+  name: p.name,
+  image: p.image,
+  price: p.pricing.price,
+  originalPrice: p.pricing.originalPrice || p.pricing.price,
+  store: p.store.name
+}))
+
+// Get legacy cart items and valid coupons from store
+const initialCartItems = getLegacyCartItems()
+const validCoupons = getValidCouponsRecord()
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems)
@@ -73,21 +87,21 @@ export default function CartPage() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-violet-50 via-white to-indigo-50">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-4">
-            <Link href="/shop" className="p-2 hover:bg-violet-100 rounded-lg transition-colors">
-              <ArrowLeft className="w-5 h-5 text-violet-700" />
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Link href="/products" className="p-1.5 sm:p-2 hover:bg-violet-100 rounded-lg transition-colors">
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-violet-700" />
             </Link>
             <div>
-              <h1 className="text-2xl font-bold text-violet-900">Shopping Cart</h1>
-              <p className="text-sm text-violet-600">{totalItems} items in your cart</p>
+              <h1 className="text-lg sm:text-2xl font-bold text-violet-900">Shopping Cart</h1>
+              <p className="text-xs sm:text-sm text-violet-600">{totalItems} items in your cart</p>
             </div>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {/* In Stock Items */}

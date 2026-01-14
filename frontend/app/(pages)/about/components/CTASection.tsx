@@ -20,7 +20,7 @@ const CTASection = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/shop"
+              href="/products"
               className="px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:scale-105 transition-transform shadow-lg inline-block"
             >
               Start Shopping

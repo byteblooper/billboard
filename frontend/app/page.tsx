@@ -46,7 +46,7 @@ export default function Home() {
               title="GROCERY DEALS"
               subtitle="Fresh products daily"
               discount="30% OFF"
-              link="/shop?category=grocery"
+              link="/products?category=grocery"
             />
             
             <FashionSection />
@@ -57,7 +57,7 @@ export default function Home() {
               title="FASHION WEEK"
               subtitle="Trending styles"
               discount="40% OFF"
-              link="/shop?category=fashion"
+              link="/products?category=fashion"
             />
             
             <GadgetSection />
@@ -68,7 +68,7 @@ export default function Home() {
               title="TECH SALE"
               subtitle="Latest gadgets"
               discount="25% OFF"
-              link="/shop?category=gadget"
+              link="/products?category=gadget"
             />
           </div>
         </div>
