@@ -123,16 +123,17 @@ const CouponsView = () => {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <div>
-          <h2 className="text-xl font-bold text-gray-900">Coupons</h2>
-          <p className="text-sm text-gray-600 mt-0.5">Manage discount coupons and promotional codes</p>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">Coupons</h2>
+          <p className="text-xs sm:text-sm text-gray-600 mt-0.5">Manage discount coupons and promotional codes</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors text-sm font-medium">
-          <Plus className="w-4 h-4" />
-          Create Coupon
+        <button className="flex items-center gap-1 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors text-xs sm:text-sm font-medium">
+          <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          <span className="hidden sm:inline">Create Coupon</span>
+          <span className="sm:hidden">Create</span>
         </button>
       </div>
 
@@ -141,16 +142,78 @@ const CouponsView = () => {
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         <input
           type="text"
-          placeholder="Search coupons by code or description..."
+          placeholder="Search coupons..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
+          className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-xs sm:text-sm"
         />
       </div>
 
       {/* Table */}
       <div className="bg-white rounded-lg border border-violet-200 overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Mobile Card View */}
+        <div className="sm:hidden divide-y divide-violet-100">
+          {filteredCoupons.map((coupon) => (
+            <div key={coupon.id} className="p-3 hover:bg-violet-50 transition-colors">
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono font-semibold text-violet-600 text-sm">{coupon.code}</span>
+                  <button
+                    onClick={() => copyToClipboard(coupon.code)}
+                    className="p-1 text-violet-400 hover:text-violet-600 hover:bg-violet-100 rounded transition-colors"
+                  >
+                    <Copy className="w-3 h-3" />
+                  </button>
+                </div>
+                <div className="flex items-center gap-1 shrink-0">
+                  <button className="p-1 text-violet-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
+                    <Edit className="w-3.5 h-3.5" />
+                  </button>
+                  <button className="p-1 text-violet-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors">
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+              <p className="text-[10px] text-violet-600 mb-2 line-clamp-1">{coupon.description}</p>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="font-medium text-violet-900 text-xs">
+                  {coupon.discountType === 'percentage'
+                    ? `${coupon.discountValue}% off`
+                    : `$${coupon.discountValue} off`}
+                </span>
+                <span className="text-[10px] text-violet-500">Min: ${coupon.minPurchase}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
+                    <span className="text-[10px] font-medium text-violet-600">
+                      {coupon.usageCount}/{coupon.usageLimit}
+                    </span>
+                    <div className="w-12 h-1.5 bg-violet-100 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-violet-500 rounded-full"
+                        style={{ width: `${(coupon.usageCount / coupon.usageLimit) * 100}%` }}
+                      />
+                    </div>
+                  </div>
+                  <span className="text-[10px] text-violet-500">{coupon.expiryDate}</span>
+                </div>
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${
+                  coupon.status === 'active'
+                    ? 'bg-green-100 text-green-700'
+                    : coupon.status === 'expired'
+                    ? 'bg-red-100 text-red-700'
+                    : 'bg-violet-100 text-violet-700'
+                }`}>
+                  {coupon.status}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Table View */}
+        <div className="hidden sm:block overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="bg-violet-50 border-b border-violet-200">
@@ -243,7 +306,7 @@ const CouponsView = () => {
         </div>
 
         {filteredCoupons.length === 0 && (
-          <div className="text-center py-12">
+          <div className="text-center py-8 sm:py-12">
             <p className="text-violet-500 text-sm">No coupons found</p>
           </div>
         )}

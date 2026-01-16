@@ -164,19 +164,19 @@ export default function ShopPage() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-violet-50 via-white to-indigo-50">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 py-4 sm:py-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-4 sm:mb-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-violet-900 mb-1 sm:mb-2">Discover Products</h1>
-            <p className="text-sm sm:text-base text-violet-600">Find amazing products from stores near you</p>
+            <h1 className="text-xl sm:text-3xl font-bold text-violet-900 mb-0.5 sm:mb-2">Discover Products</h1>
+            <p className="text-xs sm:text-base text-violet-600">Find amazing products from stores near you</p>
           </div>
           {/* Mobile Filter Button */}
           <button
             onClick={() => setShowMobileFilters(true)}
-            className="md:hidden flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-lg font-medium text-sm"
+            className="md:hidden flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-violet-600 text-white rounded-lg font-medium text-xs sm:text-sm"
           >
-            <SlidersHorizontal className="w-4 h-4" />
+            <SlidersHorizontal className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             Filters
           </button>
         </div>
@@ -189,7 +189,7 @@ export default function ShopPage() {
           onSortChange={(value) => handleFilterChange({ ...filters, sortBy: value })}
         />
 
-        <div className="flex gap-6 mt-6">
+        <div className="flex gap-4 sm:gap-6 mt-4 sm:mt-6">
           {/* Sidebar */}
           <FilterSidebar
             filters={filters}
@@ -202,14 +202,14 @@ export default function ShopPage() {
           {/* Product Grid */}
           <div className="flex-1">
             {/* Results Count */}
-            <div className="mb-4 text-sm text-violet-600">
+            <div className="mb-3 sm:mb-4 text-xs sm:text-sm text-violet-600">
               Showing {visibleProducts.length} of {filteredProducts.length} products
             </div>
 
             {/* Products */}
             {visibleProducts.length > 0 ? (
               <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
                   {visibleProducts.map((product) => (
                     <ProductCards key={product.id} product={product} />
                   ))}

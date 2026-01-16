@@ -127,19 +127,19 @@ const ChatsView = () => {
   const currentChat = chats.find(chat => chat.id === selectedChat)
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       {/* Header */}
       <div>
-        <h2 className="text-xl font-bold text-gray-900">Customer Chats</h2>
-        <p className="text-sm text-gray-600 mt-0.5">Manage customer support conversations</p>
+        <h2 className="text-lg sm:text-xl font-bold text-gray-900">Customer Chats</h2>
+        <p className="text-xs sm:text-sm text-gray-600 mt-0.5">Manage customer support conversations</p>
       </div>
 
       {/* Chat Interface */}
-      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden h-[600px] flex">
+      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden h-[500px] sm:h-[600px] flex flex-col sm:flex-row">
         {/* Chat List */}
-        <div className="w-80 border-r border-gray-200 flex flex-col">
+        <div className={`${selectedChat ? 'hidden sm:flex' : 'flex'} w-full sm:w-80 border-r border-gray-200 flex-col`}>
           {/* Search */}
-          <div className="p-3 border-b border-gray-200">
+          <div className="p-2 sm:p-3 border-b border-gray-200">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
@@ -147,7 +147,7 @@ const ChatsView = () => {
                 placeholder="Search conversations..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
+                className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-xs sm:text-sm"
               />
             </div>
           </div>
@@ -158,32 +158,32 @@ const ChatsView = () => {
               <button
                 key={chat.id}
                 onClick={() => setSelectedChat(chat.id)}
-                className={`w-full p-3 border-b border-violet-100 hover:bg-violet-50 transition-colors text-left ${
+                className={`w-full p-2.5 sm:p-3 border-b border-violet-100 hover:bg-violet-50 transition-colors text-left ${
                   selectedChat === chat.id ? 'bg-violet-50' : ''
                 }`}
               >
-                <div className="flex items-start gap-3">
-                  <div className="relative">
+                <div className="flex items-start gap-2 sm:gap-3">
+                  <div className="relative shrink-0">
                     <Image
                       src={chat.avatar}
                       alt={chat.customer}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
+                      width={36}
+                      height={36}
+                      className="rounded-full w-9 h-9 sm:w-10 sm:h-10"
                     />
                     {chat.status === 'active' && (
-                      <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full" />
+                      <span className="absolute bottom-0 right-0 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 border-2 border-white rounded-full" />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-medium text-violet-900 text-sm truncate">{chat.customer}</span>
-                      <span className="text-xs text-violet-500 shrink-0 ml-2">{chat.timestamp}</span>
+                    <div className="flex items-center justify-between mb-0.5 sm:mb-1">
+                      <span className="font-medium text-violet-900 text-xs sm:text-sm truncate">{chat.customer}</span>
+                      <span className="text-[10px] sm:text-xs text-violet-500 shrink-0 ml-2">{chat.timestamp}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <p className="text-sm text-violet-600 truncate">{chat.lastMessage}</p>
+                      <p className="text-xs sm:text-sm text-violet-600 truncate">{chat.lastMessage}</p>
                       {chat.unreadCount > 0 && (
-                        <span className="ml-2 px-1.5 py-0.5 bg-violet-500 text-white text-xs font-medium rounded-full shrink-0">
+                        <span className="ml-2 px-1.5 py-0.5 bg-violet-500 text-white text-[10px] sm:text-xs font-medium rounded-full shrink-0">
                           {chat.unreadCount}
                         </span>
                       )}
@@ -197,55 +197,65 @@ const ChatsView = () => {
 
         {/* Chat Messages */}
         {currentChat ? (
-          <div className="flex-1 flex flex-col">
+          <div className={`${selectedChat ? 'flex' : 'hidden sm:flex'} flex-1 flex-col`}>
             {/* Chat Header */}
-            <div className="p-4 border-b border-violet-200 flex items-center justify-between">
-              <div className="flex items-center gap-3">
+            <div className="p-3 sm:p-4 border-b border-violet-200 flex items-center justify-between">
+              <div className="flex items-center gap-2 sm:gap-3">
+                {/* Back button for mobile */}
+                <button 
+                  onClick={() => setSelectedChat(null)}
+                  className="sm:hidden p-1 -ml-1 text-violet-600 hover:bg-violet-100 rounded transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
                 <Image
                   src={currentChat.avatar}
                   alt={currentChat.customer}
-                  width={40}
-                  height={40}
-                  className="rounded-full"
+                  width={36}
+                  height={36}
+                  className="rounded-full w-9 h-9 sm:w-10 sm:h-10"
                 />
                 <div>
-                  <h3 className="font-medium text-violet-900">{currentChat.customer}</h3>
-                  <p className="text-sm text-violet-500">
+                  <h3 className="font-medium text-violet-900 text-sm sm:text-base">{currentChat.customer}</h3>
+                  <p className="text-xs sm:text-sm text-violet-500">
                     {currentChat.status === 'active' ? 'Active now' : 'Resolved'}
                   </p>
                 </div>
               </div>
               {currentChat.status === 'active' && (
-                <button className="px-3 py-1.5 text-sm font-medium text-violet-700 bg-violet-100 hover:bg-violet-200 rounded-lg transition-colors">
-                  Mark as Resolved
+                <button className="px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm font-medium text-violet-700 bg-violet-100 hover:bg-violet-200 rounded-lg transition-colors">
+                  <span className="hidden sm:inline">Mark as Resolved</span>
+                  <span className="sm:hidden">Resolve</span>
                 </button>
               )}
             </div>
 
             {/* Messages */}
-            <div className="flex-1 p-4 overflow-y-auto space-y-4">
+            <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4">
               {currentChat.messages.map((message) => (
                 <div
                   key={message.id}
                   className={`flex ${message.sender === 'admin' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`max-w-md ${message.sender === 'admin' ? 'order-2' : ''}`}>
+                  <div className={`max-w-[85%] sm:max-w-md ${message.sender === 'admin' ? 'order-2' : ''}`}>
                     <div
-                      className={`rounded-lg px-4 py-2 ${
+                      className={`rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 ${
                         message.sender === 'admin'
                           ? 'bg-violet-500 text-white'
                           : 'bg-violet-100 text-violet-900'
                       }`}
                     >
-                      <p className="text-sm">{message.text}</p>
+                      <p className="text-xs sm:text-sm">{message.text}</p>
                     </div>
-                    <div className="flex items-center gap-1 mt-1 px-1">
-                      <span className="text-xs text-violet-500">{message.time}</span>
+                    <div className="flex items-center gap-1 mt-0.5 sm:mt-1 px-1">
+                      <span className="text-[10px] sm:text-xs text-violet-500">{message.time}</span>
                       {message.sender === 'admin' && (
                         message.read ? (
-                          <CheckCheck className="w-3 h-3 text-blue-500" />
+                          <CheckCheck className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-blue-500" />
                         ) : (
-                          <Clock className="w-3 h-3 text-violet-400" />
+                          <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-violet-400" />
                         )
                       )}
                     </div>
@@ -256,23 +266,23 @@ const ChatsView = () => {
 
             {/* Message Input */}
             {currentChat.status === 'active' && (
-              <div className="p-4 border-t border-violet-200">
+              <div className="p-3 sm:p-4 border-t border-violet-200">
                 <div className="flex items-center gap-2">
                   <input
                     type="text"
                     placeholder="Type your message..."
-                    className="flex-1 px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
+                    className="flex-1 px-3 sm:px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-xs sm:text-sm"
                   />
                   <button className="p-2 bg-violet-500 text-white rounded-lg hover:bg-violet-600 transition-colors">
-                    <Send className="w-5 h-5" />
+                    <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
                 </div>
               </div>
             )}
           </div>
         ) : (
-          <div className="flex-1 flex items-center justify-center">
-            <p className="text-violet-500">Select a conversation to view messages</p>
+          <div className="hidden sm:flex flex-1 items-center justify-center">
+            <p className="text-violet-500 text-sm">Select a conversation to view messages</p>
           </div>
         )}
       </div>

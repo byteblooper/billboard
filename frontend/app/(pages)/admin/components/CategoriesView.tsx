@@ -105,16 +105,17 @@ const CategoriesView = () => {
   )
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <div>
-          <h2 className="text-xl font-bold text-gray-900">Categories</h2>
-          <p className="text-sm text-gray-600 mt-0.5">Manage product categories and subcategories</p>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">Categories</h2>
+          <p className="text-xs sm:text-sm text-gray-600 mt-0.5">Manage product categories and subcategories</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors text-sm font-medium">
-          <Plus className="w-4 h-4" />
-          Add Category
+        <button className="flex items-center gap-1 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors text-xs sm:text-sm font-medium">
+          <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          <span className="hidden sm:inline">Add Category</span>
+          <span className="sm:hidden">Add</span>
         </button>
       </div>
 
@@ -126,13 +127,67 @@ const CategoriesView = () => {
           placeholder="Search categories..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
+          className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 text-xs sm:text-sm"
         />
       </div>
 
       {/* Table */}
       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Mobile Card View */}
+        <div className="sm:hidden divide-y divide-gray-200">
+          {filteredCategories.map((category) => (
+            <div key={category.id} className="p-3 hover:bg-gray-50 transition-colors">
+              <div className="flex items-start gap-3">
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  width={40}
+                  height={40}
+                  className="rounded-lg object-cover shrink-0"
+                />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <h3 className="font-medium text-violet-900 text-sm">{category.name}</h3>
+                      <p className="text-[10px] text-violet-600 font-mono">{category.slug}</p>
+                    </div>
+                    <div className="flex items-center gap-1 shrink-0">
+                      <button className="p-1 text-violet-600 hover:text-violet-600 hover:bg-violet-50 rounded transition-colors">
+                        <Eye className="w-3.5 h-3.5" />
+                      </button>
+                      <button className="p-1 text-violet-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
+                        <Edit className="w-3.5 h-3.5" />
+                      </button>
+                      <button className="p-1 text-violet-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors">
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                  <p className="text-[10px] text-gray-500 mt-1 line-clamp-1">{category.description}</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center gap-3 text-xs">
+                      <span className="text-violet-900 font-medium">{category.productCount} products</span>
+                      <button className="flex items-center gap-0.5 text-violet-600 hover:text-violet-700 font-medium">
+                        {category.subcategories} subcats
+                        <ChevronRight className="w-3 h-3" />
+                      </button>
+                    </div>
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${
+                      category.status === 'active'
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-violet-100 text-violet-700'
+                    }`}>
+                      {category.status}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Table View */}
+        <div className="hidden sm:block overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200">
@@ -204,7 +259,7 @@ const CategoriesView = () => {
         </div>
 
         {filteredCategories.length === 0 && (
-          <div className="text-center py-12">
+          <div className="text-center py-8 sm:py-12">
             <p className="text-violet-500 text-sm">No categories found</p>
           </div>
         )}

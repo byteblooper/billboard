@@ -32,22 +32,32 @@ const FilterSidebar = ({
   onCloseMobile 
 }: FilterSidebarProps) => {
   return (
-    <aside className={`${
-      showMobileFilters ? 'fixed inset-0 z-50 bg-black/50 md:relative md:bg-transparent' : 'hidden md:block'
-    } md:w-80 shrink-0`}>
-      <div className={`${
-        showMobileFilters ? 'fixed right-0 top-0 bottom-0 w-80 bg-white overflow-y-auto' : ''
-      } md:sticky md:top-24`}>
-        <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200">
-          {/* Mobile Close Button */}
-          {showMobileFilters && (
+    <>
+      {/* Mobile Overlay */}
+      <div 
+        className={`fixed inset-0 z-40 bg-black/50 md:hidden transition-opacity duration-300 ease-in-out ${
+          showMobileFilters ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+        onClick={onCloseMobile}
+      />
+      
+      {/* Sidebar */}
+      <aside className={`
+        fixed right-0 top-0 bottom-0 z-50 w-[85%] max-w-80 bg-white overflow-y-auto
+        transform transition-transform duration-300 ease-in-out
+        ${showMobileFilters ? 'translate-x-0' : 'translate-x-full'}
+        md:relative md:translate-x-0 md:w-80 md:bg-transparent md:overflow-visible md:z-auto
+        ${!showMobileFilters ? 'md:block' : ''}
+      `}>
+        <div className="md:sticky md:top-24">
+          <div className="bg-white rounded-none md:rounded-xl p-4 sm:p-6 shadow-md md:border md:border-gray-200 min-h-screen md:min-h-0">
+            {/* Mobile Close Button */}
             <button
               onClick={onCloseMobile}
-              className="md:hidden absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-lg"
+              className="md:hidden absolute top-10 right-4 p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
-          )}
 
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-900">Filters</h2>
@@ -184,9 +194,10 @@ const FilterSidebar = ({
               </div>
             </div>
           </div>
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   )
 }
 

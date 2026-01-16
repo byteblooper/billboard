@@ -44,16 +44,16 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 py-6">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 py-3 sm:py-6">
         {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-          <p className="text-sm sm:text-base text-gray-600">Manage your store, products, and orders</p>
+        <div className="mb-4 sm:mb-6">
+          <h1 className="text-lg sm:text-2xl font-bold text-gray-900">Admin Dashboard</h1>
+          <p className="text-xs sm:text-base text-gray-600">Manage your store, products, and orders</p>
         </div>
 
         {/* Mobile Tab Navigation */}
-        <div className="lg:hidden mb-6 -mx-4 px-4 overflow-x-auto scrollbar-hide">
-          <div className="flex gap-2 pb-2">
+        <div className="lg:hidden mb-4 sm:mb-6 -mx-2 sm:-mx-4 px-2 sm:px-4 overflow-x-auto scrollbar-hide">
+          <div className="flex gap-1.5 sm:gap-2 pb-2">
             {[
               { id: 'dashboard', label: 'Dashboard' },
               { id: 'products', label: 'Products' },
@@ -67,7 +67,7 @@ export default function AdminPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as TabType)}
-                className={`px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-all ${
+                className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full whitespace-nowrap text-xs sm:text-sm font-medium transition-all ${
                   activeTab === tab.id
                     ? 'bg-violet-600 text-white'
                     : 'bg-white text-gray-700 border border-gray-200'
@@ -79,7 +79,7 @@ export default function AdminPage() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-6">
+        <div className="grid lg:grid-cols-5 gap-3 sm:gap-6">
           {/* Sidebar - Hidden on Mobile */}
           <div className="hidden lg:block lg:col-span-1">
             <AdminSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
