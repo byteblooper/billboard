@@ -70,6 +70,7 @@ export const products: ProductDetails[] = [
       'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=800&q=80',
       'https://images.unsplash.com/photo-1599669454699-248893623440?w=800&q=80',
       'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80',
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80',
       'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80'
     ],
     category: 'Gaming',
