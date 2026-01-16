@@ -8,11 +8,14 @@ import MobileBannerSlider from "./components/home/MobileBannerSlider";
 import MobileCategories from "./components/home/MobileCategories";
 import MobileFlashSale from "./components/home/MobileFlashSale";
 import MobileAdBanner from "./components/home/MobileAdBanner";
+import LocationModal from "./components/home/LocationModal";
 
 
 export default function Home() {
   return (
     <main className="bg-gray-50 min-h-screen">
+      {/* Location Permission Modal */}
+      <LocationModal />
       {/* Mobile Banner Slider - Only visible on small screens */}
       <MobileBannerSlider />
 

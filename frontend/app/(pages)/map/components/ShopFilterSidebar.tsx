@@ -61,7 +61,7 @@ const ShopFilterSidebar = ({
 
               {/* Category Filter */}
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3 bg-amber-300">Category</h3>
+                <h3 className="font-semibold text-gray-900 mb-3 ">Category</h3>
                 <div className="space-y-2">
                   {categories.map((cat) => (
                     <label key={cat} className="flex items-center gap-2 cursor-pointer group">

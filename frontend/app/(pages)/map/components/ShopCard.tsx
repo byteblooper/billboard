@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navigation, Star, Phone, Shield, Store, Footprints, Bike, Car, MapPin, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 type Shop = {
   id: number
@@ -113,9 +114,12 @@ const ShopCard = ({ shop }: ShopCardProps) => {
             <button className="py-2.5 px-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors">
               <Phone className="w-4 h-4" />
             </button>
-            <button className="py-2.5 px-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors">
+            <Link 
+              href={`/store/${shop.id}`}
+              className="py-2.5 px-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors"
+            >
               <Store className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -194,10 +198,13 @@ const ShopCard = ({ shop }: ShopCardProps) => {
                 <Navigation className="w-5 h-5" />
                 Directions
               </button>
-              <button className="px-6 py-3 bg-white text-gray-700 border-2 border-gray-300 rounded-xl font-semibold hover:bg-gray-50 transition-colors flex items-center gap-2">
+              <Link 
+                href={`/store/${shop.id}`}
+                className="px-6 py-3 bg-white text-gray-700 border-2 border-gray-300 rounded-xl font-semibold hover:bg-gray-50 transition-colors flex items-center gap-2"
+              >
                 <Store className="w-5 h-5" />
                 View Store
-              </button>
+              </Link>
               <button className="px-6 py-3 bg-white text-gray-700 border-2 border-gray-300 rounded-xl font-semibold hover:bg-gray-50 transition-colors flex items-center gap-2">
                 <Phone className="w-5 h-5" />
                 Call
