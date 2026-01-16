@@ -4,17 +4,11 @@ import StoreProducts from '../components/StoreProducts'
 import StoreInfo from '../components/StoreInfo'
 import { stores, products, getStoreById } from '@/store'
 
-// ============================================================================
-// TYPES
-// ============================================================================
 
 type Props = {
   params: Promise<{ id: string }>
 }
 
-// ============================================================================
-// METADATA GENERATION
-// ============================================================================
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params
@@ -40,9 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-// ============================================================================
-// PAGE COMPONENT
-// ============================================================================
+
 
 export default async function StorePage({ params }: Props) {
   const { id } = await params

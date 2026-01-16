@@ -7,7 +7,7 @@ import SearchBar from './components/SearchBar'
 import FilterSidebar from './components/FilterSidebar'
 import { products } from '@/store'
 
-// Convert store products to shop format
+
 const shopProducts = products.map(p => ({
   id: p.id,
   name: p.name,
@@ -27,7 +27,7 @@ const shopProducts = products.map(p => ({
   brand: p.brand
 }))
 
-// Types
+
 type FilterState = {
   category: string
   brand: string
