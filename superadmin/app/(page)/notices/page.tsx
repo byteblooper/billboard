@@ -88,7 +88,6 @@ export default function NoticesPage() {
         expiresAt: noticeData.expiresAt,
         createdBy: 'Admin',
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
       };
       setNotices((prev) => [newNotice, ...prev]);
     }
