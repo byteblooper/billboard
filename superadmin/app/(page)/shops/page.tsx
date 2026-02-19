@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { Shop, ShopRequest } from './components/types';
 import { demoShops, demoShopRequests } from './components/demoData';
 import { ShopList } from './components';
@@ -81,6 +82,15 @@ export default function ShopsPage() {
                 Manage shop requests, approve new shops, and monitor existing shops
               </p>
             </div>
+            <Link
+              href="/shops/register"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors shadow-sm"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Register New Shop
+            </Link>
           </div>
         </div>
 
